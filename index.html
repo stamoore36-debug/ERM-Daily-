@@ -163,6 +163,22 @@ button{font-family:inherit;cursor:pointer;}
 .abody{font-size:11px;color:var(--txt2);line-height:1.5;max-width:900px;}
 .ameta{display:flex;gap:8px;margin-top:8px;align-items:center;}
 
+/* TRAVEL ADVISORY */
+.adv-priority{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:14px;margin-bottom:20px;}
+.adv-card{border-radius:8px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;}
+.adv-card-top{display:flex;align-items:center;gap:12px;}
+.adv-flag{font-size:28px;line-height:1;}
+.adv-country-name{font-size:15px;font-weight:800;}
+.adv-level-str{font-size:11px;font-weight:600;margin-top:2px;}
+.adv-detail{font-size:11.5px;color:var(--txt2);line-height:1.55;flex:1;}
+.adv-link{font-size:10px;font-weight:700;color:var(--acc);}
+.hr-table{width:100%;border-collapse:collapse;}
+.hr-table th{font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:7px 14px;border-bottom:1px solid var(--bdr);text-align:left;background:var(--s2);}
+.hr-table td{padding:9px 14px;border-bottom:1px solid rgba(28,52,84,0.35);font-size:12px;vertical-align:middle;}
+.hr-table tr:last-child td{border-bottom:none;}
+.hr-table tr:hover td{background:rgba(59,130,246,0.025);}
+.hr-flag{font-size:16px;padding-right:6px;}
+
 /* FOOTER */
 .footer{border-top:1px solid var(--bdr);padding:12px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:4px;}
 .ftext{font-size:10px;color:var(--muted);}
@@ -312,6 +328,97 @@ button{font-family:inherit;cursor:pointer;}
     { "outlet": "FT", "title": "China copper smelter output cuts signal tighter global supply", "url": "https://ft.com" }
   ],
   "segments": [
+    {
+      "id": "travel_global",
+      "label": "Global Travel & Security",
+      "icon": "🌐",
+      "level": "high",
+      "monitors": "State Dept. travel advisory levels, active conflicts, terrorism, civil unrest, kidnapping, and security conditions affecting Southwire personnel and business travelers worldwide.",
+      "items": [
+        {
+          "rank": 1,
+          "sev": "critical",
+          "title": "Mexico Level 3 sustained; cartel violence in border states",
+          "body": "State Dept. Level 3 advisory remains in effect for Mexico, with Do Not Travel (Level 4) designations for Tamaulipas, Sinaloa, Colima, and Guerrero. Cartel activity along the Monterrey-Laredo corridor is elevated. Southwire employees traveling to Mexico operations should follow pre-approved routes and check in with security teams before departure.",
+          "sources": [{"name": "State Dept.", "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/mexico-travel-advisory.html"}]
+        },
+        {
+          "rank": 2,
+          "sev": "high",
+          "title": "Iran conflict spillover raises risk across Middle East corridor",
+          "body": "US-Iran tensions following the Hormuz ceasefire collapse have elevated travel risk across Iraq, Lebanon, Yemen, and the broader Gulf region. Several airlines have suspended service. Personnel with travel to the region should defer non-essential travel and maintain contingency evacuation contacts.",
+          "sources": [{"name": "AP", "url": "https://apnews.com"}, {"name": "State Dept.", "url": "https://travel.state.gov"}]
+        },
+        {
+          "rank": 3,
+          "sev": "high",
+          "title": "China Level 2 advisory: exit restrictions and business traveler risk",
+          "body": "The State Dept. Exercise Increased Caution advisory for China remains active. Chinese authorities have imposed arbitrary exit restrictions on foreign nationals involved in business disputes. Personnel traveling for sourcing or vendor visits should notify legal and ensure no active commercial disputes exist with counterparties before arrival.",
+          "sources": [{"name": "State Dept.", "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/china-travel-advisory.html"}]
+        },
+        {
+          "rank": 4,
+          "sev": "moderate",
+          "title": "Honduras Level 2: gang activity and violent crime in urban areas",
+          "body": "Honduras maintains a Level 2 advisory. Tegucigalpa and San Pedro Sula continue to report elevated homicide and extortion rates. Business travelers should use vetted ground transportation, avoid night travel outside secured areas, and coordinate with local operations security contacts.",
+          "sources": [{"name": "State Dept.", "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/honduras-travel-advisory.html"}]
+        }
+      ],
+      "travel": {
+        "priority": [
+          {
+            "flag": "🇲🇽", "country": "Mexico",
+            "level": "Level 3: Reconsider Travel",
+            "levelNum": 3, "sev": "high",
+            "detail": "Level 4 (Do Not Travel) for Tamaulipas, Sinaloa, Colima, Guerrero. Cartel violence and kidnapping risk elevated in border states. Exercise extreme caution and avoid non-essential travel to Level 4 states.",
+            "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/mexico-travel-advisory.html"
+          },
+          {
+            "flag": "🇨🇳", "country": "China",
+            "level": "Level 2: Exercise Increased Caution",
+            "levelNum": 2, "sev": "moderate",
+            "detail": "Arbitrary enforcement of local laws including exit bans. Risk of wrongful detention. Heightened surveillance of foreigners. Business travelers should notify legal counsel of travel and ensure no active disputes with Chinese entities.",
+            "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/china-travel-advisory.html"
+          },
+          {
+            "flag": "🇭🇳", "country": "Honduras",
+            "level": "Level 2: Exercise Increased Caution",
+            "levelNum": 2, "sev": "moderate",
+            "detail": "Violent crime including murder, armed robbery, and kidnapping are common. MS-13 and other gangs are active. Use vetted ground transportation and avoid traveling at night outside secured areas.",
+            "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/honduras-travel-advisory.html"
+          },
+          {
+            "flag": "🇨🇦", "country": "Canada",
+            "level": "Level 1: Exercise Normal Precautions",
+            "levelNum": 1, "sev": "low",
+            "detail": "No significant safety concerns for business travel. Normal precautions apply. Monitor for rare labor disruptions at border crossings that can affect cross-border freight.",
+            "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/canada-travel-advisory.html"
+          },
+          {
+            "flag": "🇨🇱", "country": "Chile",
+            "level": "Level 2: Exercise Increased Caution",
+            "levelNum": 2, "sev": "moderate",
+            "detail": "Political protests can occur with little notice in Santiago and other cities. Some demonstrations have turned violent. Araucania region has elevated tension related to indigenous land disputes. Monitor local news.",
+            "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/chile-travel-advisory.html"
+          }
+        ],
+        "highRisk": [
+          {"flag": "🇷🇺", "country": "Russia", "level": "Level 4: Do Not Travel", "levelNum": 4, "sev": "critical", "detail": "Ongoing war in Ukraine. Arbitrary detention of US citizens. Do not travel.", "url": "https://travel.state.gov"},
+          {"flag": "🇺🇦", "country": "Ukraine", "level": "Level 4: Do Not Travel", "levelNum": 4, "sev": "critical", "detail": "Active armed conflict. Do not travel.", "url": "https://travel.state.gov"},
+          {"flag": "🇮🇷", "country": "Iran", "level": "Level 4: Do Not Travel", "levelNum": 4, "sev": "critical", "detail": "Risk of arrest and detention. Heightened US-Iran tensions. Do not travel.", "url": "https://travel.state.gov"},
+          {"flag": "🇾🇪", "country": "Yemen", "level": "Level 4: Do Not Travel", "levelNum": 4, "sev": "critical", "detail": "Active armed conflict and terrorism. Do not travel.", "url": "https://travel.state.gov"},
+          {"flag": "🇸🇩", "country": "Sudan", "level": "Level 4: Do Not Travel", "levelNum": 4, "sev": "critical", "detail": "Armed conflict, civil unrest, crime. Do not travel.", "url": "https://travel.state.gov"},
+          {"flag": "🇲🇲", "country": "Burma (Myanmar)", "level": "Level 4: Do Not Travel", "levelNum": 4, "sev": "critical", "detail": "Civil war, arbitrary detention. Do not travel.", "url": "https://travel.state.gov"},
+          {"flag": "🇭🇹", "country": "Haiti", "level": "Level 4: Do Not Travel", "levelNum": 4, "sev": "critical", "detail": "Kidnapping, gang violence. Do not travel.", "url": "https://travel.state.gov"},
+          {"flag": "🇮🇶", "country": "Iraq", "level": "Level 3: Reconsider Travel", "levelNum": 3, "sev": "high", "detail": "Terrorism, armed conflict, kidnapping.", "url": "https://travel.state.gov"},
+          {"flag": "🇲🇽", "country": "Mexico (Level 4 states)", "level": "Level 4: Do Not Travel (select states)", "levelNum": 4, "sev": "critical", "detail": "Tamaulipas, Sinaloa, Colima, Guerrero, Michoacan.", "url": "https://travel.state.gov"},
+          {"flag": "🇱🇧", "country": "Lebanon", "level": "Level 3: Reconsider Travel", "levelNum": 3, "sev": "high", "detail": "Terrorism, civil unrest, armed conflict risk.", "url": "https://travel.state.gov"}
+        ],
+        "updatedAt": "Jul 13, 2026 · 09:00 AM ET",
+        "source": "U.S. State Dept. Travel Advisories",
+        "sourceUrl": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html"
+      }
+    },
     {
       "id": "industry",
       "label": "Southwire Industry",
@@ -819,7 +926,9 @@ function buildMain(){
   if(S.page==='home') return buildHome();
   const seg=(D.segments||[]).find(s=>s.id===S.page);
   if(!seg) return '<p style="color:var(--muted);padding:40px">Segment not found.</p>';
-  return seg.id==='industry' ? buildIndustryPage(seg) : buildSegPage(seg);
+  if(seg.id==='industry') return buildIndustryPage(seg);
+  if(seg.id==='travel_global') return buildTravelPage(seg);
+  return buildSegPage(seg);
 }
 
 // ── HOME ───────────────────────────────────────────────────
@@ -1248,6 +1357,80 @@ ${ind.actions?.length?`
         <div class="act-body">${esc(a.body)}</div>
         <div class="act-trig">Notify: <span>${esc(a.notify)}</span> · ${esc(a.trigger)}</div>
       </div>`;}).join('')}
+  </div>
+</div>`:''}
+
+${buildPrevNext(prev,next)}`;
+}
+
+// ── TRAVEL & GLOBAL SECURITY PAGE ─────────────────────────
+function buildTravelPage(seg){
+  const segs=D.segments||[];
+  const idx=segs.indexOf(seg);
+  const prev=segs[(idx-1+segs.length)%segs.length];
+  const next=segs[(idx+1)%segs.length];
+  const tv=seg.travel||{};
+  const priority=tv.priority||[];
+  const highRisk=tv.highRisk||[];
+  const vis=(seg.items||[]).map((it,i)=>({...it,rank:i+1})).filter(it=>S.filter==='all'||it.sev===S.filter);
+
+  return `
+${buildSegNav(seg)}
+<div class="seg-hdr">
+  <div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px">
+      <h1 class="seg-h1">${esc(seg.icon||'')} ${esc(seg.label)}</h1>
+      ${badgeOf(seg.level)}
+    </div>
+    <div class="seg-meta">${esc(seg.monitors)}</div>
+  </div>
+  <div style="text-align:right;flex-shrink:0">
+    <div style="font-size:10px;color:var(--muted)">Source: <a href="${esc(tv.sourceUrl||'')}" target="_blank" rel="noopener" style="color:var(--acc)">${esc(tv.source||'State Dept.')}</a></div>
+    <div style="font-size:10px;color:var(--muted);margin-top:3px">Updated: ${esc(tv.updatedAt||'')}</div>
+  </div>
+</div>
+
+${priority.length?`
+<div>
+  <div class="sh"><span class="sh-label">Priority Countries</span><div class="sh-line"></div><span class="sh-count">Always monitored</span></div>
+  <div class="adv-priority">
+    ${priority.map(p=>`
+    <div class="adv-card" style="${tileStyle(p.sev)}">
+      <div class="adv-card-top">
+        <span class="adv-flag">${esc(p.flag)}</span>
+        <div>
+          <div class="adv-country-name">${esc(p.country)}</div>
+          <div class="adv-level-str" style="color:${C[p.sev]||C.moderate}">${esc(p.level)}</div>
+        </div>
+        <div style="margin-left:auto">${badgeOf(p.sev)}</div>
+      </div>
+      <div class="adv-detail">${esc(p.detail||'See State Dept. for current advisory details.')}</div>
+      <a class="adv-link" href="${esc(p.url||'https://travel.state.gov')}" target="_blank" rel="noopener">View full advisory ↗</a>
+    </div>`).join('')}
+  </div>
+</div>`:''}
+
+${vis.length?`
+<div>
+  <div class="sh"><span class="sh-label">Intelligence Items</span><div class="sh-line"></div></div>
+  <div class="items">${vis.map(it=>buildItem(it)).join('')}</div>
+</div>`:''}
+
+${highRisk.length?`
+<div>
+  <div class="sh"><span class="sh-label">High-Risk Countries Worldwide</span><div class="sh-line"></div><span class="sh-count">Level 3 &amp; 4 · State Dept.</span></div>
+  <div class="card">
+    <table class="hr-table">
+      <thead><tr><th>Country</th><th>Advisory Level</th><th>Risk</th></tr></thead>
+      <tbody>
+        ${highRisk.map(h=>`
+        <tr>
+          <td><span class="hr-flag">${h.flag||''}</span>${esc(h.country)}</td>
+          <td style="color:${C[h.sev]||C.moderate};font-weight:600">${esc(h.level)}</td>
+          <td>${badgeOf(h.sev)}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
   </div>
 </div>`:''}
 

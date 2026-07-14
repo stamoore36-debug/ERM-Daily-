@@ -163,6 +163,22 @@ button{font-family:inherit;cursor:pointer;}
 .abody{font-size:11px;color:var(--txt2);line-height:1.5;max-width:900px;}
 .ameta{display:flex;gap:8px;margin-top:8px;align-items:center;}
 
+/* TRAVEL ADVISORY */
+.adv-priority{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:14px;margin-bottom:20px;}
+.adv-card{border-radius:8px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;}
+.adv-card-top{display:flex;align-items:center;gap:12px;}
+.adv-flag{font-size:28px;line-height:1;}
+.adv-country-name{font-size:15px;font-weight:800;}
+.adv-level-str{font-size:11px;font-weight:600;margin-top:2px;}
+.adv-detail{font-size:11.5px;color:var(--txt2);line-height:1.55;flex:1;}
+.adv-link{font-size:10px;font-weight:700;color:var(--acc);}
+.hr-table{width:100%;border-collapse:collapse;}
+.hr-table th{font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:7px 14px;border-bottom:1px solid var(--bdr);text-align:left;background:var(--s2);}
+.hr-table td{padding:9px 14px;border-bottom:1px solid rgba(28,52,84,0.35);font-size:12px;vertical-align:middle;}
+.hr-table tr:last-child td{border-bottom:none;}
+.hr-table tr:hover td{background:rgba(59,130,246,0.025);}
+.hr-flag{font-size:16px;padding-right:6px;}
+
 /* FOOTER */
 .footer{border-top:1px solid var(--bdr);padding:12px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:4px;}
 .ftext{font-size:10px;color:var(--muted);}
@@ -316,7 +332,9 @@ function buildMain(){
   if(S.page==='home') return buildHome();
   const seg=(D.segments||[]).find(s=>s.id===S.page);
   if(!seg) return '<p style="color:var(--muted);padding:40px">Segment not found.</p>';
-  return seg.id==='industry' ? buildIndustryPage(seg) : buildSegPage(seg);
+  if(seg.id==='industry') return buildIndustryPage(seg);
+  if(seg.id==='travel_global') return buildTravelPage(seg);
+  return buildSegPage(seg);
 }
 
 // ── HOME ───────────────────────────────────────────────────
@@ -745,6 +763,80 @@ ${ind.actions?.length?`
         <div class="act-body">${esc(a.body)}</div>
         <div class="act-trig">Notify: <span>${esc(a.notify)}</span> · ${esc(a.trigger)}</div>
       </div>`;}).join('')}
+  </div>
+</div>`:''}
+
+${buildPrevNext(prev,next)}`;
+}
+
+// ── TRAVEL & GLOBAL SECURITY PAGE ─────────────────────────
+function buildTravelPage(seg){
+  const segs=D.segments||[];
+  const idx=segs.indexOf(seg);
+  const prev=segs[(idx-1+segs.length)%segs.length];
+  const next=segs[(idx+1)%segs.length];
+  const tv=seg.travel||{};
+  const priority=tv.priority||[];
+  const highRisk=tv.highRisk||[];
+  const vis=(seg.items||[]).map((it,i)=>({...it,rank:i+1})).filter(it=>S.filter==='all'||it.sev===S.filter);
+
+  return `
+${buildSegNav(seg)}
+<div class="seg-hdr">
+  <div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px">
+      <h1 class="seg-h1">${esc(seg.icon||'')} ${esc(seg.label)}</h1>
+      ${badgeOf(seg.level)}
+    </div>
+    <div class="seg-meta">${esc(seg.monitors)}</div>
+  </div>
+  <div style="text-align:right;flex-shrink:0">
+    <div style="font-size:10px;color:var(--muted)">Source: <a href="${esc(tv.sourceUrl||'')}" target="_blank" rel="noopener" style="color:var(--acc)">${esc(tv.source||'State Dept.')}</a></div>
+    <div style="font-size:10px;color:var(--muted);margin-top:3px">Updated: ${esc(tv.updatedAt||'')}</div>
+  </div>
+</div>
+
+${priority.length?`
+<div>
+  <div class="sh"><span class="sh-label">Priority Countries</span><div class="sh-line"></div><span class="sh-count">Always monitored</span></div>
+  <div class="adv-priority">
+    ${priority.map(p=>`
+    <div class="adv-card" style="${tileStyle(p.sev)}">
+      <div class="adv-card-top">
+        <span class="adv-flag">${esc(p.flag)}</span>
+        <div>
+          <div class="adv-country-name">${esc(p.country)}</div>
+          <div class="adv-level-str" style="color:${C[p.sev]||C.moderate}">${esc(p.level)}</div>
+        </div>
+        <div style="margin-left:auto">${badgeOf(p.sev)}</div>
+      </div>
+      <div class="adv-detail">${esc(p.detail||'See State Dept. for current advisory details.')}</div>
+      <a class="adv-link" href="${esc(p.url||'https://travel.state.gov')}" target="_blank" rel="noopener">View full advisory ↗</a>
+    </div>`).join('')}
+  </div>
+</div>`:''}
+
+${vis.length?`
+<div>
+  <div class="sh"><span class="sh-label">Intelligence Items</span><div class="sh-line"></div></div>
+  <div class="items">${vis.map(it=>buildItem(it)).join('')}</div>
+</div>`:''}
+
+${highRisk.length?`
+<div>
+  <div class="sh"><span class="sh-label">High-Risk Countries Worldwide</span><div class="sh-line"></div><span class="sh-count">Level 3 &amp; 4 · State Dept.</span></div>
+  <div class="card">
+    <table class="hr-table">
+      <thead><tr><th>Country</th><th>Advisory Level</th><th>Risk</th></tr></thead>
+      <tbody>
+        ${highRisk.map(h=>`
+        <tr>
+          <td><span class="hr-flag">${h.flag||''}</span>${esc(h.country)}</td>
+          <td style="color:${C[h.sev]||C.moderate};font-weight:600">${esc(h.level)}</td>
+          <td>${badgeOf(h.sev)}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
   </div>
 </div>`:''}
 

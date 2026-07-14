@@ -875,6 +875,190 @@ def build_cargo_theft():
         "action": "Alert: Southwire routing protocols require GPS manifest on all copper shipments >$100K"
     }
 
+# ── Travel & Global Security Segment ─────────────────────────────────────────
+
+PRIORITY_COUNTRIES = [
+    {"name": "Mexico",   "flag": "🇲🇽", "slug": "mexico"},
+    {"name": "China",    "flag": "🇨🇳", "slug": "china"},
+    {"name": "Honduras", "flag": "🇭🇳", "slug": "honduras"},
+    {"name": "Canada",   "flag": "🇨🇦", "slug": "canada"},
+    {"name": "Chile",    "flag": "🇨🇱", "slug": "chile"},
+]
+
+LEVEL_SEV = {1: "low", 2: "moderate", 3: "high", 4: "critical"}
+
+def fetch_state_dept_advisories():
+    """
+    Parse State Dept travel advisory RSS.
+    Returns dict: { country_name: {level, levelNum, levelLabel, url, detail} }
+    """
+    url = "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/_jcr_content/par/rss.rss"
+    advisories = {}
+    try:
+        raw = fetch(url, timeout=20)
+        root = ET.fromstring(raw)
+        channel = root.find("channel")
+        items = channel.findall("item") if channel else []
+        for item in items:
+            def txt(tag):
+                el = item.find(tag)
+                return (el.text or "").strip() if el is not None else ""
+            title   = txt("title")   # e.g. "Mexico Travel Advisory"
+            desc    = txt("description")
+            link    = txt("link")
+            # Parse country name
+            country = title.replace(" Travel Advisory", "").replace(" travel advisory", "").strip()
+            # Parse level from description: "Level 3: Reconsider Travel" or "Do Not Travel"
+            level_num = 0
+            level_label = "Unknown"
+            m = re.search(r"Level\s*([1-4])[:\s]+([^<\n]+)", desc or title, re.IGNORECASE)
+            if m:
+                level_num   = int(m.group(1))
+                level_label = f"Level {level_num}: {m.group(2).strip()[:50]}"
+            elif re.search(r"do not travel", desc or title, re.IGNORECASE):
+                level_num   = 4
+                level_label = "Level 4: Do Not Travel"
+            elif re.search(r"reconsider", desc or title, re.IGNORECASE):
+                level_num   = 3
+                level_label = "Level 3: Reconsider Travel"
+            elif re.search(r"exercise increased caution", desc or title, re.IGNORECASE):
+                level_num   = 2
+                level_label = "Level 2: Exercise Increased Caution"
+            elif re.search(r"normal precautions|exercise normal", desc or title, re.IGNORECASE):
+                level_num   = 1
+                level_label = "Level 1: Exercise Normal Precautions"
+            if country:
+                advisories[country] = {
+                    "country":    country,
+                    "levelNum":   level_num,
+                    "level":      level_label or f"Level {level_num}",
+                    "sev":        LEVEL_SEV.get(level_num, "moderate"),
+                    "url":        link,
+                    "detail":     (re.sub(r"<[^>]+>", " ", desc).strip()[:300]) if desc else "",
+                }
+    except Exception as e:
+        print(f"  State Dept advisory fetch error: {e}")
+    return advisories
+
+def build_travel_segment(advisories, all_headlines):
+    """Build the Global Travel & Security segment."""
+    # Priority country entries — always included
+    priority = []
+    for pc in PRIORITY_COUNTRIES:
+        name = pc["name"]
+        adv  = advisories.get(name, {})
+        priority.append({
+            "flag":     pc["flag"],
+            "country":  name,
+            "level":    adv.get("level", "Level unknown"),
+            "levelNum": adv.get("levelNum", 0),
+            "sev":      adv.get("sev", "moderate"),
+            "detail":   adv.get("detail", "No current advisory detail available."),
+            "url":      adv.get("url", f"https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/{name.lower()}.html"),
+        })
+
+    # High-risk countries worldwide: Level 3 and 4 excluding priority list
+    priority_names = {pc["name"] for pc in PRIORITY_COUNTRIES}
+    high_risk = [
+        v for k, v in sorted(advisories.items(), key=lambda x: -x[1].get("levelNum", 0))
+        if v.get("levelNum", 0) >= 3 and k not in priority_names
+    ][:20]  # cap at 20 for display
+
+    # Filter travel-relevant headlines
+    travel_kws = ["travel", "advisory", "visa", "terrorist", "kidnap", "attack", "protest",
+                  "embassy", "consulate", "border", "cartel", "conflict", "evacuation",
+                  "Mexico", "China", "Honduras", "Canada", "Chile", "safety", "security alert"]
+    relevant = []
+    for h in all_headlines:
+        text = (h["title"] + " " + h.get("summary","")).lower()
+        if any(k.lower() in text for k in travel_kws):
+            relevant.append(h)
+    relevant = relevant[:25]
+
+    headlines_txt = "\n".join(
+        f"- [{h['outlet']}] {h['title']}: {h.get('summary','')[:200]}"
+        for h in relevant
+    ) if relevant else "No specific travel headlines today."
+
+    # Priority country summary for Claude
+    priority_txt = "\n".join(
+        f"- {p['country']}: {p['level']} — {p['detail'][:150]}"
+        for p in priority
+    )
+
+    # High-risk summary for Claude
+    hr_txt = "\n".join(
+        f"- {h['country']}: {h['level']}"
+        for h in high_risk[:10]
+    ) if high_risk else "No additional Level 3/4 countries beyond priority list."
+
+    prompt = f"""You are the global security intelligence analyst for Southwire's Enterprise Risk Management team.
+Southwire has employees and operations in the U.S., Mexico, Honduras, and Central America, and conducts business travel internationally.
+
+Today is {now_et.strftime('%A, %B %-d, %Y')}.
+
+Priority countries (always tracked):
+{priority_txt}
+
+Other Level 3/4 countries worldwide today:
+{hr_txt}
+
+Today's travel and security headlines:
+{headlines_txt}
+
+Task: Write 3-5 scored intelligence items covering the most significant global travel and security risks. Focus on:
+- Active conflicts, terrorism, civil unrest, kidnapping, or crime affecting business travelers
+- Changes to State Dept advisory levels
+- Embassy closures or evacuation orders
+- Security conditions in priority countries (Mexico, China, Honduras, Canada, Chile)
+- Broader global risk patterns relevant to international ERM
+
+Return ONLY valid JSON (no markdown fences):
+{{
+  "level": "critical|high|moderate|low",
+  "monitors": "One sentence describing what this segment watches.",
+  "items": [
+    {{
+      "sev": "critical|high|moderate|low",
+      "title": "Concise risk headline (max 12 words)",
+      "body": "2-3 sentences. What the threat is, where, ERM implication for Southwire employees or operations. No em dashes.",
+      "sources": [{{"name": "Outlet", "url": "https://..."}}]
+    }}
+  ]
+}}"""
+
+    try:
+        result = claude_json(prompt, max_tokens=2000)
+        items  = result.get("items", [])
+        level  = result.get("level", "high")
+        monitors = result.get("monitors", "Global State Dept. advisory levels, active conflicts, terrorism, civil unrest, and travel security conditions affecting Southwire personnel and operations worldwide.")
+        for i, item in enumerate(items):
+            item["rank"] = i + 1
+        return {
+            "id":       "travel_global",
+            "label":    "Global Travel & Security",
+            "icon":     "🌐",
+            "level":    level,
+            "monitors": monitors,
+            "items":    items,
+            "travel": {
+                "priority":  priority,
+                "highRisk":  high_risk,
+                "updatedAt": now_et.strftime("%b %-d, %Y · %I:%M %p %Z"),
+                "source":    "U.S. State Dept. Travel Advisories",
+                "sourceUrl": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html",
+            }
+        }
+    except Exception as e:
+        print(f"  Claude error [travel]: {e}")
+        return {
+            "id": "travel_global", "label": "Global Travel & Security", "icon": "🌐",
+            "level": "high",
+            "monitors": "Global travel security conditions and State Dept. advisories.",
+            "items": [],
+            "travel": {"priority": priority, "highRisk": high_risk, "updatedAt": now_et.strftime("%b %-d, %Y"), "source": "U.S. State Dept.", "sourceUrl": "https://travel.state.gov"}
+        }
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
@@ -978,8 +1162,15 @@ def main():
         }
     }
 
-    # Prepend industry segment
-    all_segments = [industry_segment] + segments
+    # 8b. Travel & Global Security segment
+    print("Fetching State Dept. travel advisories...")
+    advisories = fetch_state_dept_advisories()
+    print(f"  Parsed {len(advisories)} country advisories")
+    print("Generating Global Travel & Security segment via Claude...")
+    travel_segment = build_travel_segment(advisories, all_headlines)
+
+    # Prepend industry and travel segments
+    all_segments = [industry_segment, travel_segment] + segments
 
     # 9. Posture
     posture_label, posture_sev = compute_posture(all_segments)
