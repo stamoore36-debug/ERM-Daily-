@@ -1,0 +1,46 @@
+name: ERM Daily Brief
+
+on:
+  schedule:
+    - cron: '30 12 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          echo "No pip dependencies required."
+
+      - name: Generate data
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+        run: python scripts/generate.py
+
+      - name: Build HTML
+        run: python scripts/build.py
+
+      - name: Commit and push
+        run: |
+          git config user.name  "ERM-Bot"
+          git config user.email "erm-bot@southwire-erm.github.io"
+          git add index.html data/data.json
+          git diff --cached --quiet && echo "No changes." && exit 0
+          git commit -m "ERM Daily Brief: $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
