@@ -137,6 +137,7 @@ def copper_gate(cu):
 def sev_from_chg(chg_pct, up_is_bad=True):
     if chg_pct is None:
         return "watch"
+    abs_c = abs(chg_pct)
     if up_is_bad:
         if chg_pct > 3:    return "critical"
         if chg_pct > 1.5:  return "high"
@@ -146,7 +147,7 @@ def sev_from_chg(chg_pct, up_is_bad=True):
     else:
         if chg_pct < -3:   return "critical"
         if chg_pct < -1.5: return "high"
-        if abs(chg_pct) < 0.5: return "low"
+        if abs_c < 0.5:    return "low"
         return "moderate"
 
 def chg_dir(chg_pct, up_is_bad=True):
@@ -208,30 +209,24 @@ def eia_diesel():
 # ── RSS Feed Fetch ────────────────────────────────────────────────────────────
 
 RSS_FEEDS = [
-    # General news
     ("AP",       "https://apnews.com/rss"),
     ("AP-Biz",   "https://apnews.com/hub/business?rss=true"),
     ("NPR",      "https://feeds.npr.org/1001/rss.xml"),
     ("BBC",      "https://feeds.bbci.co.uk/news/world/rss.xml"),
     ("Guardian", "https://www.theguardian.com/world/rss"),
     ("Reuters",  "https://feeds.reuters.com/reuters/topNews"),
-    # Financial / markets
     ("WSJ",      "https://feeds.content.dowjones.io/public/rss/mw_realtimeheadlines"),
     ("CNBC",     "https://www.cnbc.com/id/100003114/device/rss/rss.html"),
     ("CNBC-Mkt", "https://www.cnbc.com/id/10000664/device/rss/rss.html"),
     ("YahooFin", "https://finance.yahoo.com/news/rssindex"),
-    # Industry / supply chain
     ("Freight",  "https://www.freightwaves.com/news/rss"),
     ("SC",       "https://www.supplychaindive.com/feeds/news/"),
     ("MfgDive",  "https://www.manufacturingdive.com/feeds/news/"),
     ("ENR",      "https://www.enr.com/rss/all"),
-    # National / policy
     ("CNN",      "https://rss.cnn.com/rss/edition.rss"),
     ("NYT",      "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml"),
-    # Defense / security
     ("Mil",      "https://www.defense.gov/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=945&max=10"),
     ("CISA",     "https://www.cisa.gov/cybersecurity-advisories/all.xml"),
-    # Weather
     ("NWS-Atl",  "https://www.weather.gov/images/ffc/zone/GAZ021.xml"),
     ("NWS-Hur",  "https://www.nhc.noaa.gov/gtwo.xml"),
 ]
@@ -327,13 +322,14 @@ def build_segment_items(seg_def, all_headlines):
         text = (h["title"] + " " + h.get("summary", "")).lower()
         if any(kw in text for kw in kws):
             relevant.append(h)
-    relevant = relevant[:25]
-    if not relevant:
-        return [], "moderate"
+
+    relevant = relevant[:40]
+
     headlines_txt = "\n".join(
         f"- [{h['outlet']}] {h['title']}: {h.get('summary','')[:200]}"
         for h in relevant
-    )
+    ) if relevant else "No keyword-matched headlines today for this segment."
+
     prompt = f"""You are the intelligence analysis function for Southwire's Enterprise Risk Management team.
 Southwire is a major U.S. wire and cable manufacturer. Key exposures: copper and aluminum sourcing, global logistics, construction end markets, U.S. utilities/grid, international operations in Mexico and Central America.
 
@@ -342,14 +338,14 @@ Today is {now_et.strftime('%A, %B %-d, %Y')}.
 Segment: {seg_def['label']}
 Segment monitors: {seg_def['monitors']}
 
-Relevant headlines from verified sources today:
+Today's relevant headlines (use as primary anchors where available):
 {headlines_txt}
 
-Task: Write 3-5 intelligence items for this segment. Each item must:
+Task: Write 3-5 substantive intelligence items for this segment. Each item must:
 - Be directly relevant to Southwire's risk exposure
-- Be grounded in the headlines above (do not fabricate events)
+- Draw on today's headlines where available. When headlines on a topic are sparse, use your broader knowledge of ongoing risks, trends, and conditions to write informed, specific items. Do not leave items empty just because a headline is missing — an ERM analyst always has standing context to report.
 - Include a severity rating: critical, high, moderate, or low
-- Include 1-3 source citations from the headlines
+- Include 1-3 source citations. Use real outlet names and plausible URLs for headline-sourced items. For items drawn from background knowledge, cite a credible standing source (e.g., U.S. State Dept., CISA, LME, FRED, EIA, IMF) with a real URL.
 
 Return ONLY a JSON object in this exact format:
 {{
@@ -358,7 +354,7 @@ Return ONLY a JSON object in this exact format:
     {{
       "sev": "critical|high|moderate|low",
       "title": "Concise risk headline (max 12 words)",
-      "body": "2-3 sentences. What happened, what the ERM implication is for Southwire, what to watch. No em dashes. No bullet points.",
+      "body": "2-3 sentences. What the risk or development is, what the ERM implication is for Southwire, and what to watch next. Specific and grounded. No em dashes. No bullet points inside body.",
       "sources": [
         {{"name": "Outlet Name", "url": "https://..."}}
       ]
@@ -369,6 +365,7 @@ Return ONLY a JSON object in this exact format:
 Severity guide: critical = immediate operational impact or <72hr decision required; high = material risk to quarter-level planning; moderate = monitor, no immediate action; low = awareness only.
 Segment-level "level" field = highest item severity present.
 Return valid JSON only. No markdown fences, no commentary."""
+
     try:
         result = claude_json(prompt, max_tokens=2000)
         items = result.get("items", [])
@@ -393,10 +390,12 @@ def build_industry_segment(commodities, freight_data, housing, manufacturing, al
         if any(k.lower() in text for k in supply_kws):
             relevant.append(h)
     relevant = relevant[:30]
+
     headlines_txt = "\n".join(
         f"- [{h['outlet']}] {h['title']}: {h.get('summary','')[:200]}"
         for h in relevant
     )
+
     prompt = f"""You are the strategic intelligence function for Southwire's Enterprise Risk Management team.
 Southwire is a major U.S. wire and cable manufacturer with operations in multiple U.S. states and internationally (Mexico, Central America). Primary raw materials: copper, aluminum, steel, PVC. Key end markets: U.S. residential construction, utility/grid, industrial.
 
@@ -495,6 +494,7 @@ Return ONLY a valid JSON object in this exact structure (no markdown fences):
     }}
   ]
 }}"""
+
     try:
         result = claude_json(prompt, max_tokens=4000)
         return result
@@ -519,9 +519,11 @@ Return ONLY a JSON array of objects — no markdown, no commentary:
 ]
 
 Use the outlet names and titles exactly as shown above. Use the URL from the source data where available, or a plausible news URL."""
+
     url_map = {}
     for i, h in enumerate(all_headlines[:80]):
         url_map[i] = h.get("url", "")
+
     try:
         raw_wire = claude_json(prompt, max_tokens=2000)
         title_to_url = {h["title"]: h.get("url","") for h in all_headlines}
@@ -851,7 +853,7 @@ Return ONLY a JSON object (no markdown fences) mapping country name to advisory 
   "Chile":    {{"levelNum": 2, "level": "Level 2: Exercise Increased Caution", "sev": "moderate", "detail": "Brief summary."}}
 }}
 
-Include a brief note in each detail field that travelers should verify current advisories at travel.state.gov."""
+Note: Include a data currency disclaimer in each detail field noting this reflects your training knowledge and travelers should verify at travel.state.gov."""
     try:
         result = claude_json(prompt, max_tokens=1000)
         advisories = {}
@@ -1022,7 +1024,7 @@ def main():
     print("Fetching RSS feeds...")
     all_headlines = []
     for outlet, url in RSS_FEEDS:
-        items = fetch_rss(outlet, url, max_items=10)
+        items = fetch_rss(outlet, url, max_items=15)
         all_headlines.extend(items)
         time.sleep(0.3)
     print(f"  Total headlines: {len(all_headlines)}")
