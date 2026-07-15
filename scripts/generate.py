@@ -94,19 +94,18 @@ def claude_json(prompt_text, max_tokens=2048):
 # ── Commodity Prices ──────────────────────────────────────────────────────────
 
 YAHOO_SYMBOLS = {
-    "copper":    "HG=F",     # LME Copper Futures (USD/lb)
-    "aluminum":  "ALI=F",    # Aluminum Futures (USD/lb)
-    "wti":       "CL=F",     # WTI Crude (USD/bbl)
-    "brent":     "BZ=F",     # Brent Crude (USD/bbl)
-    "natgas":    "NG=F",     # Natural Gas (USD/MMBtu)
-    "steel":     "STEEL=F",  # Steel (approximation — HRC futures via CME)
+    "copper":    "HG=F",
+    "aluminum":  "ALI=F",
+    "wti":       "CL=F",
+    "brent":     "BZ=F",
+    "natgas":    "NG=F",
+    "steel":     "STEEL=F",
     "gold":      "GC=F",
     "sp500":     "^GSPC",
     "vix":       "^VIX",
 }
 
 def yahoo_quote(symbol):
-    """Fetch latest price from Yahoo Finance v8 API. Returns dict with price, prev_close, change_pct."""
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=1d"
     try:
         data = fetch_json(url, timeout=15)
@@ -119,30 +118,25 @@ def yahoo_quote(symbol):
         return {"price": None, "prev": None, "chg_pct": None, "error": str(e)}
 
 def yahoo_history(symbol, days=30):
-    """Return list of closing prices for sparkline. Oldest to newest."""
     range_map = {30: "1mo", 60: "3mo", 90: "3mo"}
     rng = range_map.get(days, "1mo")
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range={rng}"
     try:
         data = fetch_json(url, timeout=15)
         closes = data["chart"]["result"][0]["indicators"]["quote"][0]["close"]
-        # Filter None, round, take last N
         closes = [round(c, 4) for c in closes if c is not None]
         return closes[-days:] if len(closes) >= days else closes
     except Exception:
         return []
 
 def copper_gate(cu):
-    """Abort if copper price unavailable (SOC-ERR-001)."""
     if not cu.get("price"):
         print("SOC-ERR-001: Copper price fetch failed. Aborting run. Prior index.html remains live.")
         sys.exit(1)
 
 def sev_from_chg(chg_pct, up_is_bad=True):
-    """Severity based on magnitude and direction of price change."""
     if chg_pct is None:
         return "watch"
-    abs_c = abs(chg_pct)
     if up_is_bad:
         if chg_pct > 3:    return "critical"
         if chg_pct > 1.5:  return "high"
@@ -152,7 +146,7 @@ def sev_from_chg(chg_pct, up_is_bad=True):
     else:
         if chg_pct < -3:   return "critical"
         if chg_pct < -1.5: return "high"
-        if abs_c < 0.5:    return "low"
+        if abs(chg_pct) < 0.5: return "low"
         return "moderate"
 
 def chg_dir(chg_pct, up_is_bad=True):
@@ -166,27 +160,22 @@ def fmt_chg(chg_pct):
     sign = "+" if chg_pct > 0 else ""
     return f"{sign}{chg_pct:.2f}% day-over-day"
 
-# ── FRED API (Macro Indicators) ───────────────────────────────────────────────
+# ── FRED API ──────────────────────────────────────────────────────────────────
 
 FRED_SERIES = {
-    "hs":      "HOUST",      # Housing Starts (thousands, annualized)
-    "nahb":    "NAHBMMI",    # NAHB/Wells Fargo Builder Sentiment Index
-    "mtg30":   "MORTGAGE30US",  # 30-yr fixed mortgage rate
-    "ism":     "MANEMP",     # Manufacturing employment proxy (ISM via OECD fallback)
-    "caputil": "TCU",        # Total Capacity Utilization %
+    "hs":      "HOUST",
+    "nahb":    "NAHBMMI",
+    "mtg30":   "MORTGAGE30US",
+    "ism":     "MANEMP",
+    "caputil": "TCU",
 }
 
 def fred_latest(series_id):
-    """Fetch latest observation from FRED (no key required for public series)."""
-    url = (
-        f"https://fred.stlouisfed.org/graph/fredgraph.json"
-        f"?id={series_id}&vintage_date={now_et.strftime('%Y-%m-%d')}"
-    )
     try:
         obs_url = (
             f"https://api.stlouisfed.org/fred/series/observations"
             f"?series_id={series_id}&limit=2&sort_order=desc&file_type=json"
-            f"&api_key=72d12587c8b0b5cfecd9da9c62a9fcef"  # public demo key
+            f"&api_key=72d12587c8b0b5cfecd9da9c62a9fcef"
         )
         data = fetch_json(obs_url, timeout=15)
         obs  = data["observations"]
@@ -200,7 +189,6 @@ def fred_latest(series_id):
 # ── EIA Diesel Price ──────────────────────────────────────────────────────────
 
 def eia_diesel():
-    """Weekly U.S. diesel retail price. Falls back to Yahoo NG futures estimate."""
     try:
         url = (
             "https://api.eia.gov/v2/petroleum/pri/gnd/data/"
@@ -220,7 +208,7 @@ def eia_diesel():
 # ── RSS Feed Fetch ────────────────────────────────────────────────────────────
 
 RSS_FEEDS = [
-    # General news — robust public feeds
+    # General news
     ("AP",       "https://apnews.com/rss"),
     ("AP-Biz",   "https://apnews.com/hub/business?rss=true"),
     ("NPR",      "https://feeds.npr.org/1001/rss.xml"),
@@ -249,34 +237,26 @@ RSS_FEEDS = [
 ]
 
 def fetch_rss(outlet, url, max_items=8):
-    """Fetch RSS feed, return list of {outlet, title, link, summary, pub_date}."""
     try:
         raw = fetch(url, timeout=12)
         root = ET.fromstring(raw)
         ns = {"atom": "http://www.w3.org/2005/Atom"}
         items = []
-
-        # Handle both RSS and Atom formats
         channel = root.find("channel")
         if channel is not None:
             entries = channel.findall("item")
         else:
             entries = root.findall("atom:entry", ns) or root.findall("entry")
-
         for entry in entries[:max_items]:
             def txt(tag, default=""):
                 el = entry.find(tag)
                 return (el.text or "").strip() if el is not None else default
-
             title   = txt("title") or txt("{http://www.w3.org/2005/Atom}title")
             link    = txt("link")  or txt("{http://www.w3.org/2005/Atom}id")
             summary = txt("description") or txt("{http://www.w3.org/2005/Atom}summary") or txt("summary")
             pub     = txt("pubDate") or txt("published") or txt("{http://www.w3.org/2005/Atom}published")
-
-            # Strip HTML tags from summary
             summary = re.sub(r"<[^>]+>", " ", summary).strip()
             summary = re.sub(r"\s+", " ", summary)
-
             if title:
                 items.append({
                     "outlet": outlet,
@@ -341,28 +321,19 @@ SEGMENT_DEFS = [
 ]
 
 def build_segment_items(seg_def, all_headlines):
-    """
-    Filter headlines relevant to this segment, then call Claude to produce
-    3-5 scored intelligence items with ERM framing.
-    """
     kws = [k.lower() for k in seg_def["keywords"]]
     relevant = []
     for h in all_headlines:
         text = (h["title"] + " " + h.get("summary", "")).lower()
         if any(kw in text for kw in kws):
             relevant.append(h)
-
-    # Cap input to avoid token bloat
     relevant = relevant[:25]
-
     if not relevant:
         return [], "moderate"
-
     headlines_txt = "\n".join(
         f"- [{h['outlet']}] {h['title']}: {h.get('summary','')[:200]}"
         for h in relevant
     )
-
     prompt = f"""You are the intelligence analysis function for Southwire's Enterprise Risk Management team.
 Southwire is a major U.S. wire and cable manufacturer. Key exposures: copper and aluminum sourcing, global logistics, construction end markets, U.S. utilities/grid, international operations in Mexico and Central America.
 
@@ -398,12 +369,10 @@ Return ONLY a JSON object in this exact format:
 Severity guide: critical = immediate operational impact or <72hr decision required; high = material risk to quarter-level planning; moderate = monitor, no immediate action; low = awareness only.
 Segment-level "level" field = highest item severity present.
 Return valid JSON only. No markdown fences, no commentary."""
-
     try:
         result = claude_json(prompt, max_tokens=2000)
         items = result.get("items", [])
         level = result.get("level", "moderate")
-        # Add rank numbers
         for i, item in enumerate(items):
             item["rank"] = i + 1
         return items, level
@@ -414,9 +383,6 @@ Return valid JSON only. No markdown fences, no commentary."""
 # ── Industry (SOC) Segment ────────────────────────────────────────────────────
 
 def build_industry_segment(commodities, freight_data, housing, manufacturing, all_headlines):
-    """Build the Southwire Industry segment with all SOC sub-sections via Claude."""
-
-    # Filter supply/freight/competitor relevant headlines
     supply_kws = ["prysmian", "nexans", "LS cable", "Belden", "competitor", "acquisition", "M&A",
                   "freight", "port", "cargo theft", "trucking", "ocean rate", "Drewry",
                   "Mexico", "Honduras", "travel advisory", "tariff", "copper", "aluminum",
@@ -427,12 +393,10 @@ def build_industry_segment(commodities, freight_data, housing, manufacturing, al
         if any(k.lower() in text for k in supply_kws):
             relevant.append(h)
     relevant = relevant[:30]
-
     headlines_txt = "\n".join(
         f"- [{h['outlet']}] {h['title']}: {h.get('summary','')[:200]}"
         for h in relevant
     )
-
     prompt = f"""You are the strategic intelligence function for Southwire's Enterprise Risk Management team.
 Southwire is a major U.S. wire and cable manufacturer with operations in multiple U.S. states and internationally (Mexico, Central America). Primary raw materials: copper, aluminum, steel, PVC. Key end markets: U.S. residential construction, utility/grid, industrial.
 
@@ -531,7 +495,6 @@ Return ONLY a valid JSON object in this exact structure (no markdown fences):
     }}
   ]
 }}"""
-
     try:
         result = claude_json(prompt, max_tokens=4000)
         return result
@@ -539,10 +502,9 @@ Return ONLY a valid JSON object in this exact structure (no markdown fences):
         print(f"  Claude error [industry segment]: {e}")
         return {"level": "high", "monitors": "Southwire-specific risk intelligence.", "items": [], "actions": []}
 
-# ── Headline Wire ──────────────────────────────────────────────────────────────
+# ── Headline Wire ─────────────────────────────────────────────────────────────
 
 def build_wire(all_headlines, n=16):
-    """Pick the top N most ERM-relevant headlines for the wire."""
     prompt = f"""You are the ERM intelligence curator for Southwire, a major U.S. wire and cable manufacturer.
 
 Today's headlines from verified sources (total {len(all_headlines)}):
@@ -557,15 +519,11 @@ Return ONLY a JSON array of objects — no markdown, no commentary:
 ]
 
 Use the outlet names and titles exactly as shown above. Use the URL from the source data where available, or a plausible news URL."""
-
-    # Build URL lookup
     url_map = {}
     for i, h in enumerate(all_headlines[:80]):
         url_map[i] = h.get("url", "")
-
     try:
         raw_wire = claude_json(prompt, max_tokens=2000)
-        # Patch in real URLs where possible by matching titles
         title_to_url = {h["title"]: h.get("url","") for h in all_headlines}
         for item in raw_wire:
             if not item.get("url") and item.get("title") in title_to_url:
@@ -578,12 +536,11 @@ Use the outlet names and titles exactly as shown above. Use the URL from the sou
 # ── KPI Tiles ─────────────────────────────────────────────────────────────────
 
 def build_kpis(quotes, diesel, fred):
-    """Build KPI tile list from fetched data."""
     cu  = quotes.get("copper", {})
     al  = quotes.get("aluminum", {})
     oil = quotes.get("brent", {})
     wti = quotes.get("wti", {})
-    drewry_val = "$4,000"  # Static placeholder — Drewry WCI is not publicly API-accessible
+    drewry_val = "$4,000"
 
     def p(q, decimals=2):
         v = q.get("price")
@@ -595,23 +552,20 @@ def build_kpis(quotes, diesel, fred):
         sign = "+" if c > 0 else ""
         return f"{sign}{c:.2f}%"
 
-    cu_sev = sev_from_chg(cu.get("chg_pct"), up_is_bad=True)
-    al_sev = sev_from_chg(al.get("chg_pct"), up_is_bad=True)
+    cu_sev  = sev_from_chg(cu.get("chg_pct"), up_is_bad=True)
+    al_sev  = sev_from_chg(al.get("chg_pct"), up_is_bad=True)
     oil_sev = sev_from_chg(oil.get("chg_pct"), up_is_bad=True)
-
-    sp   = quotes.get("sp500", {})
-    vix  = quotes.get("vix", {})
-    gold = quotes.get("gold", {})
-    ng   = quotes.get("natgas", {})
-
-    sp_chg_pct  = sp.get("chg_pct", 0) or 0
-    vix_price   = vix.get("price")
-    vix_sev     = "low" if (vix_price and vix_price < 18) else ("moderate" if vix_price and vix_price < 25 else "high")
+    sp      = quotes.get("sp500", {})
+    vix     = quotes.get("vix", {})
+    gold    = quotes.get("gold", {})
+    ng      = quotes.get("natgas", {})
+    sp_chg_pct = sp.get("chg_pct", 0) or 0
+    vix_price  = vix.get("price")
+    vix_sev    = "low" if (vix_price and vix_price < 18) else ("moderate" if vix_price and vix_price < 25 else "high")
 
     kpis = [
         {
-            "category": "US Equities",
-            "name": "S&P 500",
+            "category": "US Equities", "name": "S&P 500",
             "value": f"{sp.get('price','N/A'):,.2f}" if sp.get("price") else "N/A",
             "unit": "Index · daily close",
             "note": "Broad equity risk-on/risk-off signal. High VIX or S&P drawdown signals demand risk for Southwire construction end markets.",
@@ -620,70 +574,52 @@ def build_kpis(quotes, diesel, fred):
             "sev": "low" if sp_chg_pct > 0 else ("moderate" if sp_chg_pct > -2 else "high"),
         },
         {
-            "category": "Energy",
-            "name": "Brent Crude",
-            "value": f"${p(oil)} /bbl",
-            "unit": f"WTI ${p(wti)} /bbl",
+            "category": "Energy", "name": "Brent Crude",
+            "value": f"${p(oil)} /bbl", "unit": f"WTI ${p(wti)} /bbl",
             "note": "Energy costs affect Southwire manufacturing and logistics. Sustained Brent >$90 pressures freight and resin input costs.",
             "change": f"{'▲' if (oil.get('chg_pct') or 0) > 0 else '▼'} {pc(oil)} day-over-day",
-            "changeSev": chg_dir(oil.get("chg_pct"), up_is_bad=True),
-            "sev": oil_sev,
+            "changeSev": chg_dir(oil.get("chg_pct"), up_is_bad=True), "sev": oil_sev,
         },
         {
-            "category": "Critical Input",
-            "name": "Copper (LME)",
+            "category": "Critical Input", "name": "Copper (LME)",
             "value": f"${p(cu)} /lb",
             "unit": f"(${p({'price': (cu.get('price') or 0)*2204.62}, 0)} /MT) · LME spot" if cu.get("price") else "LME spot",
             "note": "Primary raw material. Copper content of wire drives COGS. Sustained elevation compresses margin unless hedged or repriced.",
             "change": f"{'▲' if (cu.get('chg_pct') or 0) > 0 else '▼'} {pc(cu)} day-over-day",
-            "changeSev": chg_dir(cu.get("chg_pct"), up_is_bad=True),
-            "sev": cu_sev,
+            "changeSev": chg_dir(cu.get("chg_pct"), up_is_bad=True), "sev": cu_sev,
         },
         {
-            "category": "Critical Input",
-            "name": "Aluminum (LME)",
-            "value": f"${p(al)} /lb",
-            "unit": "LME spot · Midwest premium add",
+            "category": "Critical Input", "name": "Aluminum (LME)",
+            "value": f"${p(al)} /lb", "unit": "LME spot · Midwest premium add",
             "note": "Key input for aluminum wire and cable. Price signals secondary cost pressure and hedge calendar triggers.",
             "change": f"{'▲' if (al.get('chg_pct') or 0) > 0 else '▼'} {pc(al)} day-over-day",
-            "changeSev": chg_dir(al.get("chg_pct"), up_is_bad=True),
-            "sev": al_sev,
+            "changeSev": chg_dir(al.get("chg_pct"), up_is_bad=True), "sev": al_sev,
         },
         {
-            "category": "Logistics",
-            "name": "Freight (Drewry WCI)",
-            "value": drewry_val,
-            "unit": "USD / FEU · composite",
+            "category": "Logistics", "name": "Freight (Drewry WCI)",
+            "value": drewry_val, "unit": "USD / FEU · composite",
             "note": "Ocean freight index drives import costs on raw materials and packaging. WCI >$4K signals elevated supply chain risk.",
-            "change": "Monitor Drewry WCI weekly for rate momentum",
-            "changeSev": "warn",
-            "sev": "high",
+            "change": "Monitor Drewry WCI weekly for rate momentum", "changeSev": "warn", "sev": "high",
         },
         {
-            "category": "Volatility",
-            "name": "VIX",
+            "category": "Volatility", "name": "VIX",
             "value": f"{vix.get('price','N/A'):.2f}" if vix.get("price") else "N/A",
             "unit": "CBOE Volatility Index",
             "note": "Equity market fear gauge. VIX >25 indicates risk-off environment; monitor customer demand signals and receivables.",
             "change": f"{'▲' if (vix.get('chg_pct') or 0) > 0 else '▼'} {abs(vix.get('chg_pct') or 0):.2f}% day-over-day",
-            "changeSev": "bad" if (vix.get("chg_pct") or 0) > 5 else "warn",
-            "sev": vix_sev,
+            "changeSev": "bad" if (vix.get("chg_pct") or 0) > 5 else "warn", "sev": vix_sev,
         },
         {
-            "category": "Macro",
-            "name": "Natural Gas",
-            "value": f"${p(ng, 3)} /MMBtu",
-            "unit": "Henry Hub futures",
+            "category": "Macro", "name": "Natural Gas",
+            "value": f"${p(ng, 3)} /MMBtu", "unit": "Henry Hub futures",
             "note": "Energy input for manufacturing and logistics. Sustained elevation pressures margin. Drives residential heating demand indirectly.",
             "change": f"{'▲' if (ng.get('chg_pct') or 0) > 0 else '▼'} {pc(ng)} day-over-day",
             "changeSev": chg_dir(ng.get("chg_pct"), up_is_bad=True),
             "sev": sev_from_chg(ng.get("chg_pct"), up_is_bad=True),
         },
         {
-            "category": "Safe Haven",
-            "name": "Gold",
-            "value": f"${p(gold, 0)} /oz",
-            "unit": "COMEX spot",
+            "category": "Safe Haven", "name": "Gold",
+            "value": f"${p(gold, 0)} /oz", "unit": "COMEX spot",
             "note": "Risk sentiment indicator. Gold >$3,000 with VIX elevation signals macro uncertainty that may dampen CapEx spending by customers.",
             "change": f"{'▲' if (gold.get('chg_pct') or 0) > 0 else '▼'} {pc(gold)} day-over-day",
             "changeSev": "warn",
@@ -691,23 +627,19 @@ def build_kpis(quotes, diesel, fred):
         },
     ]
 
-    # Diesel as 9th KPI if available
     if diesel.get("price"):
         diesel_sev = "high" if diesel["price"] > 4.5 else ("moderate" if diesel["price"] > 3.8 else "low")
         kpis.append({
-            "category": "Logistics",
-            "name": "Diesel (US Avg)",
-            "value": f"${diesel['price']:.3f} /gal",
-            "unit": "EIA weekly retail avg.",
+            "category": "Logistics", "name": "Diesel (US Avg)",
+            "value": f"${diesel['price']:.3f} /gal", "unit": "EIA weekly retail avg.",
             "note": "Diesel directly affects Southwire distribution fleet and inbound freight costs from suppliers.",
             "change": f"{'▲' if (diesel.get('chg_pct') or 0) > 0 else '▼'} {abs(diesel.get('chg_pct') or 0):.2f}% week-over-week",
-            "changeSev": chg_dir(diesel.get("chg_pct"), up_is_bad=True),
-            "sev": diesel_sev,
+            "changeSev": chg_dir(diesel.get("chg_pct"), up_is_bad=True), "sev": diesel_sev,
         })
 
     return kpis
 
-# ── Chart data ─────────────────────────────────────────────────────────────────
+# ── Chart data ────────────────────────────────────────────────────────────────
 
 def build_charts(quotes, histories):
     charts = []
@@ -740,79 +672,52 @@ def build_charts(quotes, histories):
 # ── Housing / Manufacturing KPIs ──────────────────────────────────────────────
 
 def build_housing(fred):
-    hs     = fred.get("hs", {})
-    nahb   = fred.get("nahb", {})
-    mtg    = fred.get("mtg30", {})
-
+    hs   = fred.get("hs", {})
+    nahb = fred.get("nahb", {})
+    mtg  = fred.get("mtg30", {})
     def val(d, decimals=1):
         v = d.get("value")
         return f"{v:,.{decimals}f}" if v else "N/A"
-
     def chg_str(d):
         c = d.get("chg_pct")
         if c is None: return "N/A MoM"
         sign = "+" if c > 0 else ""
         return f"{sign}{c:.1f}% MoM"
-
     return [
-        {
-            "cat": "Housing", "name": "Housing Starts",
-            "val": f"{val(hs)}K", "unit": "Annualized · SAAR",
-            "chg": chg_str(hs),
-            "chgSev": "bad" if (hs.get("chg_pct") or 0) < -3 else "warn",
-            "sev": "high" if (hs.get("value") or 1500) < 1200 else "moderate",
-        },
-        {
-            "cat": "Housing", "name": "NAHB Builder Confidence",
-            "val": val(nahb, 0), "unit": "Index (>50 = positive)",
-            "chg": chg_str(nahb),
-            "chgSev": "bad" if (nahb.get("value") or 50) < 40 else "warn",
-            "sev": "high" if (nahb.get("value") or 50) < 40 else ("moderate" if (nahb.get("value") or 50) < 50 else "low"),
-        },
-        {
-            "cat": "Housing", "name": "30-Yr Mortgage Rate",
-            "val": f"{val(mtg, 2)}%", "unit": "Freddie Mac weekly avg.",
-            "chg": chg_str(mtg),
-            "chgSev": "bad" if (mtg.get("chg_pct") or 0) > 0.5 else "warn",
-            "sev": "critical" if (mtg.get("value") or 7) > 8 else ("high" if (mtg.get("value") or 7) > 7 else "moderate"),
-        },
+        {"cat": "Housing", "name": "Housing Starts", "val": f"{val(hs)}K", "unit": "Annualized · SAAR",
+         "chg": chg_str(hs), "chgSev": "bad" if (hs.get("chg_pct") or 0) < -3 else "warn",
+         "sev": "high" if (hs.get("value") or 1500) < 1200 else "moderate"},
+        {"cat": "Housing", "name": "NAHB Builder Confidence", "val": val(nahb, 0), "unit": "Index (>50 = positive)",
+         "chg": chg_str(nahb), "chgSev": "bad" if (nahb.get("value") or 50) < 40 else "warn",
+         "sev": "high" if (nahb.get("value") or 50) < 40 else ("moderate" if (nahb.get("value") or 50) < 50 else "low")},
+        {"cat": "Housing", "name": "30-Yr Mortgage Rate", "val": f"{val(mtg, 2)}%", "unit": "Freddie Mac weekly avg.",
+         "chg": chg_str(mtg), "chgSev": "bad" if (mtg.get("chg_pct") or 0) > 0.5 else "warn",
+         "sev": "critical" if (mtg.get("value") or 7) > 8 else ("high" if (mtg.get("value") or 7) > 7 else "moderate")},
     ]
 
 def build_manufacturing(fred):
     ism     = fred.get("ism", {})
     caputil = fred.get("caputil", {})
-
     def val(d, decimals=1):
         v = d.get("value")
         return f"{v:,.{decimals}f}" if v else "N/A"
-
     def chg_str(d):
         c = d.get("chg_pct")
         if c is None: return "N/A"
         sign = "+" if c > 0 else ""
         return f"{sign}{c:.1f}% vs prior period"
-
     return [
-        {
-            "cat": "Manufacturing", "name": "Manufacturing Employment",
-            "val": f"{val(ism)}K", "unit": "BLS monthly · all manufacturing",
-            "chg": chg_str(ism),
-            "chgSev": "bad" if (ism.get("chg_pct") or 0) < -0.5 else "warn",
-            "sev": "moderate",
-        },
-        {
-            "cat": "Manufacturing", "name": "Capacity Utilization",
-            "val": f"{val(caputil, 1)}%", "unit": "Federal Reserve · total industry",
-            "chg": chg_str(caputil),
-            "chgSev": "warn",
-            "sev": "low" if (caputil.get("value") or 78) > 78 else "moderate",
-        },
+        {"cat": "Manufacturing", "name": "Manufacturing Employment", "val": f"{val(ism)}K",
+         "unit": "BLS monthly · all manufacturing", "chg": chg_str(ism),
+         "chgSev": "bad" if (ism.get("chg_pct") or 0) < -0.5 else "warn", "sev": "moderate"},
+        {"cat": "Manufacturing", "name": "Capacity Utilization", "val": f"{val(caputil, 1)}%",
+         "unit": "Federal Reserve · total industry", "chg": chg_str(caputil),
+         "chgSev": "warn", "sev": "low" if (caputil.get("value") or 78) > 78 else "moderate"},
     ]
 
-# ── Posture Summary ────────────────────────────────────────────────────────────
+# ── Posture Summary ───────────────────────────────────────────────────────────
 
 def compute_posture(segs):
-    """Aggregate segment severity into overall posture."""
     counts = {"critical": 0, "high": 0, "moderate": 0, "low": 0}
     for s in segs:
         lv = s.get("level", "low")
@@ -826,30 +731,25 @@ def compute_posture(segs):
         return "ELEVATED", "high"
     return "MODERATE", "moderate"
 
-# ── Commodity KPI tiles for Industry segment ───────────────────────────────────
+# ── Industry commodity tiles ──────────────────────────────────────────────────
 
 def build_ind_commodities(quotes, steel_q=None):
-    """Commodity tiles for the Southwire Industry panel."""
     cu  = quotes.get("copper", {})
     al  = quotes.get("aluminum", {})
     wti = quotes.get("wti", {})
     ng  = quotes.get("natgas", {})
-
     def p(q, d=2): return f"{q.get('price'):,.{d}f}" if q.get("price") else "N/A"
     def pc(q):
         c = q.get("chg_pct")
         if c is None: return "N/A"
         sign = "+" if c > 0 else ""
         return f"{sign}{c:.2f}% day"
-
     return [
         {"cat":"Wire Input","name":"Copper (LME)","val":f"${p(cu)} /lb","unit":"LME spot","note":"Primary cost driver","chg":pc(cu),"chgSev":chg_dir(cu.get("chg_pct"),True),"sev":sev_from_chg(cu.get("chg_pct"),True)},
         {"cat":"Wire Input","name":"Aluminum (LME)","val":f"${p(al)} /lb","unit":"LME spot","note":"Al wire and insulation","chg":pc(al),"chgSev":chg_dir(al.get("chg_pct"),True),"sev":sev_from_chg(al.get("chg_pct"),True)},
         {"cat":"Energy","name":"WTI Crude","val":f"${p(wti)} /bbl","unit":"NYMEX front month","note":"Logistics and resin proxy","chg":pc(wti),"chgSev":chg_dir(wti.get("chg_pct"),True),"sev":sev_from_chg(wti.get("chg_pct"),True)},
         {"cat":"Energy","name":"Natural Gas","val":f"${p(ng,3)} /MMBtu","unit":"Henry Hub","note":"Manufacturing energy cost","chg":pc(ng),"chgSev":chg_dir(ng.get("chg_pct"),True),"sev":sev_from_chg(ng.get("chg_pct"),True)},
     ]
-
-# ── Freight static structure ──────────────────────────────────────────────────
 
 def build_freight_data():
     return [
@@ -896,10 +796,6 @@ PRIORITY_COUNTRIES = [
 LEVEL_SEV = {1: "low", 2: "moderate", 3: "high", 4: "critical"}
 
 def fetch_state_dept_advisories():
-    """
-    Parse State Dept travel advisory RSS.
-    Returns dict: { country_name: {level, levelNum, levelLabel, url, detail} }
-    """
     url = "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/_jcr_content/par/rss.rss"
     advisories = {}
     try:
@@ -922,36 +818,27 @@ def fetch_state_dept_advisories():
                 level_num   = int(m.group(1))
                 level_label = f"Level {level_num}: {m.group(2).strip()[:50]}"
             elif re.search(r"do not travel", desc or title, re.IGNORECASE):
-                level_num   = 4
-                level_label = "Level 4: Do Not Travel"
+                level_num, level_label = 4, "Level 4: Do Not Travel"
             elif re.search(r"reconsider", desc or title, re.IGNORECASE):
-                level_num   = 3
-                level_label = "Level 3: Reconsider Travel"
+                level_num, level_label = 3, "Level 3: Reconsider Travel"
             elif re.search(r"exercise increased caution", desc or title, re.IGNORECASE):
-                level_num   = 2
-                level_label = "Level 2: Exercise Increased Caution"
+                level_num, level_label = 2, "Level 2: Exercise Increased Caution"
             elif re.search(r"normal precautions|exercise normal", desc or title, re.IGNORECASE):
-                level_num   = 1
-                level_label = "Level 1: Exercise Normal Precautions"
+                level_num, level_label = 1, "Level 1: Exercise Normal Precautions"
             if country:
                 advisories[country] = {
-                    "country":    country,
-                    "levelNum":   level_num,
-                    "level":      level_label or f"Level {level_num}",
-                    "sev":        LEVEL_SEV.get(level_num, "moderate"),
-                    "url":        link,
-                    "detail":     (re.sub(r"<[^>]+>", " ", desc).strip()[:300]) if desc else "",
+                    "country":  country,
+                    "levelNum": level_num,
+                    "level":    level_label or f"Level {level_num}",
+                    "sev":      LEVEL_SEV.get(level_num, "moderate"),
+                    "url":      link,
+                    "detail":   (re.sub(r"<[^>]+>", " ", desc).strip()[:300]) if desc else "",
                 }
     except Exception as e:
         print(f"  State Dept advisory fetch error: {e}")
     return advisories
 
 def claude_advisory_fallback():
-    """
-    When the State Dept RSS is blocked, ask Claude for the most recently known
-    advisory levels for priority countries. Returns dict in same format as
-    fetch_state_dept_advisories().
-    """
     country_list = ", ".join(pc["name"] for pc in PRIORITY_COUNTRIES)
     prompt = f"""You are a travel security analyst. Based on your most recent knowledge, provide the current U.S. State Department travel advisory levels for these countries: {country_list}.
 
@@ -964,18 +851,19 @@ Return ONLY a JSON object (no markdown fences) mapping country name to advisory 
   "Chile":    {{"levelNum": 2, "level": "Level 2: Exercise Increased Caution", "sev": "moderate", "detail": "Brief summary."}}
 }}
 
-Note: Include a data currency disclaimer in each detail field noting this reflects your training knowledge and travelers should verify at travel.state.gov."""
+Include a brief note in each detail field that travelers should verify current advisories at travel.state.gov."""
     try:
         result = claude_json(prompt, max_tokens=1000)
         advisories = {}
         for name, data in result.items():
+            slug = name.lower().replace(" ", "-")
             advisories[name] = {
                 "country":  name,
                 "levelNum": data.get("levelNum", 0),
                 "level":    data.get("level", "Level unknown"),
                 "sev":      data.get("sev", "moderate"),
                 "detail":   data.get("detail", ""),
-                "url":      f"https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/{name.lower()}.html",
+                "url":      f"https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/{slug}-travel-advisory.html",
             }
         print(f"  Advisory fallback: Claude provided levels for {list(advisories.keys())}")
         return advisories
@@ -984,17 +872,15 @@ Note: Include a data currency disclaimer in each detail field noting this reflec
         return {}
 
 def build_travel_segment(advisories, all_headlines):
-    """Build the Global Travel & Security segment."""
-    # If RSS failed and returned no advisories, fall back to Claude knowledge
     if not advisories:
         print("  State Dept RSS empty — using Claude advisory fallback...")
         advisories = claude_advisory_fallback()
 
-    # Priority country entries — always included
     priority = []
     for pc in PRIORITY_COUNTRIES:
         name = pc["name"]
         adv  = advisories.get(name, {})
+        slug = name.lower().replace(" ", "-")
         priority.append({
             "flag":     pc["flag"],
             "country":  name,
@@ -1002,17 +888,15 @@ def build_travel_segment(advisories, all_headlines):
             "levelNum": adv.get("levelNum", 0),
             "sev":      adv.get("sev", "moderate"),
             "detail":   adv.get("detail", "No current advisory detail available. Verify at travel.state.gov."),
-            "url":      adv.get("url", f"https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/{name.lower()}.html"),
+            "url":      adv.get("url", f"https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/{slug}-travel-advisory.html"),
         })
 
-    # High-risk countries worldwide: Level 3 and 4 excluding priority list
     priority_names = {pc["name"] for pc in PRIORITY_COUNTRIES}
     high_risk = [
         v for k, v in sorted(advisories.items(), key=lambda x: -x[1].get("levelNum", 0))
         if v.get("levelNum", 0) >= 3 and k not in priority_names
     ][:20]
 
-    # Filter travel-relevant headlines
     travel_kws = ["travel", "advisory", "visa", "terrorist", "kidnap", "attack", "protest",
                   "embassy", "consulate", "border", "cartel", "conflict", "evacuation",
                   "Mexico", "China", "Honduras", "Canada", "Chile", "safety", "security alert"]
@@ -1075,18 +959,14 @@ Return ONLY valid JSON (no markdown fences):
 
     try:
         result = claude_json(prompt, max_tokens=2000)
-        items  = result.get("items", [])
-        level  = result.get("level", "high")
+        items    = result.get("items", [])
+        level    = result.get("level", "high")
         monitors = result.get("monitors", "Global State Dept. advisory levels, active conflicts, terrorism, civil unrest, and travel security conditions affecting Southwire personnel and operations worldwide.")
         for i, item in enumerate(items):
             item["rank"] = i + 1
         return {
-            "id":       "travel_global",
-            "label":    "Global Travel & Security",
-            "icon":     "🌐",
-            "level":    level,
-            "monitors": monitors,
-            "items":    items,
+            "id": "travel_global", "label": "Global Travel & Security", "icon": "🌐",
+            "level": level, "monitors": monitors, "items": items,
             "travel": {
                 "priority":  priority,
                 "highRisk":  high_risk,
@@ -1110,7 +990,6 @@ Return ONLY valid JSON (no markdown fences):
 def main():
     print(f"ERM Daily Brief — generate.py — {now_et.strftime('%Y-%m-%d %H:%M %Z')}")
 
-    # 1. Fetch commodity quotes
     print("Fetching commodity prices...")
     syms_to_fetch = ["copper","aluminum","wti","brent","natgas","gold","sp500","vix"]
     quotes = {}
@@ -1120,11 +999,9 @@ def main():
         quotes[sym] = yahoo_quote(ticker)
         time.sleep(0.5)
 
-    # 2. Copper Gate
     copper_gate(quotes["copper"])
     print(f"  Copper gate passed: ${quotes['copper']['price']:.4f}/lb")
 
-    # 3. Fetch 30-day histories for sparklines
     print("Fetching price histories...")
     histories = {}
     for sym in ["sp500","brent","gold","vix","copper"]:
@@ -1132,11 +1009,9 @@ def main():
         histories[sym] = yahoo_history(ticker, days=30)
         time.sleep(0.3)
 
-    # 4. EIA diesel
     print("Fetching diesel price (EIA)...")
     diesel = eia_diesel()
 
-    # 5. FRED macro
     print("Fetching FRED macro indicators...")
     fred = {}
     for key, series in FRED_SERIES.items():
@@ -1144,7 +1019,6 @@ def main():
         fred[key] = fred_latest(series)
         time.sleep(0.3)
 
-    # 6. RSS feeds
     print("Fetching RSS feeds...")
     all_headlines = []
     for outlet, url in RSS_FEEDS:
@@ -1153,90 +1027,72 @@ def main():
         time.sleep(0.3)
     print(f"  Total headlines: {len(all_headlines)}")
 
-    # 7. Build intelligence segments
     print("Generating intelligence segments via Claude...")
     segments = []
     for seg_def in SEGMENT_DEFS:
         print(f"  {seg_def['label']}...")
         items, level = build_segment_items(seg_def, all_headlines)
         segments.append({
-            "id":       seg_def["id"],
-            "label":    seg_def["label"],
-            "icon":     seg_def["icon"],
-            "level":    level,
-            "monitors": seg_def["monitors"],
-            "items":    items,
+            "id": seg_def["id"], "label": seg_def["label"], "icon": seg_def["icon"],
+            "level": level, "monitors": seg_def["monitors"], "items": items,
         })
         time.sleep(1)
 
-    # 8. Build industry (SOC) segment
     print("Generating Southwire Industry segment via Claude...")
     ind_raw = build_industry_segment(
-        commodities=quotes,
-        freight_data=build_freight_data(),
-        housing=fred,
-        manufacturing=fred,
-        all_headlines=all_headlines
+        commodities=quotes, freight_data=build_freight_data(),
+        housing=fred, manufacturing=fred, all_headlines=all_headlines
     )
     ind_commodities = build_ind_commodities(quotes)
     ind_housing     = build_housing(fred)
     ind_mfg         = build_manufacturing(fred)
 
     industry_segment = {
-        "id":       "industry",
-        "label":    "Southwire Industry",
-        "icon":     "🏭",
+        "id": "industry", "label": "Southwire Industry", "icon": "🏭",
         "level":    ind_raw.get("level", "high"),
         "monitors": ind_raw.get("monitors", "Southwire-specific competitive, supply chain, and customer intelligence."),
         "items":    ind_raw.get("items", []),
         "industry": {
-            "commodities":  ind_commodities,
-            "housing":      ind_housing,
+            "commodities":   ind_commodities,
+            "housing":       ind_housing,
             "manufacturing": ind_mfg,
-            "competitors":  ind_raw.get("competitors", []),
-            "suppliers":    ind_raw.get("suppliers", []),
-            "customers":    ind_raw.get("customers", {"opportunities": [], "risks": []}),
-            "freight":      build_freight_data(),
-            "ports":        build_ports(),
-            "portAlert":    "Alert: Port of Savannah at 88% capacity. Reroute time-sensitive copper shipments via Houston or Charleston.",
-            "cargoTheft":   build_cargo_theft(),
-            "geopolitical": ind_raw.get("geopolitical", []),
-            "travel":       ind_raw.get("travel", []),
-            "ma":           ind_raw.get("ma", []),
-            "horizonWatch": ind_raw.get("horizonWatch", []),
-            "actions":      ind_raw.get("actions", []),
+            "competitors":   ind_raw.get("competitors", []),
+            "suppliers":     ind_raw.get("suppliers", []),
+            "customers":     ind_raw.get("customers", {"opportunities": [], "risks": []}),
+            "freight":       build_freight_data(),
+            "ports":         build_ports(),
+            "portAlert":     "Alert: Port of Savannah at 88% capacity. Reroute time-sensitive copper shipments via Houston or Charleston.",
+            "cargoTheft":    build_cargo_theft(),
+            "geopolitical":  ind_raw.get("geopolitical", []),
+            "travel":        ind_raw.get("travel", []),
+            "ma":            ind_raw.get("ma", []),
+            "horizonWatch":  ind_raw.get("horizonWatch", []),
+            "actions":       ind_raw.get("actions", []),
         }
     }
 
-    # 8b. Travel & Global Security segment
     print("Fetching State Dept. travel advisories...")
     advisories = fetch_state_dept_advisories()
     print(f"  Parsed {len(advisories)} country advisories")
     print("Generating Global Travel & Security segment via Claude...")
     travel_segment = build_travel_segment(advisories, all_headlines)
 
-    # Prepend industry and travel segments
     all_segments = [industry_segment, travel_segment] + segments
 
-    # 9. Posture
     posture_label, posture_sev = compute_posture(all_segments)
 
-    # 10. Wire
     print("Building headline wire...")
     wire = build_wire(all_headlines, n=16)
 
-    # 11. KPIs and Charts
     kpis   = build_kpis(quotes, diesel, fred)
     charts = build_charts(quotes, histories)
 
-    # 12. Summary counts for header strip
     cnt = {"critical": 0, "high": 0, "moderate": 0, "low": 0}
     for seg in all_segments:
         for item in seg.get("items", []):
             if item.get("sev") in cnt:
                 cnt[item["sev"]] += 1
 
-    # 13. Build final data object
     data = {
         "meta": {
             "date":       now_et.strftime("%A, %B %-d, %Y · %I:%M %p %Z"),
@@ -1252,7 +1108,6 @@ def main():
         "segments": all_segments,
     }
 
-    # 14. Write output
     with open(OUT_FILE, "w") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     print(f"Output written: {OUT_FILE}")
