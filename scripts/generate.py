@@ -183,7 +183,6 @@ def fred_latest(series_id):
         f"?id={series_id}&vintage_date={now_et.strftime('%Y-%m-%d')}"
     )
     try:
-        # FRED also supports direct observation endpoint without key for public data
         obs_url = (
             f"https://api.stlouisfed.org/fred/series/observations"
             f"?series_id={series_id}&limit=2&sort_order=desc&file_type=json"
@@ -221,22 +220,32 @@ def eia_diesel():
 # ── RSS Feed Fetch ────────────────────────────────────────────────────────────
 
 RSS_FEEDS = [
-    ("AP",       "https://feeds.apnews.com/rss/apf-topnews"),
-    ("Reuters",  "https://feeds.reuters.com/reuters/businessNews"),
+    # General news — robust public feeds
+    ("AP",       "https://apnews.com/rss"),
+    ("AP-Biz",   "https://apnews.com/hub/business?rss=true"),
+    ("NPR",      "https://feeds.npr.org/1001/rss.xml"),
+    ("BBC",      "https://feeds.bbci.co.uk/news/world/rss.xml"),
+    ("Guardian", "https://www.theguardian.com/world/rss"),
+    ("Reuters",  "https://feeds.reuters.com/reuters/topNews"),
+    # Financial / markets
     ("WSJ",      "https://feeds.content.dowjones.io/public/rss/mw_realtimeheadlines"),
-    ("FT",       "https://www.ft.com/rss/home/us"),
-    ("Bloomberg","https://feeds.bloomberg.com/markets/news.rss"),
     ("CNBC",     "https://www.cnbc.com/id/100003114/device/rss/rss.html"),
-    ("CNN",      "http://rss.cnn.com/rss/edition_world.rss"),
-    ("NYT",      "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"),
-    ("WaPo",     "https://feeds.washingtonpost.com/rss/world"),
+    ("CNBC-Mkt", "https://www.cnbc.com/id/10000664/device/rss/rss.html"),
+    ("YahooFin", "https://finance.yahoo.com/news/rssindex"),
+    # Industry / supply chain
     ("Freight",  "https://www.freightwaves.com/news/rss"),
     ("SC",       "https://www.supplychaindive.com/feeds/news/"),
-    ("CargoNet", "https://www.cargonet.com/feed/"),
-    ("StateAdv", "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/_jcr_content/par/rss.rss"),
-    ("CISA",     "https://www.cisa.gov/cybersecurity-advisories/all.xml"),
-    ("NWS",      "https://www.weather.gov/rss_page.php"),
+    ("MfgDive",  "https://www.manufacturingdive.com/feeds/news/"),
+    ("ENR",      "https://www.enr.com/rss/all"),
+    # National / policy
+    ("CNN",      "https://rss.cnn.com/rss/edition.rss"),
+    ("NYT",      "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml"),
+    # Defense / security
     ("Mil",      "https://www.defense.gov/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=945&max=10"),
+    ("CISA",     "https://www.cisa.gov/cybersecurity-advisories/all.xml"),
+    # Weather
+    ("NWS-Atl",  "https://www.weather.gov/images/ffc/zone/GAZ021.xml"),
+    ("NWS-Hur",  "https://www.nhc.noaa.gov/gtwo.xml"),
 ]
 
 def fetch_rss(outlet, url, max_items=8):
@@ -574,7 +583,7 @@ def build_kpis(quotes, diesel, fred):
     al  = quotes.get("aluminum", {})
     oil = quotes.get("brent", {})
     wti = quotes.get("wti", {})
-    drewry_val = "$4,000"  # Static placeholder — Drewry WCI is not publicly API-accessible; generate.py can inject live value if scraped
+    drewry_val = "$4,000"  # Static placeholder — Drewry WCI is not publicly API-accessible
 
     def p(q, decimals=2):
         v = q.get("price")
@@ -715,7 +724,6 @@ def build_charts(quotes, histories):
         price = q.get("price")
         chg   = q.get("chg_pct")
         chg_str = f"{'+'if chg and chg>0 else ''}{chg:.1f}%" if chg is not None else "N/A"
-        prev_price = q.get("prev")
         lo = min(pts) if pts else 0
         hi = max(pts) if pts else 0
         rng = f"30d range: {lo:,.2f} – {hi:,.2f}" if pts else ""
@@ -841,7 +849,7 @@ def build_ind_commodities(quotes, steel_q=None):
         {"cat":"Energy","name":"Natural Gas","val":f"${p(ng,3)} /MMBtu","unit":"Henry Hub","note":"Manufacturing energy cost","chg":pc(ng),"chgSev":chg_dir(ng.get("chg_pct"),True),"sev":sev_from_chg(ng.get("chg_pct"),True)},
     ]
 
-# ── Freight static structure (placeholder — Claude populates in Industry) ──────
+# ── Freight static structure ──────────────────────────────────────────────────
 
 def build_freight_data():
     return [
@@ -903,12 +911,10 @@ def fetch_state_dept_advisories():
             def txt(tag):
                 el = item.find(tag)
                 return (el.text or "").strip() if el is not None else ""
-            title   = txt("title")   # e.g. "Mexico Travel Advisory"
+            title   = txt("title")
             desc    = txt("description")
             link    = txt("link")
-            # Parse country name
             country = title.replace(" Travel Advisory", "").replace(" travel advisory", "").strip()
-            # Parse level from description: "Level 3: Reconsider Travel" or "Do Not Travel"
             level_num = 0
             level_label = "Unknown"
             m = re.search(r"Level\s*([1-4])[:\s]+([^<\n]+)", desc or title, re.IGNORECASE)
@@ -940,8 +946,50 @@ def fetch_state_dept_advisories():
         print(f"  State Dept advisory fetch error: {e}")
     return advisories
 
+def claude_advisory_fallback():
+    """
+    When the State Dept RSS is blocked, ask Claude for the most recently known
+    advisory levels for priority countries. Returns dict in same format as
+    fetch_state_dept_advisories().
+    """
+    country_list = ", ".join(pc["name"] for pc in PRIORITY_COUNTRIES)
+    prompt = f"""You are a travel security analyst. Based on your most recent knowledge, provide the current U.S. State Department travel advisory levels for these countries: {country_list}.
+
+Return ONLY a JSON object (no markdown fences) mapping country name to advisory info:
+{{
+  "Mexico": {{"levelNum": 3, "level": "Level 3: Reconsider Travel", "sev": "high", "detail": "Brief 1-2 sentence summary of key risks and any sub-national Level 4 areas."}},
+  "China":  {{"levelNum": 2, "level": "Level 2: Exercise Increased Caution", "sev": "moderate", "detail": "Brief summary."}},
+  "Honduras": {{"levelNum": 2, "level": "Level 2: Exercise Increased Caution", "sev": "moderate", "detail": "Brief summary."}},
+  "Canada":   {{"levelNum": 1, "level": "Level 1: Exercise Normal Precautions", "sev": "low", "detail": "Brief summary."}},
+  "Chile":    {{"levelNum": 2, "level": "Level 2: Exercise Increased Caution", "sev": "moderate", "detail": "Brief summary."}}
+}}
+
+Note: Include a data currency disclaimer in each detail field noting this reflects your training knowledge and travelers should verify at travel.state.gov."""
+    try:
+        result = claude_json(prompt, max_tokens=1000)
+        advisories = {}
+        for name, data in result.items():
+            advisories[name] = {
+                "country":  name,
+                "levelNum": data.get("levelNum", 0),
+                "level":    data.get("level", "Level unknown"),
+                "sev":      data.get("sev", "moderate"),
+                "detail":   data.get("detail", ""),
+                "url":      f"https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/{name.lower()}.html",
+            }
+        print(f"  Advisory fallback: Claude provided levels for {list(advisories.keys())}")
+        return advisories
+    except Exception as e:
+        print(f"  Advisory Claude fallback error: {e}")
+        return {}
+
 def build_travel_segment(advisories, all_headlines):
     """Build the Global Travel & Security segment."""
+    # If RSS failed and returned no advisories, fall back to Claude knowledge
+    if not advisories:
+        print("  State Dept RSS empty — using Claude advisory fallback...")
+        advisories = claude_advisory_fallback()
+
     # Priority country entries — always included
     priority = []
     for pc in PRIORITY_COUNTRIES:
@@ -953,7 +1001,7 @@ def build_travel_segment(advisories, all_headlines):
             "level":    adv.get("level", "Level unknown"),
             "levelNum": adv.get("levelNum", 0),
             "sev":      adv.get("sev", "moderate"),
-            "detail":   adv.get("detail", "No current advisory detail available."),
+            "detail":   adv.get("detail", "No current advisory detail available. Verify at travel.state.gov."),
             "url":      adv.get("url", f"https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/{name.lower()}.html"),
         })
 
@@ -962,7 +1010,7 @@ def build_travel_segment(advisories, all_headlines):
     high_risk = [
         v for k, v in sorted(advisories.items(), key=lambda x: -x[1].get("levelNum", 0))
         if v.get("levelNum", 0) >= 3 and k not in priority_names
-    ][:20]  # cap at 20 for display
+    ][:20]
 
     # Filter travel-relevant headlines
     travel_kws = ["travel", "advisory", "visa", "terrorist", "kidnap", "attack", "protest",
@@ -980,13 +1028,11 @@ def build_travel_segment(advisories, all_headlines):
         for h in relevant
     ) if relevant else "No specific travel headlines today."
 
-    # Priority country summary for Claude
     priority_txt = "\n".join(
         f"- {p['country']}: {p['level']} — {p['detail'][:150]}"
         for p in priority
     )
 
-    # High-risk summary for Claude
     hr_txt = "\n".join(
         f"- {h['country']}: {h['level']}"
         for h in high_risk[:10]
