@@ -60,7 +60,7 @@ def fetch_json(url, headers=None, timeout=20):
 
 # ── Claude API helper ─────────────────────────────────────────────────────────
 
-def claude(prompt_text, max_tokens=2048, model="claude-haiku-4-5-20251001"):
+def claude(prompt_text, max_tokens=2048, model="claude-3-5-haiku-20241022"):
     """Call Claude API, return content string."""
     if not ANTHROPIC_KEY:
         raise RuntimeError("ANTHROPIC_API_KEY not set")
