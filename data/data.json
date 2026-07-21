@@ -1,8 +1,8 @@
 {
   "meta": {
-    "date": "Monday, July 20, 2026 · 03:11 PM EDT",
-    "dateShort": "Jul 20, 2026",
-    "runTime": "03:11 PM EDT",
+    "date": "Tuesday, July 21, 2026 · 01:02 PM EDT",
+    "dateShort": "Jul 21, 2026",
+    "runTime": "01:02 PM EDT",
     "posture": "ELEVATED",
     "postureSev": "high",
     "counts": {
@@ -16,7 +16,7 @@
     {
       "category": "US Equities",
       "name": "S&P 500",
-      "value": "7,452.11",
+      "value": "7,512.17",
       "unit": "Index · daily close",
       "note": "Broad equity risk-on/risk-off signal. High VIX or S&P drawdown signals demand risk for Southwire construction end markets.",
       "change": "▼ 0.00% day-over-day",
@@ -26,8 +26,8 @@
     {
       "category": "Energy",
       "name": "Brent Crude",
-      "value": "$89.46 /bbl",
-      "unit": "WTI $82.92 /bbl",
+      "value": "$91.34 /bbl",
+      "unit": "WTI $84.50 /bbl",
       "note": "Energy costs affect Southwire manufacturing and logistics. Sustained Brent >$90 pressures freight and resin input costs.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -36,8 +36,8 @@
     {
       "category": "Critical Input",
       "name": "Copper (LME)",
-      "value": "$6.35 /lb",
-      "unit": "($14,004 /MT) · LME spot",
+      "value": "$6.56 /lb",
+      "unit": "($14,467 /MT) · LME spot",
       "note": "Primary raw material. Copper content of wire drives COGS. Sustained elevation compresses margin unless hedged or repriced.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -46,7 +46,7 @@
     {
       "category": "Critical Input",
       "name": "Aluminum (LME)",
-      "value": "$3,448.75 /lb",
+      "value": "$3,488.75 /lb",
       "unit": "LME spot · Midwest premium add",
       "note": "Key input for aluminum wire and cable. Price signals secondary cost pressure and hedge calendar triggers.",
       "change": "▼ 0.00% day-over-day",
@@ -66,12 +66,12 @@
     {
       "category": "Volatility",
       "name": "VIX",
-      "value": "18.31",
+      "value": "17.12",
       "unit": "CBOE Volatility Index",
       "note": "Equity market fear gauge. VIX >25 indicates risk-off environment; monitor customer demand signals and receivables.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "warn",
-      "sev": "moderate"
+      "sev": "low"
     },
     {
       "category": "Macro",
@@ -86,7 +86,7 @@
     {
       "category": "Safe Haven",
       "name": "Gold",
-      "value": "$4,013 /oz",
+      "value": "$4,077 /oz",
       "unit": "COMEX spot",
       "note": "Risk sentiment indicator. Gold >$3,000 with VIX elevation signals macro uncertainty that may dampen CapEx spending by customers.",
       "change": "▼ 0.00% day-over-day",
@@ -97,7 +97,7 @@
   "charts": [
     {
       "name": "S&P 500 · 30d",
-      "value": "7,452.11",
+      "value": "7,512.17",
       "chg": "0.0%",
       "bad": false,
       "range": "30d range: 7,354.02 – 7,575.39",
@@ -121,15 +121,16 @@
         7572.3999,
         7533.77,
         7457.6899,
-        7451.8398
+        7443.2798,
+        7511.8198
       ]
     },
     {
       "name": "Brent Crude · 30d",
-      "value": "89.46",
+      "value": "91.34",
       "chg": "0.0%",
       "bad": true,
-      "range": "30d range: 71.57 – 89.46",
+      "range": "30d range: 71.57 – 91.34",
       "pts": [
         77.9,
         77.08,
@@ -150,12 +151,13 @@
         84.95,
         84.23,
         88.1,
-        89.46
+        89.22,
+        91.34
       ]
     },
     {
       "name": "Gold · 30d",
-      "value": "4,012.60",
+      "value": "4,077.10",
       "chg": "0.0%",
       "bad": false,
       "range": "30d range: 3,985.60 – 4,181.90",
@@ -179,12 +181,13 @@
         4044.0,
         3985.6001,
         4012.7,
-        4012.2
+        4010.3,
+        4077.5
       ]
     },
     {
       "name": "VIX · 30d",
-      "value": "18.31",
+      "value": "17.12",
       "chg": "0.0%",
       "bad": true,
       "range": "30d range: 15.03 – 19.49",
@@ -208,15 +211,16 @@
         15.67,
         16.73,
         18.77,
-        18.31
+        18.65,
+        17.12
       ]
     },
     {
       "name": "Copper (LME) · 30d",
-      "value": "6.35",
+      "value": "6.56",
       "chg": "0.0%",
       "bad": true,
-      "range": "30d range: 5.94 – 6.36",
+      "range": "30d range: 5.94 – 6.56",
       "pts": [
         6.3565,
         6.141,
@@ -237,122 +241,123 @@
         6.2935,
         6.296,
         6.22,
-        6.352
+        6.299,
+        6.5615
       ]
     }
   ],
   "wire": [
     {
       "outlet": "NPR",
-      "title": "Court ruling freezes Paramount-Warner Bros. merger for now",
-      "url": "https://www.npr.org/2026/07/20/nx-s1-5900888/paramount-wbd-tro-restraining-lawsuit",
-      "summary": "Paramount's owners were hoping they'd be firmly in control of rival Warner Bros. Discovery by the end of this week. Monday's temporary restraining order puts that plan on hold.",
-      "pub_date": "Mon, 20 Jul 2026 13:55:31 -0400"
+      "title": "The best games of 2026 so far, picked by NPR's staff",
+      "url": "https://www.npr.org/2026/07/21/nx-s1-5897567/best-games-2026-npr",
+      "summary": "Titans like Resident Evil Requiem and Crimson Desert dominated in the first half of the gaming year, with early-access sequels like Slay the Spire 2 and Subnautica 2 not far behind.",
+      "pub_date": "Tue, 21 Jul 2026 09:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "India's Gen Z 'Cockroach People's Party' started as satire but is serious about change",
-      "url": "https://www.npr.org/2026/07/20/nx-s1-5889515/india-gen-z-cockroach-party-protests",
-      "summary": "They call themselves the \"cockroaches\" and they're on the march — demanding action against corruption, amid a shortage of opportunities for young people in India.",
-      "pub_date": "Mon, 20 Jul 2026 12:36:04 -0400"
+      "title": "India's youth-led Cockroach movement vows to continue protest after police crackdown",
+      "url": "https://www.npr.org/2026/07/21/g-s1-134722/indias-youth-led-cockroach-movement-vows-to-continue-protest-after-police-crackdown",
+      "summary": "The movement, which began as a satirical protest, has evolved into a nationwide challenge to Prime Minister Narendra Modi's government.",
+      "pub_date": "Tue, 21 Jul 2026 08:00:56 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Putin meets North Korean foreign minister in diplomatic push",
-      "url": "https://www.npr.org/2026/07/20/g-s1-134555/putin-meets-north-korean-foreign-minister-in-diplomatic-push",
-      "summary": "The visit by North Korean Foreign Minister Choe Son Hui comes without an obvious occasion, such as a multilateral diplomatic event or state anniversary, and has raised speculation that she may be coordinating a possible visit to Russia by North Korean leader Kim Jong Un.",
-      "pub_date": "Mon, 20 Jul 2026 09:18:51 -0400"
+      "title": "Iran-backed Houthis announce blockade. And, Cyclospora source remains unknown",
+      "url": "https://www.npr.org/2026/07/21/g-s1-134720/up-first-newsletter-yemen-houthi-iran-war-pete-hegseth-pentagon-fda-cyclospora",
+      "summary": "Iran-backed Houthis say they will blockade a waterway on the Red Sea. And, the FDA continues to investigate Taylor Farms lettuce as a source of the Cyclospora outbreak despite a retracted test.",
+      "pub_date": "Tue, 21 Jul 2026 07:12:41 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "3 U.S. personnel killed in Iran conflict. And, Hunter Biden opens up to NPR",
-      "url": "https://www.npr.org/2026/07/20/g-s1-134553/up-first-newsletter-iran-us-service-members-hunter-biden",
-      "summary": "Three U.S. service members have been killed since Friday amid rising tension between the U.S. and Iran. And, Hunter Biden talks to NPR's Newsmakers about addiction and public scrutiny.",
-      "pub_date": "Mon, 20 Jul 2026 07:40:28 -0400"
+      "title": "Trump imposes 50% tariffs on Canadian goods",
+      "url": "https://www.npr.org/2026/07/21/nx-s1-5901905/trump-imposes-tariffs-canadian-goods",
+      "summary": "President Donald Trump on Monday imposed 50% tariffs on most Canadian goods, declaring that Canada has unfairly discriminated against American autos, alcohol and dairy products.",
+      "pub_date": "Tue, 21 Jul 2026 06:31:34 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "At least 930 people have died in Congo's Ebola outbreak",
-      "url": "https://www.npr.org/2026/07/20/g-s1-134548/ebola-congo-deaths",
-      "summary": "Congo's health ministry said the deaths were recorded out of the 2,344 cases confirmed as of Saturday. Thirty-seven new deaths were recorded in the previous 24 hours in one of the highest totals.",
-      "pub_date": "Mon, 20 Jul 2026 06:36:08 -0400"
+      "title": "The best economic ideas from around the world — Planet Money Summer School is back",
+      "url": "https://www.npr.org/sections/planet-money/2026/07/21/g-s1-134281/the-best-economic-ideas-from-around-the-world-planet-money-summer-school-is-back",
+      "summary": "Our free economics course for your ears is on a quest for great economics ideas.",
+      "pub_date": "Tue, 21 Jul 2026 06:30:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "U.S. and Iran launch new strikes after 3 U.S. service members are killed",
-      "url": "https://www.npr.org/2026/07/20/nx-s1-5900601/us-iran-updates",
-      "summary": "The U.S. attacks were the ninth consecutive day of bombing since peace talks between the two countries collapsed in dispute over a memorandum of understanding focused on the Strait of Hormuz.",
-      "pub_date": "Mon, 20 Jul 2026 06:04:56 -0400"
+      "title": "How soccer brings a Bhutanese community together in Harrisburg, Pa.",
+      "url": "https://www.npr.org/sections/the-picture-show/2026/07/21/nx-s1-5897423/soccer-in-us-nepali-bhutanese-community",
+      "summary": "Harrisburg is home to one of the nation's largest communities of Nepali-speaking Bhutanese refugees and their families. Through soccer, generations have found connection, belonging and a way to carry forward a shared history.",
+      "pub_date": "Tue, 21 Jul 2026 06:30:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Deloitte-run systems denied Medicaid to disabled people. New laws could make it worse",
-      "url": "https://www.npr.org/2026/07/20/nx-s1-5896359/medicaid-disabled-patients-denied-deloitte-michigan",
-      "summary": "Complex computer systems that decide whether people get Medicaid benefits have a history of errors. Now, changes to comply with Trump's tax and domestic policy law are inundating those systems.",
-      "pub_date": "Mon, 20 Jul 2026 05:00:00 -0400"
+      "title": "Amid U.S.-Iran war, Houthi rebels threaten to blockade another key strait",
+      "url": "https://www.npr.org/2026/07/21/nx-s1-5901846/us-iran-updates",
+      "summary": "The Houthis, a Shia militia in Yemen that's aligned with Iran, have announced a naval blockade of a key waterway, the Bab el-Mandeb Strait.",
+      "pub_date": "Tue, 21 Jul 2026 06:21:43 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "So distressed you can't think straight? Lower the intensity with these 4 skills",
-      "url": "https://www.npr.org/2026/07/20/nx-s1-5894845/so-distressed-you-cant-think-straight-lower-the-intensity-with-these-4-skills",
-      "summary": "A clinical psychologist shares effective strategies to quickly de-escalate stress and anxiety. That includes dunking your head into a bowl of ice water to trigger your mammalian dive reflex.",
-      "pub_date": "Mon, 20 Jul 2026 05:00:00 -0400"
+      "title": "Amid nurse shortage, a university rolls out the welcome mat for men",
+      "url": "https://www.npr.org/2026/07/21/nx-s1-5869813/nursing-men-jobs-male-nurses",
+      "summary": "Only about 1 in 8 nurses are men, but their share is growing. A strong job market for nurses and sustained efforts to recruit men into the field have made a difference, including in the South.",
+      "pub_date": "Tue, 21 Jul 2026 06:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Morning news brief",
-      "url": "https://www.npr.org/2026/07/20/nx-s1-5895962/morning-news-brief",
-      "summary": "The U.S. carries out a wave of strikes against Iran, as fighting between the two escalates, Congress faces long to-do list as August recess approaches, Andy Burnham becomes U.K.'s 7th prime minister.",
-      "pub_date": "Mon, 20 Jul 2026 04:43:08 -0400"
+      "title": "A homeless man was charged with a felony for camping. He's one of the first",
+      "url": "https://www.npr.org/2026/07/21/nx-s1-5887358/tennessee-homeless-arrest-felony-camping-ban",
+      "summary": "When Joseph Lamont Williams refused to leave the public park where he has lived for years, he was charged with a felony. Camping bans are on the rise as states seek to crack down on homelessness.",
+      "pub_date": "Tue, 21 Jul 2026 05:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Andy Burnham becomes U.K. prime minister",
-      "url": "https://www.npr.org/2026/07/19/nx-s1-5895993/andy-burnham-prime-minister-keir-starmer",
-      "summary": "In a transition of power presided over by King Charles, Andy Burnham has replaced Keir Starmer as the United Kingdom's prime minister. Both are from the center-left Labour Party.",
-      "pub_date": "Mon, 20 Jul 2026 04:41:42 -0400"
+      "title": "Arizona primaries set the stage for contested fall races in a swing state",
+      "url": "https://www.npr.org/2026/07/21/nx-s1-5901065/midterms-primaries-arizona-elections",
+      "summary": "Arizona Democrats choose who can try to flip a Republican-held House seat, and Republicans pick their nominee to try to unseat a Democratic governor.",
+      "pub_date": "Tue, 21 Jul 2026 05:00:00 -0400"
     },
     {
       "outlet": "BBC",
-      "title": "Trump says US strikes hit Iran in 'honour' of American soldiers killed",
-      "url": "https://www.bbc.co.uk/news/articles/cly52xzjd3qo?at_medium=RSS&at_campaign=rss",
-      "summary": "Iran responded with attacks in Syria and Jordan, as two ships reportedly exploded in the Strait of Hormuz.",
-      "pub_date": "Mon, 20 Jul 2026 17:20:37 GMT"
+      "title": "Trump slaps 50% tariffs on Canada and Carney vows to 'intensify' trade talks",
+      "url": "https://www.bbc.co.uk/news/articles/cg4dzq3x3e1o?at_medium=RSS&at_campaign=rss",
+      "summary": "The duties mark a major escalation in trade tensions between the North American neighbours.",
+      "pub_date": "Tue, 21 Jul 2026 16:50:51 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Yemen's Houthis announce 'maritime embargo' on Saudi Arabia",
-      "url": "https://www.bbc.co.uk/news/articles/cm2gmddx1ldo?at_medium=RSS&at_campaign=rss",
-      "summary": "The Houthis say the embargo begins immediately and is a response to a Saudi blockade of ports and airports in Yemen.",
-      "pub_date": "Mon, 20 Jul 2026 17:33:02 GMT"
+      "title": "Row escalates in Ukraine over army chief's future",
+      "url": "https://www.bbc.co.uk/news/articles/c7vgel8374yo?at_medium=RSS&at_campaign=rss",
+      "summary": "Protesters are demanding Oleksandr Syrskyi be removed and former defence minister Mykhailo Fedorov reinstated by Friday.",
+      "pub_date": "Tue, 21 Jul 2026 12:33:15 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Ten killed as Russian attacks on merchant ships in Black Sea intensify",
-      "url": "https://www.bbc.co.uk/news/articles/c4gvpv3ewv2o?at_medium=RSS&at_campaign=rss",
-      "summary": "Russian strikes on the Odesa region have killed 28 people in July alone, local authorities say.",
-      "pub_date": "Mon, 20 Jul 2026 16:10:38 GMT"
+      "title": "US launches fresh strikes on Iran, as Trump warns of retaliation for deaths of soldiers",
+      "url": "https://www.bbc.co.uk/news/articles/cx25wg2x26do?at_medium=RSS&at_campaign=rss",
+      "summary": "Iran says it has hit two ships in the Strait of Hormuz as well as targets in Bahrain and Jordan.",
+      "pub_date": "Tue, 21 Jul 2026 16:10:56 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Rare identical quadruplets born in Australia",
-      "url": "https://www.bbc.co.uk/news/articles/cx2jnj3428lo?at_medium=RSS&at_campaign=rss",
-      "summary": "The parents of the four naturally-conceived girls were taken by \"immense surprise\" with the pregnancy, the hospital said.",
-      "pub_date": "Mon, 20 Jul 2026 12:57:32 GMT"
+      "title": "Lebanese army says troops deploying in 'pilot zone' after Israeli withdrawal",
+      "url": "https://www.bbc.co.uk/news/articles/cy8mynlmn55o?at_medium=RSS&at_campaign=rss",
+      "summary": "A US-brokered agreement should see Israeli troops pulling out of a small part of Lebanon occupied during their conflict with Hezbollah.",
+      "pub_date": "Tue, 21 Jul 2026 16:03:22 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Notorious drug cartel leader Ismael Zambada sentenced to life in US prison",
-      "url": "https://www.bbc.co.uk/news/articles/ce3q1d1ed5do?at_medium=RSS&at_campaign=rss",
-      "summary": "Known as \"El Mayo\", the co-founder the Sinaloa Cartel was also ordered to pay $15bn after he admitted to sending vast amounts of drugs to the US.",
-      "pub_date": "Mon, 20 Jul 2026 17:21:27 GMT"
+      "title": "Dozens hurt in Bologna protests after man dies while being restrained by police",
+      "url": "https://www.bbc.co.uk/news/articles/c86nwgw148xo?at_medium=RSS&at_campaign=rss",
+      "summary": "Thousands of people took to the streets demanding justice for a Moroccan-born man who died on Sunday.",
+      "pub_date": "Tue, 21 Jul 2026 12:48:37 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Boy, 13, dies during World Cup celebrations in Spain",
-      "url": "https://www.bbc.co.uk/news/articles/c0qvdy0jv05o?at_medium=RSS&at_campaign=rss",
-      "summary": "Two other young people were injured after a fountain partially collapsed in Salamanca's Ciudad Rodrigo.",
-      "pub_date": "Mon, 20 Jul 2026 10:02:44 GMT"
+      "title": "Israeli strikes in Gaza kill 12, including family of six, medics say",
+      "url": "https://www.bbc.co.uk/news/articles/c0qv0pdj18go?at_medium=RSS&at_campaign=rss",
+      "summary": "Firas al-Masri, his wife and their four children died in one attack, which the Israeli military says targeted a Hamas operative.",
+      "pub_date": "Tue, 21 Jul 2026 15:54:11 GMT"
     }
   ],
   "segments": [
@@ -368,7 +373,7 @@
           {
             "cat": "Wire Input",
             "name": "Copper (LME)",
-            "val": "$6.35 /lb",
+            "val": "$6.56 /lb",
             "unit": "LME spot",
             "note": "Primary cost driver",
             "chg": "0.00% day",
@@ -378,7 +383,7 @@
           {
             "cat": "Wire Input",
             "name": "Aluminum (LME)",
-            "val": "$3,448.75 /lb",
+            "val": "$3,488.75 /lb",
             "unit": "LME spot",
             "note": "Al wire and insulation",
             "chg": "0.00% day",
@@ -388,7 +393,7 @@
           {
             "cat": "Energy",
             "name": "WTI Crude",
-            "val": "$82.92 /bbl",
+            "val": "$84.50 /bbl",
             "unit": "NYMEX front month",
             "note": "Logistics and resin proxy",
             "chg": "0.00% day",
@@ -617,7 +622,7 @@
           }
         ],
         "highRisk": [],
-        "updatedAt": "Jul 20, 2026",
+        "updatedAt": "Jul 21, 2026",
         "source": "U.S. State Dept.",
         "sourceUrl": "https://travel.state.gov"
       }
