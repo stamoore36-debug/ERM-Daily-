@@ -1,8 +1,8 @@
 {
   "meta": {
-    "date": "Tuesday, July 28, 2026 · 01:48 PM EDT",
-    "dateShort": "Jul 28, 2026",
-    "runTime": "01:48 PM EDT",
+    "date": "Wednesday, July 29, 2026 · 12:57 PM EDT",
+    "dateShort": "Jul 29, 2026",
+    "runTime": "12:57 PM EDT",
     "posture": "ELEVATED",
     "postureSev": "high",
     "counts": {
@@ -16,7 +16,7 @@
     {
       "category": "US Equities",
       "name": "S&P 500",
-      "value": "7,432.35",
+      "value": "7,368.16",
       "unit": "Index · daily close",
       "note": "Broad equity risk-on/risk-off signal. High VIX or S&P drawdown signals demand risk for Southwire construction end markets.",
       "change": "▼ 0.00% day-over-day",
@@ -26,8 +26,8 @@
     {
       "category": "Energy",
       "name": "Brent Crude",
-      "value": "$84.12 /bbl",
-      "unit": "WTI $79.23 /bbl",
+      "value": "$90.31 /bbl",
+      "unit": "WTI $84.45 /bbl",
       "note": "Energy costs affect Southwire manufacturing and logistics. Sustained Brent >$90 pressures freight and resin input costs.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -36,8 +36,8 @@
     {
       "category": "Critical Input",
       "name": "Copper (LME)",
-      "value": "$6.35 /lb",
-      "unit": "($13,995 /MT) · LME spot",
+      "value": "$6.30 /lb",
+      "unit": "($13,892 /MT) · LME spot",
       "note": "Primary raw material. Copper content of wire drives COGS. Sustained elevation compresses margin unless hedged or repriced.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -46,7 +46,7 @@
     {
       "category": "Critical Input",
       "name": "Aluminum (LME)",
-      "value": "$3,383.00 /lb",
+      "value": "$3,362.75 /lb",
       "unit": "LME spot · Midwest premium add",
       "note": "Key input for aluminum wire and cable. Price signals secondary cost pressure and hedge calendar triggers.",
       "change": "▼ 0.00% day-over-day",
@@ -66,7 +66,7 @@
     {
       "category": "Volatility",
       "name": "VIX",
-      "value": "18.13",
+      "value": "20.08",
       "unit": "CBOE Volatility Index",
       "note": "Equity market fear gauge. VIX >25 indicates risk-off environment; monitor customer demand signals and receivables.",
       "change": "▼ 0.00% day-over-day",
@@ -76,7 +76,7 @@
     {
       "category": "Macro",
       "name": "Natural Gas",
-      "value": "$2.713 /MMBtu",
+      "value": "$2.726 /MMBtu",
       "unit": "Henry Hub futures",
       "note": "Energy input for manufacturing and logistics. Sustained elevation pressures margin. Drives residential heating demand indirectly.",
       "change": "▼ 0.00% day-over-day",
@@ -86,7 +86,7 @@
     {
       "category": "Safe Haven",
       "name": "Gold",
-      "value": "$4,032 /oz",
+      "value": "$4,075 /oz",
       "unit": "COMEX spot",
       "note": "Risk sentiment indicator. Gold >$3,000 with VIX elevation signals macro uncertainty that may dampen CapEx spending by customers.",
       "change": "▼ 0.00% day-over-day",
@@ -97,10 +97,10 @@
   "charts": [
     {
       "name": "S&P 500 · 30d",
-      "value": "7,432.35",
+      "value": "7,368.16",
       "chg": "0.0%",
       "bad": false,
-      "range": "30d range: 7,408.30 – 7,575.39",
+      "range": "30d range: 7,367.89 – 7,575.39",
       "pts": [
         7440.4302,
         7499.3599,
@@ -120,13 +120,15 @@
         7509.2002,
         7498.96,
         7408.2998,
+        7411.98,
         7413.1802,
-        7432.2598
+        7428.7798,
+        7367.8901
       ]
     },
     {
       "name": "Brent Crude · 30d",
-      "value": "84.12",
+      "value": "90.31",
       "chg": "0.0%",
       "bad": true,
       "range": "30d range: 71.57 – 100.69",
@@ -151,12 +153,13 @@
         100.69,
         96.78,
         88.36,
-        84.12
+        84.09,
+        90.31
       ]
     },
     {
       "name": "Gold · 30d",
-      "value": "4,032.00",
+      "value": "4,074.90",
       "chg": "0.0%",
       "bad": false,
       "range": "30d range: 3,985.60 – 4,155.10",
@@ -181,15 +184,16 @@
         4046.6001,
         4067.6001,
         4074.5,
-        4031.8999
+        4036.3,
+        4075.5
       ]
     },
     {
       "name": "VIX · 30d",
-      "value": "18.13",
+      "value": "20.08",
       "chg": "0.0%",
       "bad": true,
-      "range": "30d range: 15.03 – 18.77",
+      "range": "30d range: 15.03 – 20.08",
       "pts": [
         17.65,
         16.45,
@@ -209,13 +213,15 @@
         17.05,
         16.64,
         18.7,
+        18.58,
         18.67,
-        18.13
+        18.21,
+        20.08
       ]
     },
     {
       "name": "Copper (LME) · 30d",
-      "value": "6.35",
+      "value": "6.30",
       "chg": "0.0%",
       "bad": true,
       "range": "30d range: 6.05 – 6.51",
@@ -240,122 +246,123 @@
         6.305,
         6.32,
         6.339,
-        6.348
+        6.322,
+        6.302
       ]
     }
   ],
   "wire": [
     {
       "outlet": "NPR",
-      "title": "Leaders gather in Washington to pay their final tributes to Lindsey Graham",
-      "url": "https://www.npr.org/2026/07/28/nx-s1-5909232/lindsey-graham-funeral",
-      "summary": "Lawmakers, foreign leaders and President Trump are gathering Tuesday for the first of two days of funeral services for the late South Carolina Sen. Lindsey Graham.",
-      "pub_date": "Tue, 28 Jul 2026 13:08:29 -0400"
+      "title": "'Taiwan Travelogue' rethinks history, colonialism, and identity",
+      "url": "https://www.npr.org/2026/07/29/g-s1-136110/taiwan-travelogue-rethinks-history-colonialism-and-identity",
+      "summary": "The author and translator of Taiwan Travelogue, the winner of the 2026 International Booker Prize, discuss identity and history amid the debate over Taiwan's colonial ties to Japan and escalating geopolitical pressure from China.",
+      "pub_date": "Wed, 29 Jul 2026 12:55:54 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Photos: Spain and France's battle record wildfires",
-      "url": "https://www.npr.org/2026/07/28/g-s1-135880/photos-spain-france-wildfires-climate-change",
-      "summary": "Hundreds of thousands of people have been forced from their homes as powerful wildfires sweep across Spain and France, revealing the growing scale of a climate crisis already reshaping the continent.",
-      "pub_date": "Tue, 28 Jul 2026 11:24:07 -0400"
+      "title": "'Odyssey' translator Emily Wilson says Nolan shouldn't have written the movie himself",
+      "url": "https://www.npr.org/2026/07/29/nx-s1-5910645/odyssey-translator-emily-wilson-christopher-nolan",
+      "summary": "The renowned classics scholar caused a stir when her critical review of Christopher Nolan's The Odyssey went viral. Wilson explains her reaction to the film and why she's translating the poem again.",
+      "pub_date": "Wed, 29 Jul 2026 11:51:40 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "'Ricochet' explores how the right to bear arms expands -- while gun laws contract",
-      "url": "https://www.npr.org/2026/07/28/nx-s1-5910517/ricochet-explores-how-the-right-to-bear-arms-expands-while-gun-laws-contract",
-      "summary": "The New York Times reporter Mike McIntire says gun companies and the NRA are broadening the scope of the Second Amendment, socializing kids to appreciate guns and marketing a new brand of masculinity.",
-      "pub_date": "Tue, 28 Jul 2026 11:08:04 -0400"
+      "title": "Greetings from an isolated region in northern Pakistan's Hindu Kush mountains",
+      "url": "https://www.npr.org/2026/07/29/g-s1-135641/pakistan-chitral-hindu-kush-mountains",
+      "summary": "Chitral borders Afghanistan and isn't easy to reach. Breathtaking views abound in this remote mountainous region — as do rockslides and avalanches.",
+      "pub_date": "Wed, 29 Jul 2026 10:21:07 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Here are the 13 books that made the Booker Prize longlist",
-      "url": "https://www.npr.org/2026/07/28/nx-s1-5874638/2026-booker-prize-longlist-fiction",
-      "summary": "The 2026 list includes new works from household names Douglas Stuart, Marlon James and Elizabeth Strout as well as a few debut authors.",
-      "pub_date": "Tue, 28 Jul 2026 09:05:31 -0400"
+      "title": "U.S. and Iran resume attacks. And, Fauci to face Senate questions on COVID pandemic",
+      "url": "https://www.npr.org/2026/07/29/g-s1-136076/up-first-newsletter-iran-benjamin-netanyahu-trump-iowa-water-anthony-fauci-fed-rates",
+      "summary": "The U.S. and Iran have resumed fighting after Iran attacked U.S. forces in the Middle East yesterday. And, a Senate committee will question Anthony Fauci about the COVID-19 pandemic.",
+      "pub_date": "Wed, 29 Jul 2026 07:00:47 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "A 7.1 quake hits Japan's Kyushu, trapping people in a collapsed shopping mall",
-      "url": "https://www.npr.org/2026/07/28/nx-s1-5910498/japan-earthquake",
-      "summary": "The quake shook Japan's southern main island of Kyushu late Tuesday afternoon local time, causing damage and injuries.",
-      "pub_date": "Tue, 28 Jul 2026 08:51:33 -0400"
+      "title": "New York school pauses plan to deploy humanlike AI robot teacher after backlash",
+      "url": "https://www.npr.org/2026/07/29/g-s1-136072/ai-robot-teacher",
+      "summary": "A school district in upstate New York is pausing plans to deploy an AI-powered, humanoid robot in the classroom after state education officials, teachers and local residents raised concerns.",
+      "pub_date": "Wed, 29 Jul 2026 05:24:52 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Trump to meet with Zelenskyy, Netanyahu. And, TPS holders could soon face deportation",
-      "url": "https://www.npr.org/2026/07/28/g-s1-135845/up-first-newsletter-trump-zelenskyy-netanyahu-lindsey-graham-tps-political-corruption",
-      "summary": "President Trump is set to hold separate meetings with Ukrainian leader Volodymyr Zelenskyy and Israeli Prime Minister Benjamin Netanyahu are today. And, Temporary Protected Status holders may face deportation soon.",
-      "pub_date": "Tue, 28 Jul 2026 07:26:09 -0400"
+      "title": "Iran resumes missile attacks as U.S. and Saudis strike Tehran-backed militias in Iraq",
+      "url": "https://www.npr.org/2026/07/29/g-s1-136063/us-saudi-arabia-iran-iraq",
+      "summary": "The flare-up on multiple fronts raised the risk of a return to all-out war, underscoring the difficulty of winding down a five-month conflict that has jolted the world economy.",
+      "pub_date": "Wed, 29 Jul 2026 05:07:03 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "AI tokens could become the kilowatt-hour of the AI age",
-      "url": "https://www.npr.org/sections/planet-money/2026/07/28/g-s1-135475/ai-tokens-could-become-the-kilowatt-hour-of-the-ai-age",
-      "summary": "AI companies use tokens to track usage and bill customers. Now economists are using them to track the spread of AI through the economy.",
-      "pub_date": "Tue, 28 Jul 2026 06:30:00 -0400"
+      "title": "'Machines are collaborators' at this new museum of AI art",
+      "url": "https://www.npr.org/2026/07/29/nx-s1-5894941/ai-art-dataland-refik-anadol",
+      "summary": "\"What is beyond reality?\" asks artist Refik Anadol. His latest projects include Dataland, an immersive AI art museum in Los Angeles, and an installation at the Smithsonian in Washington, D.C.",
+      "pub_date": "Wed, 29 Jul 2026 05:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Yes, it's possible to save money while paying off credit card debt. Here's how",
-      "url": "https://www.npr.org/2026/07/28/nx-s1-5866642/yes-its-possible-to-save-money-while-paying-off-credit-card-debt-heres-how",
-      "summary": "In fact, experts recommend it because it can keep you off the hamster wheel of debt. Here's how to find the money in your budget to put toward savings and credit card payments.",
-      "pub_date": "Tue, 28 Jul 2026 05:02:00 -0400"
+      "title": "As extreme heat grips the South and West, here's how to stay safe",
+      "url": "https://www.npr.org/2026/07/29/nx-s1-5910515/heat-dome-stroke-weather",
+      "summary": "Experts say immersion in cold water before an ambulance arrives can greatly increase the chances of heat stroke survival and reduce the risk of long-term complications.",
+      "pub_date": "Wed, 29 Jul 2026 05:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Trump shattered ethics norms. Will voters trust Democrats to fix them?",
-      "url": "https://www.npr.org/2026/07/28/nx-s1-5869808/family-trump-profit-corruption-voters-ethics-democrats",
-      "summary": "Democrats are making the case that now is the time to tackle anti-corruption reforms — to serve as a check on Donald Trump and to overhaul a system voters say is co-opted against their interests.",
-      "pub_date": "Tue, 28 Jul 2026 05:00:00 -0400"
+      "title": "The Federal Reserve faces a critical decision on interest rates",
+      "url": "https://www.npr.org/2026/07/29/nx-s1-5910558/federal-reserve-interest-rates-inflation",
+      "summary": "Policymakers at the Federal Reserve are meeting to discuss interest rates Wednesday. They're expected to hold rates steady, but there's a chance they could raise rates to combat stubborn inflation.",
+      "pub_date": "Wed, 29 Jul 2026 05:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Amid U.S. funding cuts, the International AIDS Conference faces an uncertain future",
-      "url": "https://www.npr.org/2026/07/28/nx-s1-5909368/international-aids-conference-hiv",
-      "summary": "Dr. Kenneth Ngure, president-elect of the International AIDS Society, says, \"We have had very good scientific advances ... yet the funding cuts have also taken us back.\"",
-      "pub_date": "Tue, 28 Jul 2026 04:42:02 -0400"
+      "title": "More Americans are going bankrupt. What does that mean?",
+      "url": "https://www.npr.org/2026/07/29/nx-s1-5896065/personal-bankruptcy-rates-rising",
+      "summary": "The bankruptcy rate has risen about 48% between 2022 and 2025, although it's still below pre-pandemic levels.",
+      "pub_date": "Wed, 29 Jul 2026 05:00:00 -0400"
     },
     {
       "outlet": "BBC",
-      "title": "Wildfires in south-west France flare up as region braces for new 40C heatwave",
-      "url": "https://www.bbc.co.uk/news/articles/c5yd8gly1ydo?at_medium=RSS&at_campaign=rss",
-      "summary": "Firefighters are braced for a sharp rise in temperatures on Wednesday, which could complicate the containment of wildfires in Gironde.",
-      "pub_date": "Tue, 28 Jul 2026 16:14:03 GMT"
+      "title": "Two firefighters die in Crete as wildfires threaten parts of southern Europe",
+      "url": "https://www.bbc.co.uk/news/articles/cwyjgwg8jddo?at_medium=RSS&at_campaign=rss",
+      "summary": "Gale-force winds have whipped up the flames prompting the evacuation of several villages on the island, as parts of the continent also continue to tackle fires.",
+      "pub_date": "Wed, 29 Jul 2026 16:23:41 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Uefa reacts with fury to Infantino World Cup plan",
-      "url": "https://www.bbc.co.uk/sport/football/articles/c8xng9894z0o?at_medium=RSS&at_campaign=rss",
-      "summary": "European football's governing body Uefa reacts furiously to proposals from Fifa to seek private investment in its competitions, including the World Cup.",
-      "pub_date": "Tue, 28 Jul 2026 15:36:29 GMT"
+      "title": "France fire crews face searing heat in battle to contain flames",
+      "url": "https://www.bbc.co.uk/news/articles/c62q5we799ro?at_medium=RSS&at_campaign=rss",
+      "summary": "Firefighters are battling flare-ups in 40C heat, as some locals have refused to heed evacuations in the Gironde region.",
+      "pub_date": "Wed, 29 Jul 2026 16:49:41 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Mysterious deaths of 14 elephants in Kenya prompts urgent inquiry",
-      "url": "https://www.bbc.co.uk/news/articles/c3w0d7yeqlxo?at_medium=RSS&at_campaign=rss",
-      "summary": "It is the highest number of elephant deaths to be recorded in this area of southern Kenya in decades.",
-      "pub_date": "Tue, 28 Jul 2026 16:37:02 GMT"
+      "title": "More than 100 aftershocks hit Japan after powerful quake that killed 13",
+      "url": "https://www.bbc.co.uk/news/articles/cgk43y21j0do?at_medium=RSS&at_campaign=rss",
+      "summary": "People are being urged to stay alert, with earthquake aftershocks potentially reaching magnitude 7, officials say",
+      "pub_date": "Wed, 29 Jul 2026 11:47:05 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "The cocaine superhighway from Ecuador to Europe - the BBC reports on gangs and the police fightback",
-      "url": "https://www.bbc.co.uk/news/articles/cdx7n1r54nno?at_medium=RSS&at_campaign=rss",
-      "summary": "The BBC goes on patrol with Ecuador's police, who are grappling with a huge surge in drug crime.",
-      "pub_date": "Tue, 28 Jul 2026 05:01:19 GMT"
+      "title": "Saudi Arabia joins US in strikes on Iran-backed militias in Iraq",
+      "url": "https://www.bbc.co.uk/news/articles/c70g6y24d76o?at_medium=RSS&at_campaign=rss",
+      "summary": "US Central Command says proxy groups launched attacks against US bases and Saudi energy infrastructure.",
+      "pub_date": "Wed, 29 Jul 2026 13:48:41 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "US walks out of UN Security Council meeting during France's remarks",
-      "url": "https://www.bbc.co.uk/news/articles/c87nj3w9gxjo?at_medium=RSS&at_campaign=rss",
-      "summary": "The row sparked after the US joined North Korea and Russia in voting against extending the term of the UN high commissioner for human rights.",
-      "pub_date": "Tue, 28 Jul 2026 09:32:25 GMT"
+      "title": "Anthony Fauci refuses to answer questions during US Senate hearing discussing Covid origins",
+      "url": "https://www.bbc.co.uk/news/articles/cdx85vkk0gko?at_medium=RSS&at_campaign=rss",
+      "summary": "The former top US health official said he feared Republicans could try to trip him up and use his testimony to prosecute him for perjury.",
+      "pub_date": "Wed, 29 Jul 2026 16:49:06 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "'A lover of life' - Seattle pays tribute to food festival shooting victims",
-      "url": "https://www.bbc.co.uk/news/articles/cvgv7m5z4n0o?at_medium=RSS&at_campaign=rss",
-      "summary": "Families grieved on Monday as they remembered the three people killed in a shooting at a food festival.",
-      "pub_date": "Tue, 28 Jul 2026 11:50:59 GMT"
+      "title": "Four women accuse Jared Leto of criminal sexual conduct",
+      "url": "https://www.bbc.co.uk/news/articles/cd7lg2nz2x2o?at_medium=RSS&at_campaign=rss",
+      "summary": "The actor and musician faces allegations from 10 women in total who say he mistreated them as teenagers.",
+      "pub_date": "Wed, 29 Jul 2026 05:00:07 GMT"
     }
   ],
   "segments": [
@@ -371,7 +378,7 @@
           {
             "cat": "Wire Input",
             "name": "Copper (LME)",
-            "val": "$6.35 /lb",
+            "val": "$6.30 /lb",
             "unit": "LME spot",
             "note": "Primary cost driver",
             "chg": "0.00% day",
@@ -381,7 +388,7 @@
           {
             "cat": "Wire Input",
             "name": "Aluminum (LME)",
-            "val": "$3,383.00 /lb",
+            "val": "$3,362.75 /lb",
             "unit": "LME spot",
             "note": "Al wire and insulation",
             "chg": "0.00% day",
@@ -391,7 +398,7 @@
           {
             "cat": "Energy",
             "name": "WTI Crude",
-            "val": "$79.23 /bbl",
+            "val": "$84.45 /bbl",
             "unit": "NYMEX front month",
             "note": "Logistics and resin proxy",
             "chg": "0.00% day",
@@ -401,7 +408,7 @@
           {
             "cat": "Energy",
             "name": "Natural Gas",
-            "val": "$2.713 /MMBtu",
+            "val": "$2.726 /MMBtu",
             "unit": "Henry Hub",
             "note": "Manufacturing energy cost",
             "chg": "0.00% day",
@@ -620,7 +627,7 @@
           }
         ],
         "highRisk": [],
-        "updatedAt": "Jul 28, 2026",
+        "updatedAt": "Jul 29, 2026",
         "source": "U.S. State Dept.",
         "sourceUrl": "https://travel.state.gov"
       }
