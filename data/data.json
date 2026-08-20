@@ -1,8 +1,8 @@
 {
   "meta": {
-    "date": "Wednesday, August 19, 2026 · 09:22 AM EDT",
-    "dateShort": "Aug 19, 2026",
-    "runTime": "09:22 AM EDT",
+    "date": "Thursday, August 20, 2026 · 09:23 AM EDT",
+    "dateShort": "Aug 20, 2026",
+    "runTime": "09:23 AM EDT",
     "posture": "ELEVATED",
     "postureSev": "high",
     "counts": {
@@ -16,7 +16,7 @@
     {
       "category": "US Equities",
       "name": "S&P 500",
-      "value": "7,691.76",
+      "value": "7,707.98",
       "unit": "Index · daily close",
       "note": "Broad equity risk-on/risk-off signal. High VIX or S&P drawdown signals demand risk for Southwire construction end markets.",
       "change": "▼ 0.00% day-over-day",
@@ -26,8 +26,8 @@
     {
       "category": "Energy",
       "name": "Brent Crude",
-      "value": "$91.12 /bbl",
-      "unit": "WTI $84.19 /bbl",
+      "value": "$93.60 /bbl",
+      "unit": "WTI $86.57 /bbl",
       "note": "Energy costs affect Southwire manufacturing and logistics. Sustained Brent >$90 pressures freight and resin input costs.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -36,8 +36,8 @@
     {
       "category": "Critical Input",
       "name": "Copper (LME)",
-      "value": "$6.47 /lb",
-      "unit": "($14,254 /MT) · LME spot",
+      "value": "$6.42 /lb",
+      "unit": "($14,143 /MT) · LME spot",
       "note": "Primary raw material. Copper content of wire drives COGS. Sustained elevation compresses margin unless hedged or repriced.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -46,7 +46,7 @@
     {
       "category": "Critical Input",
       "name": "Aluminum (LME)",
-      "value": "$3,350.00 /lb",
+      "value": "$3,347.00 /lb",
       "unit": "LME spot · Midwest premium add",
       "note": "Key input for aluminum wire and cable. Price signals secondary cost pressure and hedge calendar triggers.",
       "change": "▼ 0.00% day-over-day",
@@ -66,7 +66,7 @@
     {
       "category": "Volatility",
       "name": "VIX",
-      "value": "15.50",
+      "value": "15.76",
       "unit": "CBOE Volatility Index",
       "note": "Equity market fear gauge. VIX >25 indicates risk-off environment; monitor customer demand signals and receivables.",
       "change": "▼ 0.00% day-over-day",
@@ -76,7 +76,7 @@
     {
       "category": "Macro",
       "name": "Natural Gas",
-      "value": "$2.854 /MMBtu",
+      "value": "$2.754 /MMBtu",
       "unit": "Henry Hub futures",
       "note": "Energy input for manufacturing and logistics. Sustained elevation pressures margin. Drives residential heating demand indirectly.",
       "change": "▼ 0.00% day-over-day",
@@ -86,7 +86,7 @@
     {
       "category": "Safe Haven",
       "name": "Gold",
-      "value": "$4,501 /oz",
+      "value": "$4,530 /oz",
       "unit": "COMEX spot",
       "note": "Risk sentiment indicator. Gold >$3,000 with VIX elevation signals macro uncertainty that may dampen CapEx spending by customers.",
       "change": "▼ 0.00% day-over-day",
@@ -97,21 +97,18 @@
   "charts": [
     {
       "name": "S&P 500 · 30d",
-      "value": "7,691.76",
+      "value": "7,707.98",
       "chg": "0.0%",
       "bad": false,
       "range": "30d range: 7,316.15 – 7,798.99",
       "pts": [
         7443.2798,
-        7509.2002,
-        7498.96,
         7408.2998,
         7411.98,
         7413.1802,
         7428.7798,
         7316.1499,
         7437.6299,
-        7489.7202,
         7600.5,
         7736.52,
         7723.5498,
@@ -123,12 +120,13 @@
         7798.9902,
         7785.7598,
         7745.0601,
-        7691.7598
+        7691.7598,
+        7707.98
       ]
     },
     {
       "name": "Brent Crude · 30d",
-      "value": "91.12",
+      "value": "93.60",
       "chg": "0.0%",
       "bad": true,
       "range": "30d range: 79.36 – 100.69",
@@ -155,15 +153,16 @@
         88.52,
         90.87,
         91.02,
-        91.13
+        91.62,
+        93.6
       ]
     },
     {
       "name": "Gold · 30d",
-      "value": "4,501.00",
+      "value": "4,529.70",
       "chg": "0.0%",
       "bad": false,
-      "range": "30d range: 4,010.30 – 4,502.20",
+      "range": "30d range: 4,010.30 – 4,529.70",
       "pts": [
         4010.3,
         4071.1001,
@@ -187,26 +186,24 @@
         4380.3999,
         4417.7998,
         4366.0,
-        4502.2002
+        4489.3999,
+        4529.7002
       ]
     },
     {
       "name": "VIX · 30d",
-      "value": "15.50",
+      "value": "15.76",
       "chg": "0.0%",
       "bad": true,
       "range": "30d range: 14.25 – 20.66",
       "pts": [
         18.65,
-        17.05,
-        16.64,
         18.7,
         18.58,
         18.67,
         18.21,
         20.66,
         17.09,
-        15.99,
         15.86,
         16.5,
         15.81,
@@ -219,12 +216,13 @@
         14.25,
         15.19,
         15.84,
-        15.5
+        14.89,
+        15.76
       ]
     },
     {
       "name": "Copper (LME) · 30d",
-      "value": "6.47",
+      "value": "6.42",
       "chg": "0.0%",
       "bad": true,
       "range": "30d range: 6.27 – 6.70",
@@ -251,122 +249,123 @@
         6.5995,
         6.604,
         6.4825,
-        6.467
+        6.4875,
+        6.414
       ]
     }
   ],
   "wire": [
     {
       "outlet": "NPR",
-      "title": "U.S. delays 50% tariff on Canadian imports. And, takeaways from Florida's primaries",
-      "url": "https://www.npr.org/2026/08/19/g-s1-139173/up-first-newsletter-florida-primary-canada-tariffs-trump-meta-trial",
-      "summary": "President Trump has announced that the U.S. is delaying a 50% tariff on Canadian imports after reaching a deal. And, how progressive Democrats fared in Florida's primary elections yesterday.",
-      "pub_date": "Wed, 19 Aug 2026 07:14:31 -0400"
+      "title": "U.S. debt tops $40 trillion. And, new census report Trump is touting raises concerns",
+      "url": "https://www.npr.org/2026/08/20/g-s1-139388/up-first-newsletter-us-debt-venezuela-oil-deals-census-bureau-trump-voting-claims",
+      "summary": "The U.S. debt has surpassed $40 trillion. And, a new census report on noncitizen voting that President Trump is touting has ties to a think tank aligned with him, raising concerns among experts.",
+      "pub_date": "Thu, 20 Aug 2026 07:30:18 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "How India's blocking of a film exposing real-life police abuses backfired",
-      "url": "https://www.npr.org/2026/08/19/g-s1-138787/how-indias-blocking-of-a-film-exposing-real-life-police-abuses-backfired",
-      "summary": "When Indian authorities scrubbed the biopic of activist Jaswant Singh Khalra, local villagers and activists turned its censorship into a grassroots movement.",
-      "pub_date": "Wed, 19 Aug 2026 06:02:00 -0400"
+      "title": "North Korea fires a suspected missile toward the sea, Japan says",
+      "url": "https://www.npr.org/2026/08/20/g-s1-139381/north-korea-suspected-missile",
+      "summary": "The suspected launch on Thursday comes a day after North Korea shrugged off a U.S. decision to scale back military drills with South Korea in an apparent bid to resume diplomacy.",
+      "pub_date": "Thu, 20 Aug 2026 05:24:45 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Striking hospital employees sound alarm over workplace violence",
-      "url": "https://www.npr.org/2026/08/19/nx-s1-5930385/nurses-strike-hospital-workplace-violence-patient-attacks",
-      "summary": "In addition to pay, striking hospital workers say patient violence is an issue. Hospital workers are seven times more likely to be injured at work due to violent acts than the general working population.",
-      "pub_date": "Wed, 19 Aug 2026 06:00:00 -0400"
+      "title": "The bond market is signaling trouble ahead. This is why you should pay attention",
+      "url": "https://www.npr.org/2026/08/20/nx-s1-5937600/economy-bonds-inflation-debt-consumers",
+      "summary": "Many people don't pay attention to bond markets, but they should — especially now. This is why they matter and why the drop in bond prices is signaling investor concerns about the U.S. economy.",
+      "pub_date": "Thu, 20 Aug 2026 05:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Congo's Ebola outbreak reaches 5,000 cases as it outpaces response efforts",
-      "url": "https://www.npr.org/2026/08/19/g-s1-139164/congo-ebola-outbreak",
-      "summary": "Government data showed the outbreak had so far recorded 5,021 cases, including 2,378 deaths. The outbreak has infected and killed more people at a greater speed than any other outbreak in history.",
-      "pub_date": "Wed, 19 Aug 2026 05:29:40 -0400"
+      "title": "Privacy advocates call on Maryland to investigate data brokers",
+      "url": "https://www.npr.org/2026/08/20/nx-s1-5938822/maryland-privacy-data-brokers",
+      "summary": "Maryland has one of the strictest data privacy laws in the country. But privacy advocates allege data brokers are violating the law by selling data to police and federal immigration agencies.",
+      "pub_date": "Thu, 20 Aug 2026 05:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Feeling restless? Level up your life by starting a side quest",
-      "url": "https://www.npr.org/2026/08/19/nx-s1-5936241/feeling-restless-level-up-your-life-start-side-quest",
-      "summary": "Feeling restless in life? Level up your main quest with an activity that has no other purpose than to add whimsy to your life. Play experts share tips on how to find the perfect side quest.",
-      "pub_date": "Wed, 19 Aug 2026 05:02:00 -0400"
+      "title": "Which country makes the best jollof rice? D.C. foodies put it to a blind test",
+      "url": "https://www.npr.org/2026/08/20/nx-s1-5936436/which-country-makes-the-best-jollof-rice-d-c-foodies-put-it-to-a-blind-test",
+      "summary": "One of the most famous dishes across West Africa is jollof rice — fragrant rice cooked down with spices, tomatoes and meat. But which version is best? A traveling festival aims to find out.",
+      "pub_date": "Thu, 20 Aug 2026 05:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Elbridge who? How the name of a forgotten founder lives on in the word 'gerrymander'",
-      "url": "https://www.npr.org/2026/08/19/nx-s1-5930301/gerrymandering-elbridge-gerry-redistricting",
-      "summary": "Elbridge Gerry was an important early figure in the American Revolution, but his decision to approve a \"gerrymandered\" state legislative map inadvertently won him lasting infamy.",
-      "pub_date": "Wed, 19 Aug 2026 05:00:00 -0400"
+      "title": "Here's how the system to report problems in ICE detention has failed immigrants",
+      "url": "https://www.npr.org/2026/08/20/nx-s1-5850361/grievance-ice-detention-immigrants",
+      "summary": "Critics say it is the reason why more detainees are risking their lives to protest inhumane conditions and legal rights violations, in the form of widespread hunger strikes.",
+      "pub_date": "Thu, 20 Aug 2026 05:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Why more than 400,000 kids are on waitlists for federal childcare assistance",
-      "url": "https://www.npr.org/2026/08/19/nx-s1-5920326/childcare-assistance-waitlists",
-      "summary": "The Child Care and Development Fund, the U.S. government's main source of funding to help low-income families pay for childcare, serves over 1.6 million children in a typical month.",
-      "pub_date": "Wed, 19 Aug 2026 05:00:00 -0400"
+      "title": "They grew up with disability rights. Now, they're fighting to keep them",
+      "url": "https://www.npr.org/2026/08/20/nx-s1-5891791/disability-rights-community-living-integration-trump",
+      "summary": "Siblings Cody and Kaleigh Brendle have grown up with the right to community integration. Now, they worry those protections for people with disabilities like them are being eroded.",
+      "pub_date": "Thu, 20 Aug 2026 05:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "15 states have laws that allow corporal punishment in schools. Here's where, and why",
-      "url": "https://www.npr.org/2026/08/19/nx-s1-5803505/school-corporal-punishment-policy-tracker",
-      "summary": "There is broad consensus among psychologists that corporal punishment can be harmful to children, but the U.S. has no federal laws banning it in public schools.",
-      "pub_date": "Wed, 19 Aug 2026 05:00:00 -0400"
+      "title": "Morning news brief",
+      "url": "https://www.npr.org/2026/08/20/nx-s1-5931261/morning-news-brief",
+      "summary": "Gulf countries react to protracted Iran war, U.S. debt tops $40 trillion, U.S. oil companies sign first deals with Venezuela.",
+      "pub_date": "Thu, 20 Aug 2026 04:52:29 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Israel strikes an air base in Syria to prevent Turkish troops from deploying",
-      "url": "https://www.npr.org/2026/08/19/nx-s1-5937400/israel-strikes-syria",
-      "summary": "Israel struck an air base in northwest Syria early Tuesday, saying it aimed to prevent Turkish troops from deploying there. Turkey, which has close ties with the Syrian government and has been providing assistance to Syria's military.",
-      "pub_date": "Wed, 19 Aug 2026 03:51:59 -0400"
+      "title": "Tech billionaires push back against proposed wealth tax in California",
+      "url": "https://www.npr.org/2026/08/20/nx-s1-5935597/tech-billionaires-push-back-against-proposed-wealth-tax-in-california",
+      "summary": "Tech billionaires in California are fighting a proposed one-time wealth tax. A Google co-founder is leading the charge against the tax, which would generate revenue for health-care services.",
+      "pub_date": "Thu, 20 Aug 2026 04:45:47 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Liberia agrees to take 1,200 third-country deportees from the U.S.",
-      "url": "https://www.npr.org/2026/08/19/nx-s1-5937389/liberia-to-take-deportees-from-us",
-      "summary": "The 1,200 deportees will include Africans as well as nationals from North America, South America and the Caribbean, with the first batch of 20 expected on Thursday.",
-      "pub_date": "Wed, 19 Aug 2026 02:57:51 -0400"
+      "title": "Chinese court sentences founder of property developer Evergrande to life in prison",
+      "url": "https://www.npr.org/2026/08/20/nx-s1-5939335/chinese-sentence-founder-evergrande",
+      "summary": "Chinese property developer Hui Ka Yan has been sentenced to life in prison. The decision marks a milestone in Evergrande's saga after it collapsed with more than $300 billion in liabilities.",
+      "pub_date": "Thu, 20 Aug 2026 03:31:55 -0400"
     },
     {
       "outlet": "BBC",
-      "title": "Israeli army orders criminal investigation into killing of Palestinian girl Hind Rajab in Gaza",
-      "url": "https://www.bbc.co.uk/news/articles/crl7yjlpx2po?at_medium=RSS&at_campaign=rss",
-      "summary": "The five-year-old spent hours on the phone to paramedics before her body was recovered days later in Gaza City in 2024.",
-      "pub_date": "Wed, 19 Aug 2026 12:41:46 GMT"
+      "title": "At least 15 killed in Kyiv as Ukraine grapples with air defence shortages",
+      "url": "https://www.bbc.co.uk/news/articles/c98vzmden5yo?at_medium=RSS&at_campaign=rss",
+      "summary": "Blocks of flats and warehouses were targeted in the \"massive attack\" on Thursday, Ukrainian officials say.",
+      "pub_date": "Thu, 20 Aug 2026 11:06:54 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Sacked Ukrainian defence minister calls for presidential election",
-      "url": "https://www.bbc.co.uk/news/articles/cdew8n9erlwo?at_medium=RSS&at_campaign=rss",
-      "summary": "Martial law has been in place in Ukraine since February 2022, under which elections are suspended.",
-      "pub_date": "Wed, 19 Aug 2026 11:00:21 GMT"
+      "title": "Founder of collapsed Chinese property giant Evergrande sentenced to life in prison",
+      "url": "https://www.bbc.co.uk/news/articles/cd0x9mjjmgjo?at_medium=RSS&at_campaign=rss",
+      "summary": "Hui's sentencing marks a key moment in the fallout from Evergrande's collapse, which shook China's property sector.",
+      "pub_date": "Thu, 20 Aug 2026 06:08:02 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Mushroom murderer trial undermined by 'catastrophic' hotel mix-up, appeal court told",
-      "url": "https://www.bbc.co.uk/news/articles/czjlxenlgkko?at_medium=RSS&at_campaign=rss",
-      "summary": "Erin Patterson's defence team appeal against her conviction for killing relatives with a beef Wellington laced with toxic mushrooms.",
-      "pub_date": "Wed, 19 Aug 2026 08:25:03 GMT"
+      "title": "Trump vows tougher economic measures on Iran and supporting countries",
+      "url": "https://www.bbc.co.uk/news/articles/c2k7e83ynj4o?at_medium=RSS&at_campaign=rss",
+      "summary": "It comes after a 60-day ceasefire expired on Monday, with no sign of a diplomatic or military off-ramp to the conflict.",
+      "pub_date": "Thu, 20 Aug 2026 09:13:18 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Trump pauses new tariffs on Canada for three days, saying deal close",
-      "url": "https://www.bbc.co.uk/news/articles/cy9wz79ze29o?at_medium=RSS&at_campaign=rss",
-      "summary": "The US president says the two sides are finalising documents to avert import taxes targeting a range of Canadian goods.",
-      "pub_date": "Wed, 19 Aug 2026 03:56:35 GMT"
+      "title": "Belgian car salesman becomes prince after royal parentage confirmed",
+      "url": "https://www.bbc.co.uk/news/articles/c4g616gvxr0o?at_medium=RSS&at_campaign=rss",
+      "summary": "Clément Vandenkerckhove was quietly brought into Prince Laurent's family at a town hall ceremony.",
+      "pub_date": "Thu, 20 Aug 2026 10:14:47 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "South Korea shortens war games with US, citing Washington request",
-      "url": "https://www.bbc.co.uk/news/articles/cnvn0j31qj8o?at_medium=RSS&at_campaign=rss",
-      "summary": "It comes after Trump announced plans to curtail joint military exercises with South Korea, citing a \"very good\" relationship with North Korea's Kim Jong Un.",
-      "pub_date": "Wed, 19 Aug 2026 05:53:53 GMT"
+      "title": "Mushroom killer must stay in jail forever for 'truly dreadful' crime, appeal court told",
+      "url": "https://www.bbc.co.uk/news/articles/ckg3j3yn4exo?at_medium=RSS&at_campaign=rss",
+      "summary": "Prosecutors say Erin Patterson's sentence was \"manifestly inadequate\" as it allows for the possibility of parole.",
+      "pub_date": "Thu, 20 Aug 2026 07:08:35 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Ukrainian man arrested in Croatia over Nord Stream pipeline blasts",
-      "url": "https://www.bbc.co.uk/news/articles/c78gp7l5348o?at_medium=RSS&at_campaign=rss",
-      "summary": "The man is alleged to have been one of the scuba divers who planted explosives on the pipelines in 2022.",
-      "pub_date": "Wed, 19 Aug 2026 12:47:53 GMT"
+      "title": "Australia 'outraged' after Israel decides not to open criminal investigation into killing of aid worker in Gaza",
+      "url": "https://www.bbc.co.uk/news/articles/cp87g29r718o?at_medium=RSS&at_campaign=rss",
+      "summary": "Australia's foreign minister summoned the Israeli ambassador over \"insulting\" Zomi Frankcom decision.",
+      "pub_date": "Thu, 20 Aug 2026 07:33:11 GMT"
     }
   ],
   "segments": [
@@ -382,7 +381,7 @@
           {
             "cat": "Wire Input",
             "name": "Copper (LME)",
-            "val": "$6.47 /lb",
+            "val": "$6.42 /lb",
             "unit": "LME spot",
             "note": "Primary cost driver",
             "chg": "0.00% day",
@@ -392,7 +391,7 @@
           {
             "cat": "Wire Input",
             "name": "Aluminum (LME)",
-            "val": "$3,350.00 /lb",
+            "val": "$3,347.00 /lb",
             "unit": "LME spot",
             "note": "Al wire and insulation",
             "chg": "0.00% day",
@@ -402,7 +401,7 @@
           {
             "cat": "Energy",
             "name": "WTI Crude",
-            "val": "$84.19 /bbl",
+            "val": "$86.57 /bbl",
             "unit": "NYMEX front month",
             "note": "Logistics and resin proxy",
             "chg": "0.00% day",
@@ -412,7 +411,7 @@
           {
             "cat": "Energy",
             "name": "Natural Gas",
-            "val": "$2.854 /MMBtu",
+            "val": "$2.754 /MMBtu",
             "unit": "Henry Hub",
             "note": "Manufacturing energy cost",
             "chg": "0.00% day",
@@ -631,7 +630,7 @@
           }
         ],
         "highRisk": [],
-        "updatedAt": "Aug 19, 2026",
+        "updatedAt": "Aug 20, 2026",
         "source": "U.S. State Dept.",
         "sourceUrl": "https://travel.state.gov"
       }
