@@ -1,8 +1,8 @@
 {
   "meta": {
-    "date": "Friday, September 11, 2026 · 12:37 PM EDT",
-    "dateShort": "Sep 11, 2026",
-    "runTime": "12:37 PM EDT",
+    "date": "Monday, September 14, 2026 · 02:06 PM EDT",
+    "dateShort": "Sep 14, 2026",
+    "runTime": "02:06 PM EDT",
     "posture": "ELEVATED",
     "postureSev": "high",
     "counts": {
@@ -16,7 +16,7 @@
     {
       "category": "US Equities",
       "name": "S&P 500",
-      "value": "7,665.17",
+      "value": "7,635.83",
       "unit": "Index · daily close",
       "note": "Broad equity risk-on/risk-off signal. High VIX or S&P drawdown signals demand risk for Southwire construction end markets.",
       "change": "▼ 0.00% day-over-day",
@@ -26,8 +26,8 @@
     {
       "category": "Energy",
       "name": "Brent Crude",
-      "value": "$105.03 /bbl",
-      "unit": "WTI $99.58 /bbl",
+      "value": "$105.75 /bbl",
+      "unit": "WTI $101.35 /bbl",
       "note": "Energy costs affect Southwire manufacturing and logistics. Sustained Brent >$90 pressures freight and resin input costs.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -36,8 +36,8 @@
     {
       "category": "Critical Input",
       "name": "Copper (LME)",
-      "value": "$6.55 /lb",
-      "unit": "($14,437 /MT) · LME spot",
+      "value": "$6.40 /lb",
+      "unit": "($14,118 /MT) · LME spot",
       "note": "Primary raw material. Copper content of wire drives COGS. Sustained elevation compresses margin unless hedged or repriced.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -46,7 +46,7 @@
     {
       "category": "Critical Input",
       "name": "Aluminum (LME)",
-      "value": "$3,419.00 /lb",
+      "value": "$3,420.00 /lb",
       "unit": "LME spot · Midwest premium add",
       "note": "Key input for aluminum wire and cable. Price signals secondary cost pressure and hedge calendar triggers.",
       "change": "▼ 0.00% day-over-day",
@@ -66,7 +66,7 @@
     {
       "category": "Volatility",
       "name": "VIX",
-      "value": "15.74",
+      "value": "16.70",
       "unit": "CBOE Volatility Index",
       "note": "Equity market fear gauge. VIX >25 indicates risk-off environment; monitor customer demand signals and receivables.",
       "change": "▼ 0.00% day-over-day",
@@ -76,7 +76,7 @@
     {
       "category": "Macro",
       "name": "Natural Gas",
-      "value": "$2.816 /MMBtu",
+      "value": "$2.903 /MMBtu",
       "unit": "Henry Hub futures",
       "note": "Energy input for manufacturing and logistics. Sustained elevation pressures margin. Drives residential heating demand indirectly.",
       "change": "▼ 0.00% day-over-day",
@@ -86,7 +86,7 @@
     {
       "category": "Safe Haven",
       "name": "Gold",
-      "value": "$4,398 /oz",
+      "value": "$4,353 /oz",
       "unit": "COMEX spot",
       "note": "Risk sentiment indicator. Gold >$3,000 with VIX elevation signals macro uncertainty that may dampen CapEx spending by customers.",
       "change": "▼ 0.00% day-over-day",
@@ -97,14 +97,11 @@
   "charts": [
     {
       "name": "S&P 500 · 30d",
-      "value": "7,665.17",
+      "value": "7,635.83",
       "chg": "0.0%",
       "bad": false,
-      "range": "30d range: 7,591.70 – 7,798.99",
+      "range": "30d range: 7,591.70 – 7,785.76",
       "pts": [
-        7728.2002,
-        7748.5,
-        7798.9902,
         7785.7598,
         7745.0601,
         7691.7598,
@@ -124,19 +121,17 @@
         7673.52,
         7636.3599,
         7591.7002,
-        7665.1699
+        7656.98,
+        7635.7998
       ]
     },
     {
       "name": "Brent Crude · 30d",
-      "value": "105.03",
+      "value": "105.75",
       "chg": "0.0%",
       "bad": true,
-      "range": "30d range: 87.07 – 107.63",
+      "range": "30d range: 87.84 – 107.63",
       "pts": [
-        88.91,
-        88.98,
-        87.07,
         88.52,
         90.87,
         91.02,
@@ -156,19 +151,17 @@
         97.92,
         101.21,
         107.63,
-        105.03
+        104.61,
+        105.75
       ]
     },
     {
       "name": "Gold · 30d",
-      "value": "4,398.40",
+      "value": "4,353.40",
       "chg": "0.0%",
       "bad": false,
       "range": "30d range: 4,348.00 – 4,640.80",
       "pts": [
-        4383.0,
-        4408.8999,
-        4363.6001,
         4380.3999,
         4417.7998,
         4366.0,
@@ -188,19 +181,17 @@
         4393.8999,
         4416.0,
         4364.5,
-        4398.3999
+        4408.8999,
+        4353.2998
       ]
     },
     {
       "name": "VIX · 30d",
-      "value": "15.74",
+      "value": "16.70",
       "chg": "0.0%",
       "bad": true,
       "range": "30d range: 14.25 – 17.84",
       "pts": [
-        15.28,
-        14.55,
-        14.63,
         14.25,
         15.19,
         15.84,
@@ -221,19 +212,17 @@
         15.72,
         16.46,
         17.84,
-        15.74
+        15.84,
+        16.7
       ]
     },
     {
       "name": "Copper (LME) · 30d",
-      "value": "6.55",
+      "value": "6.40",
       "chg": "0.0%",
       "bad": true,
-      "range": "30d range: 6.46 – 6.80",
+      "range": "30d range: 6.40 – 6.80",
       "pts": [
-        6.612,
-        6.597,
-        6.5925,
         6.5995,
         6.604,
         6.4825,
@@ -253,122 +242,123 @@
         6.739,
         6.8035,
         6.467,
-        6.548
+        6.4695,
+        6.4035
       ]
     }
   ],
   "wire": [
     {
       "outlet": "NPR",
-      "title": "As diseases loom, CDC's response to measles deaths stirs fears about agency's reliability",
-      "url": "https://www.npr.org/2026/09/11/nx-s1-5950002/as-diseases-loom-cdcs-response-to-measles-deaths-stirs-fears-about-agencys-reliability",
-      "summary": "The worst U.S. measles outbreak in decades is growing and flu season is imminent. Experts are fretting about federal health data reliability after the CDC questioned two Pennsylvania measles deaths.",
-      "pub_date": "Fri, 11 Sep 2026 11:34:51 -0400"
+      "title": "The producer of Fleabag and Baby Reindeer's tip for finding a hit? Don't look for one",
+      "url": "https://www.npr.org/2026/09/14/nx-s1-5968566/francesca-moody-fleabag-producer-hits-edinburgh",
+      "summary": "Theatre producer Francesca Moody has a remarkable record of spotting shows that go on to have wide success. At the Edinburgh Fringe festival, she told NPR about what she looks for in a performance.",
+      "pub_date": "Mon, 14 Sep 2026 10:03:14 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Is Patagonia the new data center hub? + Harley-Davidson's role in the trade war",
-      "url": "https://www.npr.org/2026/09/11/nx-s1-5966498/is-patagonia-the-new-data-center-hub-harley-davidsons-role-in-the-trade-war",
-      "summary": "Why Patagonia might become a new data center hub",
-      "pub_date": "Fri, 11 Sep 2026 10:16:35 -0400"
+      "title": "Key leaders sound the alarm on AI. And, Iran-Gulf diplomacy hits a setback",
+      "url": "https://www.npr.org/2026/09/14/g-s1-143148/up-first-newsletter-ai-anthropic-openai-midterms-trump-oman-iran-talks",
+      "summary": "Some key leaders at artificial intelligence companies call for a slowdown in AI development. And, Iran-Gulf diplomacy hits a setback as talks in Oman are delayed.",
+      "pub_date": "Mon, 14 Sep 2026 07:39:06 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "The voices of Sept. 11: 'My first thought was ... I can't believe that I survived'",
-      "url": "https://www.npr.org/2026/09/11/nx-s1-5965794/the-voices-of-sept-11-my-first-thought-was-i-cant-believe-that-i-survived",
-      "summary": "We listen back to interviews recorded in the aftermath of Sept. 11, with a particular focus on stories of survival and loss at the World Trade Center, and some reflections in poetry and music.",
-      "pub_date": "Fri, 11 Sep 2026 09:37:18 -0400"
+      "title": "This city led the way on reparations for Black people. Trump is trying to stop it",
+      "url": "https://www.npr.org/2026/09/14/nx-s1-5869793/evanston-illinois-reparations-trump-administration",
+      "summary": "Evanston, Ill., became the first U.S. city to compensate Black people for historical discrimination. The Justice Department is trying to kill its program before other cities follow suit.",
+      "pub_date": "Mon, 14 Sep 2026 07:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Remembering 9/11. And, Vance, Trump urge voters to back Republicans in the midterms",
-      "url": "https://www.npr.org/2026/09/11/g-s1-142846/up-first-newsletter-september-11-remembrance-republican-midterm-convention-scotus-missouri-redistricting",
-      "summary": "NPR reflects on the events of 9/11 and the toll it left on the U.S. 25 years later. And, President Trump and Vice President Vance's convention speeches urge voters to back the GOP in the midterms.",
-      "pub_date": "Fri, 11 Sep 2026 07:55:49 -0400"
+      "title": "The powerful millionaires hiding in plain sight",
+      "url": "https://www.npr.org/sections/planet-money/2026/09/14/g-s1-143041/the-powerful-millionaires-hiding-in-plain-sight",
+      "summary": "They own car dealerships, law firms, dental practices, and restaurant chains. Collectively, these overlooked business owners hold far more wealth than the Forbes 400 — and wield considerable political power.",
+      "pub_date": "Mon, 14 Sep 2026 06:30:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "US diesel prices soar past $6 a gallon, deepening strain for hauling everyday goods",
-      "url": "https://www.npr.org/2026/09/11/g-s1-142842/us-diesel-6-a-gallon",
-      "summary": "Diesel prices in the U.S. has hit yet another record, soaring past $6 a gallon on average as Washington's war with Iran disrupts the world's flow of fuel",
-      "pub_date": "Fri, 11 Sep 2026 06:04:04 -0400"
+      "title": "Beijing hits back at Anthropic CEO's call to curb China's AI development",
+      "url": "https://www.npr.org/2026/09/14/nx-s1-5968456/china-hits-back-ai-development",
+      "summary": "China's Foreign Ministry called the Anthropic CEO's warning about the dangers of Chinese-developed AI \"fearmongering,\" as the Chinese and U.S. leaders prepare to meet in Washington later this month.",
+      "pub_date": "Mon, 14 Sep 2026 06:09:08 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Will you get $5,000 to do the news quiz? No. But will it be fun? Maybe",
-      "url": "https://www.npr.org/2026/09/11/g-s1-142657/will-you-get-5-000-to-do-the-news-quiz-no-but-will-it-be-fun-maybe",
-      "summary": "Plus: donkeys, maps, art, iPhones and more!",
-      "pub_date": "Fri, 11 Sep 2026 05:01:00 -0400"
+      "title": "New Carlo Rovelli book challenges science's understanding of reality and the universe",
+      "url": "https://www.npr.org/2026/09/14/nx-s1-5968442/on-the-equality-of-all-things-physics-carlo-rovelli",
+      "summary": "In his latest book, the world-renowned physicist draws on science and philosophy to explore the notion that the university and reality are fully knowable.",
+      "pub_date": "Mon, 14 Sep 2026 05:44:44 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "They cleaned up ground zero. Now many are hiding from ICE",
-      "url": "https://www.npr.org/2026/09/11/nx-s1-5965553/ground-zero-sept-11-undocumented-immigrants",
-      "summary": "After 9/11, thousands of rescue and cleanup crews went to work at ground zero. They were exposed to toxic debris and experienced psychological trauma. Today, many say they live in fear of deportation.",
-      "pub_date": "Fri, 11 Sep 2026 05:00:00 -0400"
+      "title": "NPR looked for ChatGPT's new crisis feature. It's hard to find",
+      "url": "https://www.npr.org/2026/09/14/nx-s1-5943118/chatgpt-has-a-feature-to-help-those-in-crisis-but-where-can-you-find-it",
+      "summary": "Earlier this year, OpenAI launched a feature on ChatGPT meant to help people at risk of suicide connect with someone they trust for support. But its setup may prove challenging to someone in crisis.",
+      "pub_date": "Mon, 14 Sep 2026 05:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "The U.S.-Canada trade war is creating a headache for auto-parts makers",
-      "url": "https://www.npr.org/2026/09/11/nx-s1-5961530/canada-trade-war-auto-parts-supply-chain",
-      "summary": "For decades, the U.S. and Canadian auto supply chains have been tightly woven together. The trade war is threatening to unravel a complex system.",
-      "pub_date": "Fri, 11 Sep 2026 05:00:00 -0400"
+      "title": "Lawmakers home in on midterm messages as Congress returns to session",
+      "url": "https://www.npr.org/2026/09/14/nx-s1-5966873/lawmakers-hone-in-on-midterm-messages-as-congress-returns-to-session",
+      "summary": "Congress returns for a short last session ahead of the midterm election with a full plate as lawmakers look for messaging bills they can take back to voters.",
+      "pub_date": "Mon, 14 Sep 2026 04:43:06 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "From DOGE to space lasers, Alex Gibney peels back the many layers of Elon Musk",
-      "url": "https://www.npr.org/2026/09/11/nx-s1-5962167/alex-gibney-elon-musk-documentary-review",
-      "summary": "In the Oscar-winning filmmaker's latest documentary, director Alex Gibney investigates the rise of Elon Musk and says what's behind Musk's success are distressing truths.",
-      "pub_date": "Fri, 11 Sep 2026 05:00:00 -0400"
+      "title": "Talks between Iran and Gulf states to discuss Strait of Hormuz postponed",
+      "url": "https://www.npr.org/2026/09/14/nx-s1-5968072/talks-between-iran-and-gulf-states-to-discuss-strait-of-hormuz-postponed",
+      "summary": "Iranian officials say a meeting with Gulf states to discuss the Strait of Hormuz has been postponed, dealing a blow to efforts to reopen the strait.",
+      "pub_date": "Mon, 14 Sep 2026 04:43:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Trump administration allows TPS to continue for Salvadorans – for now",
-      "url": "https://www.npr.org/2026/09/11/nx-s1-5963930/tps-salvadorans-immgiration",
-      "summary": "The Trump administration declined this week to terminate TPS for Salvadorans, even though it has done so for people from other countries like Haiti and Syria. But it also hasn't said whether it will extend the protection in the future.",
-      "pub_date": "Fri, 11 Sep 2026 05:00:00 -0400"
+      "title": "Indonesia searches for 129 people missing after ferry capsizes in the Java Sea",
+      "url": "https://www.npr.org/2026/09/14/nx-s1-5968417/indonesia-search-missing-ferry",
+      "summary": "Indonesian authorities intensified on Monday a search for people missing after a ferry overturned in bad weather in the Java Sea. At least six passengers were killed and 129 people are still missing.",
+      "pub_date": "Mon, 14 Sep 2026 02:20:28 -0400"
     },
     {
       "outlet": "BBC",
-      "title": "Anthropic blocks possible attempt to use AI to make biological weapons",
-      "url": "https://www.bbc.co.uk/news/articles/cx2zrrpkx20o?at_medium=RSS&at_campaign=rss",
-      "summary": "The revelations in Anthropic's threat intelligence report come after a former top researcher at the company warned of the risks of AI to humanity.",
-      "pub_date": "Fri, 11 Sep 2026 08:15:25 GMT"
+      "title": "China criticises idea it is in 'malicious competition' over AI",
+      "url": "https://www.bbc.co.uk/news/articles/cn8me133119o?at_medium=RSS&at_campaign=rss",
+      "summary": "It follows the Anthropic CEO's calls for a slowdown in AI development - but in a way that prevents China from pulling ahead in the race.",
+      "pub_date": "Mon, 14 Sep 2026 11:31:39 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Israel says it has destroyed major underground Hezbollah base",
-      "url": "https://www.bbc.co.uk/news/articles/c4gl92lw8vpo?at_medium=RSS&at_campaign=rss",
-      "summary": "The powerful blast registered as the equivalent of a magnitude 4.1 earthquake, according to the US Geological Survey.",
-      "pub_date": "Fri, 11 Sep 2026 15:50:23 GMT"
+      "title": "Russia hits Ukrainian train shortly after Boris Johnson and top European officials leave station",
+      "url": "https://www.bbc.co.uk/news/articles/cy5zg41dkqwo?at_medium=RSS&at_campaign=rss",
+      "summary": "The former UK PM said: \"I don't know what warped logic drove Putin to blow up a stationary Ukrainian locomotive on the Polish border this morning\".",
+      "pub_date": "Mon, 14 Sep 2026 12:18:13 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Buddhist monk arrested in suspected $3m embezzlement scandal",
-      "url": "https://www.bbc.co.uk/news/articles/c5yjkxlngjyo?at_medium=RSS&at_campaign=rss",
-      "summary": "Thai police also arrested a suspected female accomplice with whom the monk, who had taken a vow of celibacy, was filmed having sex.",
-      "pub_date": "Fri, 11 Sep 2026 10:50:04 GMT"
+      "title": "Swedish left-wing bloc narrowly ahead with election too close to call",
+      "url": "https://www.bbc.co.uk/news/articles/c0qx5d79kdeo?at_medium=RSS&at_campaign=rss",
+      "summary": "With more than 90% of ballots processed early on Monday, the left-wing bloc was in front by approximately 20,000 votes.",
+      "pub_date": "Mon, 14 Sep 2026 08:36:09 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Princess Diana's 'revenge dress' goes up for auction",
-      "url": "https://www.bbc.co.uk/news/articles/c0lrk7d7j0no?at_medium=RSS&at_campaign=rss",
-      "summary": "Auction house Sotheby's expects the dress to sell for up to $300,000 (£220,000) when it goes under the hammer on 9 December.",
-      "pub_date": "Fri, 11 Sep 2026 12:04:46 GMT"
+      "title": "Wild dogs record 2,500-mile trek across Zambia in search of a mate",
+      "url": "https://www.bbc.co.uk/news/articles/cy459y5y9yxo?at_medium=RSS&at_campaign=rss",
+      "summary": "Scientists say the record-breaking journey by three brothers offers hope wildlife can survive growing pressures.",
+      "pub_date": "Mon, 14 Sep 2026 14:08:12 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Norway's Princess Astrid dies two days after attending brother King Harald's funeral",
-      "url": "https://www.bbc.co.uk/news/articles/cgjq1qy98vjo?at_medium=RSS&at_campaign=rss",
-      "summary": "Princess Astrid \"represented the Royal House in a warm and dutiful manner\", the new king, Haakon VIII, said in a tribute to his aunt.",
-      "pub_date": "Fri, 11 Sep 2026 16:00:59 GMT"
+      "title": "Thousands demand end to violence in Mexican cartel hotspot",
+      "url": "https://www.bbc.co.uk/news/articles/cde06rxw5g6o?at_medium=RSS&at_campaign=rss",
+      "summary": "Culiacán has seen violence skyrocket since a feud broke out between two rival factions of the Sinaloa cartel.",
+      "pub_date": "Mon, 14 Sep 2026 11:28:36 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Hong Kong's Tiananmen activists sentenced to up to seven years in prison",
-      "url": "https://www.bbc.co.uk/news/articles/cvgyvk2djk4o?at_medium=RSS&at_campaign=rss",
-      "summary": "Hong Kong used to be one of the only places in Chinese territory where people could gather to mark the 1989 crackdown.",
-      "pub_date": "Fri, 11 Sep 2026 05:41:54 GMT"
+      "title": "Body of missing runner found in South Africa",
+      "url": "https://www.bbc.co.uk/news/articles/cxyvzggzd5jgo?at_medium=RSS&at_campaign=rss",
+      "summary": "A nationwide appeal was launched after Elizabeth Moselakgomo went missing last week. Four other women's bodies have been found nearby.",
+      "pub_date": "Mon, 14 Sep 2026 14:58:48 GMT"
     }
   ],
   "segments": [
@@ -384,7 +374,7 @@
           {
             "cat": "Wire Input",
             "name": "Copper (LME)",
-            "val": "$6.55 /lb",
+            "val": "$6.40 /lb",
             "unit": "LME spot",
             "note": "Primary cost driver",
             "chg": "0.00% day",
@@ -394,7 +384,7 @@
           {
             "cat": "Wire Input",
             "name": "Aluminum (LME)",
-            "val": "$3,419.00 /lb",
+            "val": "$3,420.00 /lb",
             "unit": "LME spot",
             "note": "Al wire and insulation",
             "chg": "0.00% day",
@@ -404,7 +394,7 @@
           {
             "cat": "Energy",
             "name": "WTI Crude",
-            "val": "$99.58 /bbl",
+            "val": "$101.35 /bbl",
             "unit": "NYMEX front month",
             "note": "Logistics and resin proxy",
             "chg": "0.00% day",
@@ -414,7 +404,7 @@
           {
             "cat": "Energy",
             "name": "Natural Gas",
-            "val": "$2.816 /MMBtu",
+            "val": "$2.903 /MMBtu",
             "unit": "Henry Hub",
             "note": "Manufacturing energy cost",
             "chg": "0.00% day",
@@ -633,7 +623,7 @@
           }
         ],
         "highRisk": [],
-        "updatedAt": "Sep 11, 2026",
+        "updatedAt": "Sep 14, 2026",
         "source": "U.S. State Dept.",
         "sourceUrl": "https://travel.state.gov"
       }
