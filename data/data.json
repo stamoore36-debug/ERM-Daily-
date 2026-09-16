@@ -1,7 +1,7 @@
 {
   "meta": {
-    "date": "Tuesday, September 15, 2026 · 01:09 PM EDT",
-    "dateShort": "Sep 15, 2026",
+    "date": "Wednesday, September 16, 2026 · 01:09 PM EDT",
+    "dateShort": "Sep 16, 2026",
     "runTime": "01:09 PM EDT",
     "posture": "ELEVATED",
     "postureSev": "high",
@@ -16,7 +16,7 @@
     {
       "category": "US Equities",
       "name": "S&P 500",
-      "value": "7,584.22",
+      "value": "7,606.60",
       "unit": "Index · daily close",
       "note": "Broad equity risk-on/risk-off signal. High VIX or S&P drawdown signals demand risk for Southwire construction end markets.",
       "change": "▼ 0.00% day-over-day",
@@ -26,8 +26,8 @@
     {
       "category": "Energy",
       "name": "Brent Crude",
-      "value": "$108.89 /bbl",
-      "unit": "WTI $106.18 /bbl",
+      "value": "$105.83 /bbl",
+      "unit": "WTI $102.63 /bbl",
       "note": "Energy costs affect Southwire manufacturing and logistics. Sustained Brent >$90 pressures freight and resin input costs.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -36,8 +36,8 @@
     {
       "category": "Critical Input",
       "name": "Copper (LME)",
-      "value": "$6.44 /lb",
-      "unit": "($14,207 /MT) · LME spot",
+      "value": "$6.51 /lb",
+      "unit": "($14,352 /MT) · LME spot",
       "note": "Primary raw material. Copper content of wire drives COGS. Sustained elevation compresses margin unless hedged or repriced.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -46,7 +46,7 @@
     {
       "category": "Critical Input",
       "name": "Aluminum (LME)",
-      "value": "$3,402.50 /lb",
+      "value": "$3,443.00 /lb",
       "unit": "LME spot · Midwest premium add",
       "note": "Key input for aluminum wire and cable. Price signals secondary cost pressure and hedge calendar triggers.",
       "change": "▼ 0.00% day-over-day",
@@ -66,7 +66,7 @@
     {
       "category": "Volatility",
       "name": "VIX",
-      "value": "17.47",
+      "value": "16.79",
       "unit": "CBOE Volatility Index",
       "note": "Equity market fear gauge. VIX >25 indicates risk-off environment; monitor customer demand signals and receivables.",
       "change": "▼ 0.00% day-over-day",
@@ -76,7 +76,7 @@
     {
       "category": "Macro",
       "name": "Natural Gas",
-      "value": "$2.909 /MMBtu",
+      "value": "$2.888 /MMBtu",
       "unit": "Henry Hub futures",
       "note": "Energy input for manufacturing and logistics. Sustained elevation pressures margin. Drives residential heating demand indirectly.",
       "change": "▼ 0.00% day-over-day",
@@ -86,7 +86,7 @@
     {
       "category": "Safe Haven",
       "name": "Gold",
-      "value": "$4,336 /oz",
+      "value": "$4,388 /oz",
       "unit": "COMEX spot",
       "note": "Risk sentiment indicator. Gold >$3,000 with VIX elevation signals macro uncertainty that may dampen CapEx spending by customers.",
       "change": "▼ 0.00% day-over-day",
@@ -97,10 +97,10 @@
   "charts": [
     {
       "name": "S&P 500 · 30d",
-      "value": "7,584.22",
+      "value": "7,606.60",
       "chg": "0.0%",
       "bad": false,
-      "range": "30d range: 7,584.22 – 7,747.71",
+      "range": "30d range: 7,585.73 – 7,747.71",
       "pts": [
         7745.0601,
         7691.7598,
@@ -122,15 +122,16 @@
         7591.7002,
         7656.98,
         7619.98,
-        7584.2202
+        7585.73,
+        7606.6499
       ]
     },
     {
       "name": "Brent Crude · 30d",
-      "value": "108.89",
+      "value": "105.83",
       "chg": "0.0%",
       "bad": true,
-      "range": "30d range: 87.84 – 108.89",
+      "range": "30d range: 87.84 – 108.75",
       "pts": [
         90.87,
         91.02,
@@ -152,15 +153,16 @@
         107.63,
         104.61,
         105.68,
-        108.89
+        108.75,
+        105.83
       ]
     },
     {
       "name": "Gold · 30d",
-      "value": "4,335.90",
+      "value": "4,388.40",
       "chg": "0.0%",
       "bad": false,
-      "range": "30d range: 4,335.80 – 4,697.80",
+      "range": "30d range: 4,332.80 – 4,697.80",
       "pts": [
         4473.7002,
         4420.6001,
@@ -182,12 +184,13 @@
         4407.2998,
         4408.8999,
         4351.8999,
-        4335.7998
+        4332.7998,
+        4388.3999
       ]
     },
     {
       "name": "VIX · 30d",
-      "value": "17.47",
+      "value": "16.79",
       "chg": "0.0%",
       "bad": true,
       "range": "30d range: 14.32 – 17.84",
@@ -213,12 +216,13 @@
         17.84,
         15.84,
         17.1,
-        17.46
+        17.2,
+        16.79
       ]
     },
     {
       "name": "Copper (LME) · 30d",
-      "value": "6.44",
+      "value": "6.51",
       "chg": "0.0%",
       "bad": true,
       "range": "30d range: 6.33 – 6.80",
@@ -243,122 +247,123 @@
         6.467,
         6.4695,
         6.33,
-        6.443
+        6.3685,
+        6.5095
       ]
     }
   ],
   "wire": [
     {
       "outlet": "NPR",
-      "title": "Tiny krill are turning up in deep-sea hydrothermal vents. Scientists want to know why",
-      "url": "https://www.npr.org/2026/09/15/nx-s1-5968643/antarctic-krill-hydrothermal-vent-south-pole",
-      "summary": "Antarctic krill serve as a crucial food source for penguins, seals, and whales. They recycle nutrients used by algae. Now researchers say they've found krill in a surprising place: hydrothermal vents.",
-      "pub_date": "Tue, 15 Sep 2026 12:53:39 -0400"
+      "title": "A tumultuous congressional primary season closes with record departures and defeats",
+      "url": "https://www.npr.org/2026/09/16/nx-s1-5971264/congress-retirement-2026-house-senate-primary-defeat",
+      "summary": "Already, close to 100 lawmakers who started this Congress will not be around for the next one, according to an NPR analysis, driven by record-setting retirements and primary defeats.",
+      "pub_date": "Wed, 16 Sep 2026 13:05:41 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Geopolitics and grain don't mix, say these Montana farmers",
-      "url": "https://www.npr.org/2026/09/15/nx-s1-5964930/canada-tariffs-hurting-montana-farmers",
-      "summary": "Farmers in states bordering Canada say they are reeling from President Trump's trade wars and resulting retaliatory tariffs. And it's just not neighborly.",
-      "pub_date": "Tue, 15 Sep 2026 08:33:19 -0400"
+      "title": "How Jared Kushner is mixing U.S. diplomacy with his billion-dollar business",
+      "url": "https://www.npr.org/2026/09/16/nx-s1-5971125/how-jared-kushner-is-mixing-u-s-diplomacy-with-his-billion-dollar-business",
+      "summary": "The New Yorker 's Dexter Filkins says while Trump's son-in-law is a U.S. special envoy negotiating peace, he's also working on private business deals, raising billions in some of the same countries.",
+      "pub_date": "Wed, 16 Sep 2026 12:14:19 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "SCOTUS rejects Trump's mail voting limits. And, the Kennedy Center financial crisis",
-      "url": "https://www.npr.org/2026/09/15/g-s1-143294/up-first-newsletter-bernie-sanders-steve-bannon-ai-mail-in-ballots-kennedy-center-emmys",
-      "summary": "The Supreme Court has rejected Trump's mail-in voting restrictions ahead of the midterm elections. And, the Kennedy Center says it is on the brink of bankruptcy and could close soon.",
-      "pub_date": "Tue, 15 Sep 2026 07:35:49 -0400"
+      "title": "Mice with human brain cells offer a tool to study disease. Ethicists ask: What's next?",
+      "url": "https://www.npr.org/2026/09/16/nx-s1-5968873/lab-mouse-human-brain-cells-organoid-disease-ethics",
+      "summary": "Neuroscientists have made a major advance in modeling the human brain in mice, offering a new way to study conditions like cerebral palsy. Ethicists ask if it changes how these mice should be treated.",
+      "pub_date": "Wed, 16 Sep 2026 11:00:16 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Air pollution spiked after the Trump administration stopped embassy monitoring",
-      "url": "https://www.npr.org/2026/09/15/nx-s1-5966503/air-pollution-spiked-after-the-trump-administration-stopped-embassy-monitoring",
-      "summary": "In 2025, the Trump administration ended a long-running program to collect air pollution data at U.S. embassies. A new study suggests that led to a 24-33% increase in local pollution levels.",
-      "pub_date": "Tue, 15 Sep 2026 06:26:08 -0400"
+      "title": "How are rising prices affecting you? NPR wants to know",
+      "url": "https://www.npr.org/2026/09/16/nx-s1-5969965/cost-of-living-expenses-prices-midterms",
+      "summary": "Inflation, gasoline prices and the cost of living are top of mind in the election season. How are higher costs shaping the way you live? NPR wants to hear.",
+      "pub_date": "Wed, 16 Sep 2026 09:40:12 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "NATO jets shoot down a drone in Lithuanian airspace",
-      "url": "https://www.npr.org/2026/09/15/g-s1-143284/nato-jets-down-drone-in-lithuanian-airspace",
-      "summary": "The incident came less than a day after NATO leaders pledged that strikes close to the alliance's territory would drive the trans-Atlantic organization to increase support for Kyiv.",
-      "pub_date": "Tue, 15 Sep 2026 05:06:30 -0400"
+      "title": "Russia seizes Ukrainian POWs, then it demands favors from their relatives",
+      "url": "https://www.npr.org/2026/09/16/nx-s1-5904423/russia-seizes-ukrainian-pows-then-it-demands-favors-from-their-relatives",
+      "summary": "Russia is believed to be holding thousands of Ukrainian POWs. Russia is also tormenting the families of these prisoners by contacting their relatives on social media and demanding they help Russia.",
+      "pub_date": "Wed, 16 Sep 2026 09:33:53 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Get ready for yet another cost when buying a home: Junk fees",
-      "url": "https://www.npr.org/2026/09/15/nx-s1-5968763/housing-home-buying-junk-fees",
-      "summary": "Some real estate agents and researchers say home buyers and sellers should not pay this out-of-pocket fee.",
-      "pub_date": "Tue, 15 Sep 2026 05:00:00 -0400"
+      "title": "Fed expected to raise interest rates. And, board votes to close Kennedy Center",
+      "url": "https://www.npr.org/2026/09/16/g-s1-143569/up-first-newsletter-fed-reserve-interest-rates-iran-war-kennedy-center-contraception",
+      "summary": "The Fed is expected to raise interest rates today for the first time in three years. And, the Kennedy Center board voted yesterday to close the historic center.",
+      "pub_date": "Wed, 16 Sep 2026 07:19:46 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "NASA rushed engineers out of their labs. They say it risks future space missions",
-      "url": "https://www.npr.org/2026/09/15/nx-s1-5964919/nasa-employee-relocations-equipment-impacts-missions",
-      "summary": "NASA employees say they've lost vital equipment and staff needed to make sophisticated spacecraft amid the agency's abrupt relocations over the past several months.",
-      "pub_date": "Tue, 15 Sep 2026 05:00:00 -0400"
+      "title": "EU's Ursula von der Leyen says she wants Canada to become an associate member",
+      "url": "https://www.npr.org/2026/09/16/nx-s1-5970985/canada-become-eu-associate-member",
+      "summary": "European Commission President Ursula von der Leyen on Wednesday proposed making Canada the European Union's first associate member, a striking overture as U.S. President Donald Trump's tariffs drive Ottawa closer to Europe.",
+      "pub_date": "Wed, 16 Sep 2026 06:48:22 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "This  bill could reshape crypto in America -- and it's sparking a major battle",
-      "url": "https://www.npr.org/2026/09/15/nx-s1-5968711/clarity-act-crypto-senate-vote",
-      "summary": "The legislation would establish rules of the road for the crypto sector for the first time — but opponents are up in arms, and the bill faces an uncertain prospect in the Senate.",
-      "pub_date": "Tue, 15 Sep 2026 05:00:00 -0400"
+      "title": "Senators question Trump's picks for top health positions, including surgeon general",
+      "url": "https://www.npr.org/2026/09/16/nx-s1-5968780/trump-rfk-jr-health-nomination-surgeon-general",
+      "summary": "On Wednesday, the Senate committee on health holds a confirmation hearing for three top health officials, including surgeon general. Dr. Nicole Saphier is President Trump's third attempt to nominate a surgeon general.",
+      "pub_date": "Wed, 16 Sep 2026 06:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "For thousands of Haitians in the U.S., end of protected status brings fear, grief and defiance",
-      "url": "https://www.npr.org/2026/09/15/nx-s1-5961154/for-thousands-of-haitians-in-the-u-s-end-of-protected-status-brings-fear-grief-and-defiance",
-      "summary": "Haitians in the U.S. lost their Temporary Protected Status under Trump's immigration crackdown. Now facing deportation to a homeland wracked by gang violence, disease and extreme poverty, Haitians in Miami are meeting the moment with grief, anger, and courage.",
-      "pub_date": "Tue, 15 Sep 2026 05:00:00 -0400"
+      "title": "Kosovo's ex-President Thaci convicted of war crimes, sentenced to 25 years in prison",
+      "url": "https://www.npr.org/2026/09/16/g-s1-143560/kosovo-former-president-war-crimes",
+      "summary": "A European Union-backed court convicted former Kosovo President Hashim Thaci of war crimes committed during his country's war for independence from Serbia and sentenced him to 25 years in prison.",
+      "pub_date": "Wed, 16 Sep 2026 05:57:03 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Bernie Sanders and Steve Bannon to share a stage to promote curbs on AI",
-      "url": "https://www.npr.org/2026/09/15/nx-s1-5968678/bernie-sanders-and-steve-bannon-to-share-a-stage-to-promote-curbs-on-ai",
-      "summary": "The poles of U.S. politics are coming together over AI. Sanders and Bannon will appear at the \"Pro-Human Assembly\" in Washington, D.C., to convince Congress to work faster to curb the impact of AI.",
-      "pub_date": "Tue, 15 Sep 2026 05:00:00 -0400"
+      "title": "Saudi Arabia calls an attempted Mecca attack a 'red line' as Houthis deny they did it",
+      "url": "https://www.npr.org/2026/09/16/g-s1-143554/saudi-arabia-attempted-mecca-attack",
+      "summary": "Saudi Arabia accused Yemen's Iran-backed Houthi rebels overnight of trying to attack Islam's holiest city, prompting condemnation from countries in the region but no sign of military support.",
+      "pub_date": "Wed, 16 Sep 2026 05:04:27 -0400"
     },
     {
       "outlet": "BBC",
-      "title": "Denmark says Russian warship fired flares at military helicopter",
-      "url": "https://www.bbc.co.uk/news/articles/cwn8mjl31p5yo?at_medium=RSS&at_campaign=rss",
-      "summary": "The Danish prime minister has accused Russia of \"reckless\" behaviour, while the Kremlin is yet to comment.",
-      "pub_date": "Tue, 15 Sep 2026 11:40:00 GMT"
+      "title": "EU chief backs plan for Canada to become 'associate member'",
+      "url": "https://www.bbc.co.uk/news/articles/cjwyzrr9d3dko?at_medium=RSS&at_campaign=rss",
+      "summary": "Canada is seeking closer ties with EU after a breakdown in relations with the US and its president Donald Trump.",
+      "pub_date": "Wed, 16 Sep 2026 12:36:51 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "What weapon could the US have put into space?",
-      "url": "https://www.bbc.co.uk/news/articles/cmy4zqgk97wlo?at_medium=RSS&at_campaign=rss",
-      "summary": "The announcement by the US points to a developing field of modern warfare in the Earth's orbit.",
-      "pub_date": "Tue, 15 Sep 2026 14:23:14 GMT"
+      "title": "Eight children among 21 killed after war-damaged Gaza building collapses, rescuers say",
+      "url": "https://www.bbc.co.uk/news/articles/cvp8d00j9gg5o?at_medium=RSS&at_campaign=rss",
+      "summary": "Dozens of people are missing beneath the rubble of a building hit by an Israeli strike last year, where some 10 families had been living.",
+      "pub_date": "Wed, 16 Sep 2026 13:28:46 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Suspected sabotage causes major Netherlands rail disruption",
-      "url": "https://www.bbc.co.uk/news/articles/c8ly49w9g1edo?at_medium=RSS&at_campaign=rss",
-      "summary": "Trains were cancelled or delayed on Tuesday after objects were found on tracks at multiple locations.",
-      "pub_date": "Tue, 15 Sep 2026 16:55:04 GMT"
+      "title": "US accuses Russia of trying to kill Ukrainian allies overseas",
+      "url": "https://www.bbc.co.uk/news/articles/cjp3077led9qo?at_medium=RSS&at_campaign=rss",
+      "summary": "The FBI says five men \"conspired to intimidate, threaten, or murder people on US soil and around the world\".",
+      "pub_date": "Wed, 16 Sep 2026 12:26:00 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Two sailors missing after tanker attacked in Strait of Hormuz, Oman says",
-      "url": "https://www.bbc.co.uk/news/articles/c3n07ydqdzlvo?at_medium=RSS&at_campaign=rss",
-      "summary": "Iran says El Gaia caught fire after hitting mines, but the US says the oil tanker was struck by a missile and then a drone.",
-      "pub_date": "Tue, 15 Sep 2026 16:13:41 GMT"
+      "title": "OpenAI boss says world 'right to be afraid' but should trust AI firms",
+      "url": "https://www.bbc.co.uk/news/articles/cqx2zpj4y525o?at_medium=RSS&at_campaign=rss",
+      "summary": "Sam Altman and other tech CEOs say there are incentives to limit advancements in AI, as fears grow over the threats it poses to humanity.",
+      "pub_date": "Wed, 16 Sep 2026 10:02:05 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Iran war has led to US munitions shortfalls, Pentagon inspector confirms",
-      "url": "https://www.bbc.co.uk/news/articles/c9gk58xgng0vo?at_medium=RSS&at_campaign=rss",
-      "summary": "The inspector also found a bottleneck in resupply, despite President Donald Trump's claims that US supplies are \"virtually limitless\".",
-      "pub_date": "Tue, 15 Sep 2026 15:31:34 GMT"
+      "title": "Eight German state premiers back Merz amid speculation over future",
+      "url": "https://www.bbc.co.uk/news/articles/c6dj4nn0n97ro?at_medium=RSS&at_campaign=rss",
+      "summary": "Christian Democratic Union leadership throws its weight behind the chancellor ahead of two state elections this weekend.",
+      "pub_date": "Wed, 16 Sep 2026 14:50:26 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Canada is a 'safe harbour' for global finance, Carney says",
-      "url": "https://www.bbc.co.uk/news/articles/cmq8jdgel128o?at_medium=RSS&at_campaign=rss",
-      "summary": "The prime minister is hosting a major global investment summit, with the goal of attracting money into the country amid a trade war with the US.",
-      "pub_date": "Tue, 15 Sep 2026 13:43:01 GMT"
+      "title": "Saudi Arabia says it shot down Houthi drone south of Mecca",
+      "url": "https://www.bbc.co.uk/news/articles/cr89jqd1w45eo?at_medium=RSS&at_campaign=rss",
+      "summary": "The Houthis deny targeting the Islamic holy city after the Saudi-led coalition in Yemen accuses them of a \"disgraceful act\".",
+      "pub_date": "Wed, 16 Sep 2026 08:36:17 GMT"
     }
   ],
   "segments": [
@@ -374,7 +379,7 @@
           {
             "cat": "Wire Input",
             "name": "Copper (LME)",
-            "val": "$6.44 /lb",
+            "val": "$6.51 /lb",
             "unit": "LME spot",
             "note": "Primary cost driver",
             "chg": "0.00% day",
@@ -384,7 +389,7 @@
           {
             "cat": "Wire Input",
             "name": "Aluminum (LME)",
-            "val": "$3,402.50 /lb",
+            "val": "$3,443.00 /lb",
             "unit": "LME spot",
             "note": "Al wire and insulation",
             "chg": "0.00% day",
@@ -394,7 +399,7 @@
           {
             "cat": "Energy",
             "name": "WTI Crude",
-            "val": "$106.18 /bbl",
+            "val": "$102.63 /bbl",
             "unit": "NYMEX front month",
             "note": "Logistics and resin proxy",
             "chg": "0.00% day",
@@ -404,7 +409,7 @@
           {
             "cat": "Energy",
             "name": "Natural Gas",
-            "val": "$2.909 /MMBtu",
+            "val": "$2.888 /MMBtu",
             "unit": "Henry Hub",
             "note": "Manufacturing energy cost",
             "chg": "0.00% day",
@@ -623,7 +628,7 @@
           }
         ],
         "highRisk": [],
-        "updatedAt": "Sep 15, 2026",
+        "updatedAt": "Sep 16, 2026",
         "source": "U.S. State Dept.",
         "sourceUrl": "https://travel.state.gov"
       }
