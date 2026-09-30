@@ -1,8 +1,8 @@
 {
   "meta": {
-    "date": "Tuesday, September 29, 2026 · 02:09 PM EDT",
-    "dateShort": "Sep 29, 2026",
-    "runTime": "02:09 PM EDT",
+    "date": "Wednesday, September 30, 2026 · 02:02 PM EDT",
+    "dateShort": "Sep 30, 2026",
+    "runTime": "02:02 PM EDT",
     "posture": "ELEVATED",
     "postureSev": "high",
     "counts": {
@@ -16,7 +16,7 @@
     {
       "category": "US Equities",
       "name": "S&P 500",
-      "value": "7,663.69",
+      "value": "7,702.09",
       "unit": "Index · daily close",
       "note": "Broad equity risk-on/risk-off signal. High VIX or S&P drawdown signals demand risk for Southwire construction end markets.",
       "change": "▼ 0.00% day-over-day",
@@ -26,8 +26,8 @@
     {
       "category": "Energy",
       "name": "Brent Crude",
-      "value": "$96.58 /bbl",
-      "unit": "WTI $90.11 /bbl",
+      "value": "$98.49 /bbl",
+      "unit": "WTI $90.96 /bbl",
       "note": "Energy costs affect Southwire manufacturing and logistics. Sustained Brent >$90 pressures freight and resin input costs.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -36,8 +36,8 @@
     {
       "category": "Critical Input",
       "name": "Copper (LME)",
-      "value": "$6.61 /lb",
-      "unit": "($14,563 /MT) · LME spot",
+      "value": "$6.62 /lb",
+      "unit": "($14,586 /MT) · LME spot",
       "note": "Primary raw material. Copper content of wire drives COGS. Sustained elevation compresses margin unless hedged or repriced.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -46,7 +46,7 @@
     {
       "category": "Critical Input",
       "name": "Aluminum (LME)",
-      "value": "$3,340.75 /lb",
+      "value": "$3,298.25 /lb",
       "unit": "LME spot · Midwest premium add",
       "note": "Key input for aluminum wire and cable. Price signals secondary cost pressure and hedge calendar triggers.",
       "change": "▼ 0.00% day-over-day",
@@ -66,7 +66,7 @@
     {
       "category": "Volatility",
       "name": "VIX",
-      "value": "16.37",
+      "value": "15.88",
       "unit": "CBOE Volatility Index",
       "note": "Equity market fear gauge. VIX >25 indicates risk-off environment; monitor customer demand signals and receivables.",
       "change": "▼ 0.00% day-over-day",
@@ -76,7 +76,7 @@
     {
       "category": "Macro",
       "name": "Natural Gas",
-      "value": "$3.044 /MMBtu",
+      "value": "$3.014 /MMBtu",
       "unit": "Henry Hub futures",
       "note": "Energy input for manufacturing and logistics. Sustained elevation pressures margin. Drives residential heating demand indirectly.",
       "change": "▼ 0.00% day-over-day",
@@ -86,7 +86,7 @@
     {
       "category": "Safe Haven",
       "name": "Gold",
-      "value": "$4,175 /oz",
+      "value": "$4,180 /oz",
       "unit": "COMEX spot",
       "note": "Risk sentiment indicator. Gold >$3,000 with VIX elevation signals macro uncertainty that may dampen CapEx spending by customers.",
       "change": "▼ 0.00% day-over-day",
@@ -97,7 +97,7 @@
   "charts": [
     {
       "name": "S&P 500 · 30d",
-      "value": "7,663.69",
+      "value": "7,702.09",
       "chg": "0.0%",
       "bad": false,
       "range": "30d range: 7,551.81 – 7,764.70",
@@ -122,12 +122,13 @@
         7704.1299,
         7743.4102,
         7683.6899,
-        7663.46
+        7670.8398,
+        7702.0601
       ]
     },
     {
       "name": "Brent Crude · 30d",
-      "value": "96.58",
+      "value": "98.49",
       "chg": "0.0%",
       "bad": true,
       "range": "30d range: 90.49 – 108.75",
@@ -152,12 +153,13 @@
         106.6,
         104.32,
         105.28,
-        96.58
+        102.59,
+        98.49
       ]
     },
     {
       "name": "Gold · 30d",
-      "value": "4,175.40",
+      "value": "4,180.50",
       "chg": "0.0%",
       "bad": false,
       "range": "30d range: 4,168.40 – 4,539.90",
@@ -182,12 +184,13 @@
         4298.0,
         4321.2002,
         4168.3999,
-        4175.3999
+        4179.7002,
+        4180.5
       ]
     },
     {
       "name": "VIX · 30d",
-      "value": "16.37",
+      "value": "15.88",
       "chg": "0.0%",
       "bad": true,
       "range": "30d range: 14.21 – 17.84",
@@ -213,12 +216,13 @@
         15.67,
         14.87,
         16.07,
-        16.36
+        16.04,
+        15.89
       ]
     },
     {
       "name": "Copper (LME) · 30d",
-      "value": "6.61",
+      "value": "6.62",
       "chg": "0.0%",
       "bad": true,
       "range": "30d range: 6.33 – 6.80",
@@ -243,122 +247,123 @@
         6.7185,
         6.6955,
         6.566,
-        6.606
+        6.5435,
+        6.616
       ]
     }
   ],
   "wire": [
     {
       "outlet": "NPR",
-      "title": "Lindsay Clancy's lawyer now questions whether she killed her 3 children",
-      "url": "https://www.npr.org/2026/09/29/g-s1-145539/lindsay-clancy-trial-hearing-lawyer",
-      "summary": "Lindsay Clancy's lawyer is arguing that there wasn't enough evidence to prove she killed her three children. It's a striking turn after a lengthy trial that focused more on her mental state than on whether she took their lives.",
-      "pub_date": "Tue, 29 Sep 2026 14:00:50 -0400"
+      "title": "Greetings from Syria, where time seems to melt as a glassmaker braves scorching temps",
+      "url": "https://www.npr.org/2026/09/30/nx-s1-5983516/damascus-syria-glass",
+      "summary": "As a Syrian glassmaker created his wares in Damascus, watching his craft reminded this reporter to slow down and enjoy the moment.",
+      "pub_date": "Wed, 30 Sep 2026 13:51:42 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Potential Taiwan tension sparked 'last minute' change in Trump-Xi National Archives visit",
-      "url": "https://www.npr.org/2026/09/29/nx-s1-5984989/digital-archives-trump-xi",
-      "summary": "The sudden change was precipitated because of Chinese displeasure over one document that the U.S. had planned to show.",
-      "pub_date": "Tue, 29 Sep 2026 13:17:04 -0400"
+      "title": "Police questioning can shape a sexual assault case. Their approach is often wrong",
+      "url": "https://www.npr.org/2026/09/30/nx-s1-5983868/cornell-rape-police-interview-investigation-victim-trauma-informed",
+      "summary": "The Cornell lawsuit filed by a woman alleging a brutal rape raises questions on how police handle such cases. The majority of police lack adequate training on trauma-informed approaches, experts say.",
+      "pub_date": "Wed, 30 Sep 2026 13:19:24 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "This startup wants to prove gene-editing embryos is safe for making healthy babies",
-      "url": "https://www.npr.org/2026/09/29/nx-s1-5950439/embryo-gene-editing-babies-biotech",
-      "summary": "Origin Genomics aims to prove that the potential benefits of its technology for editing disease-causing genes in human embryos outweigh the risks.",
-      "pub_date": "Tue, 29 Sep 2026 13:00:08 -0400"
+      "title": "Trump officials changed forms for overseas voters amid a GOP push to restrict voting",
+      "url": "https://www.npr.org/2026/09/30/nx-s1-5978976/military-voter-registration-overseas-citizens-absentee-voting",
+      "summary": "The Pentagon made last-minute changes to forms that many overseas U.S. citizens use for absentee voting, removing a category of citizens that Republicans have been pushing to block from voting.",
+      "pub_date": "Wed, 30 Sep 2026 12:32:12 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "This year's MacArthur Fellows include researchers who fuse science and justice",
-      "url": "https://www.npr.org/2026/09/29/nx-s1-5983444/this-years-macarthur-fellows-include-researchers-who-fuse-science-and-justice",
-      "summary": "The MacArthur Foundation has just announced its latest batch of 20 fellows. Among the recipients of the $800,000 \"no-strings-attached\" fellowships are researchers who were recognized for their work at the intersection of science and justice.",
-      "pub_date": "Tue, 29 Sep 2026 12:03:34 -0400"
+      "title": "How Ukrainians are coping with new, more deadly Russian attacks",
+      "url": "https://www.npr.org/2026/09/30/nx-s1-5984948/how-ukrainians-are-coping-with-new-more-deadly-russian-attacks",
+      "summary": "Zanny Minton Beddoes, The Economist's editor in chief , just visited Ukraine. She says, despite all its drone weaponry, Kyiv is under extraordinary bombardment, as Russia tries to make it unlivable.",
+      "pub_date": "Wed, 30 Sep 2026 11:33:19 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Meet the 20 scholars and artists who've just won MacArthur Fellowships",
-      "url": "https://www.npr.org/2026/09/29/nx-s1-5980447/macarthur-genius-grants-2026-fellows",
-      "summary": "A historian who studies wage gaps between races and a saxophonist whose live performances include a chef are among the latest recipients of the philanthropic group's annual, no-strings-attached $800,000 grants.",
-      "pub_date": "Tue, 29 Sep 2026 12:01:00 -0400"
+      "title": "How Trump keeps undercutting his anti-communist message",
+      "url": "https://www.npr.org/2026/09/30/nx-s1-5913363/how-trump-keeps-undercutting-his-anti-communist-message",
+      "summary": "The Trump administration has taken government equity stakes in more than three dozen private companies.",
+      "pub_date": "Wed, 30 Sep 2026 10:58:51 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Trump weakens fuel efficiency standards. And, Cornell fraternity rape case reopened",
-      "url": "https://www.npr.org/2026/09/29/g-s1-145422/up-first-newsletter-fuel-efficiency-standards-cornell-rape-case-terror-suspects",
-      "summary": "The Trump administration has weakened fuel efficiency standards for new cars. And, prosecutors have reopened a Cornell University fraternity rape case.",
-      "pub_date": "Tue, 29 Sep 2026 07:36:24 -0400"
+      "title": "After failed execution, health workers say Tennessee's method flouts medical ethics",
+      "url": "https://www.npr.org/2026/09/30/nx-s1-5981250/tennessee-execution-tony-carruthers-christa-pike-medical-ethics-lethal-injection",
+      "summary": "After a botched lethal injection in May, dozens of Tennessee medical professionals told the governor that healthcare professionals shouldn't help with executions, no matter the method.",
+      "pub_date": "Wed, 30 Sep 2026 10:30:03 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "How to hide your spending habits from retailers (so you don't get ripped off)",
-      "url": "https://www.npr.org/2026/09/29/nx-s1-5983457/4-ways-to-avoid-getting-ripped-off-according-to-a-pricing-expert",
-      "summary": "Companies have changed the way they price their products — and shoppers are getting deliberately overcharged. Here are steps you can take to ensure you are getting the best deal.",
-      "pub_date": "Tue, 29 Sep 2026 05:01:00 -0400"
+      "title": "A pilot stabs the other pilot and tries to crash their flight to Tel Aviv, Israel says",
+      "url": "https://www.npr.org/2026/09/30/nx-s1-5985806/flydubai-flight-dubai-tel-aviv-israel",
+      "summary": "As the plane went into a spin and began to plunge, a passenger and crew members got into the cockpit, subdued the pilot and diverted the flight to land in Saudi Arabia, Israel's leader says.",
+      "pub_date": "Wed, 30 Sep 2026 09:35:11 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "As the U.S. signals a smaller Middle East footprint, Turkey is ready to step in",
-      "url": "https://www.npr.org/2026/09/29/nx-s1-5983685/turkey-influence",
-      "summary": "Turkey's bid for regional influence comes as the Middle East has been hit by profound shocks that started with the Hamas-led 2023 attack on Israel and continue with the seven-month-old war on Iran.",
-      "pub_date": "Tue, 29 Sep 2026 05:00:00 -0400"
+      "title": "FBI hunting the hackers who stole its employees' sensitive data",
+      "url": "https://www.npr.org/2026/09/30/nx-s1-5985202/fbi-hack-shinyhunters",
+      "summary": "The FBI says it's addressing a massive data breach, vowing to go after the hackers it believes are responsible.",
+      "pub_date": "Wed, 30 Sep 2026 08:29:05 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Morning news brief",
-      "url": "https://www.npr.org/2026/09/29/nx-s1-5979951/morning-news-brief",
-      "summary": "Five men arrested on terror charges near U.K. air base released on bail, Trump administration rolls back fuel efficiency standards for new vehicles, prosecutors reopen Cornell fraternity rape case.",
-      "pub_date": "Tue, 29 Sep 2026 04:47:43 -0400"
+      "title": "U.S. forces exit Iraq amid Iran war. And, SCOTUS revives Trump deportation policy",
+      "url": "https://www.npr.org/2026/09/30/g-s1-145604/up-first-newsletter-iraq-us-troops-scotus-deportations-trump-ai",
+      "summary": "The U.S. has withdrawn its final troops from Iraq, leaving its defense future uncertain. And, the Supreme Court has sided for now with the Trump administration on third-country deportations.",
+      "pub_date": "Wed, 30 Sep 2026 07:13:17 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "A young sailor died by suicide. Her family blames health care gaps and long deployment",
-      "url": "https://www.npr.org/2026/09/28/nx-s1-5981210/tktk",
-      "summary": "Jaimie Bethea, a 21-year-old mass communication specialist, had been deployed on the USS Fort Lauderdale for more than 11 months. She died by suicide in June.",
-      "pub_date": "Tue, 29 Sep 2026 04:47:26 -0400"
+      "title": "Travel plans? Here's what to know as measles exposures reach trains and games",
+      "url": "https://www.npr.org/2026/09/30/nx-s1-5978940/traveling-measles-exposure-vaccines-transportation",
+      "summary": "Measles is traveling, with outbreaks in Pennsylvania, Ohio and New York, and exposures on transportation and in sports. What should you know before getting on a plane or train?",
+      "pub_date": "Wed, 30 Sep 2026 07:00:00 -0400"
     },
     {
       "outlet": "BBC",
-      "title": "Spain announces ban on evictions after protests over 87-year-old woman's removal from flat",
-      "url": "https://www.bbc.co.uk/news/articles/cwm2qmjgy93do?at_medium=RSS&at_campaign=rss",
-      "summary": "The ban is part of a number of proposals that must be approved in parliament within 30 days.",
-      "pub_date": "Tue, 29 Sep 2026 16:23:58 GMT"
+      "title": "What we know about stabbing on Flydubai flight to Israel",
+      "url": "https://www.bbc.co.uk/news/articles/cqjdv7pmj9dno?at_medium=RSS&at_campaign=rss",
+      "summary": "The captain and first officer were injured, and one pilot has been arrested, officials say.",
+      "pub_date": "Wed, 30 Sep 2026 17:51:49 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "'I was lured into a trap': Evan Gershkovich on moment that led to 16 months in Russian jail",
-      "url": "https://www.bbc.co.uk/news/articles/ck9qr8jy8ynyo?at_medium=RSS&at_campaign=rss",
-      "summary": "The US journalist says he realised he was a \"a pawn in a greater game\" when he was not interrogated or tortured by FSB agents.",
-      "pub_date": "Tue, 29 Sep 2026 12:43:04 GMT"
+      "title": "Six smugglers jailed for manslaughter over worst Channel small boats disaster",
+      "url": "https://www.bbc.co.uk/news/articles/c6n8m33pn9djo?at_medium=RSS&at_campaign=rss",
+      "summary": "Thirty-one migrants died when their boat went down in November 2021. The trial found that the guilty men were part of two smuggling networks.",
+      "pub_date": "Wed, 30 Sep 2026 17:14:03 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Israeli settlers attack West Bank village and block Palestinian family's return home",
-      "url": "https://www.bbc.co.uk/news/articles/cvlylj41egxgo?at_medium=RSS&at_campaign=rss",
-      "summary": "Two homes belonging to the al-Tubasi family were set on fire and Israeli security forces were also targeted by settlers.",
-      "pub_date": "Tue, 29 Sep 2026 12:39:18 GMT"
+      "title": "UK-France 'one in, one out' migrant scheme scrapped",
+      "url": "https://www.bbc.co.uk/news/articles/c64gvnv4eqylo?at_medium=RSS&at_campaign=rss",
+      "summary": "Some 1,500 people have been removed to France since the scheme began just over a year ago.",
+      "pub_date": "Wed, 30 Sep 2026 17:11:08 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Dutch police arrest suspected member of group that claimed FBI hack",
-      "url": "https://www.bbc.co.uk/news/articles/cw5ym18znr0ro?at_medium=RSS&at_campaign=rss",
-      "summary": "The suspect, 24, was arrested before the alleged cyber attack took place.",
-      "pub_date": "Tue, 29 Sep 2026 15:40:10 GMT"
+      "title": "Execution of US murderer Christa Pike halted shortly before it was due to happen",
+      "url": "https://www.bbc.co.uk/news/articles/cw20vxxn876no?at_medium=RSS&at_campaign=rss",
+      "summary": "Pike was convicted and sentenced to death in 1996 for the murder of Colleen Slemmer.",
+      "pub_date": "Wed, 30 Sep 2026 15:29:11 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "First female prime minister named in Morocco after winning elections",
-      "url": "https://www.bbc.co.uk/news/articles/c674kkjllw17o?at_medium=RSS&at_campaign=rss",
-      "summary": "Her appointment by the king makes her only the second woman to lead a government in the Arab world.",
-      "pub_date": "Tue, 29 Sep 2026 17:14:10 GMT"
+      "title": "Russia launches largest attack on Ukraine energy infrastructure since spring",
+      "url": "https://www.bbc.co.uk/news/articles/ckjw5jx2l393o?at_medium=RSS&at_campaign=rss",
+      "summary": "In total 11 regions of the country were attacked overnight, with residential buildings and railways also targeted, the Ukrainian PM says.",
+      "pub_date": "Wed, 30 Sep 2026 14:53:02 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Eiffel Tower chief to quit after female staff replaced by men during religious visit",
-      "url": "https://www.bbc.co.uk/news/articles/crn8e069v7p7o?at_medium=RSS&at_campaign=rss",
-      "summary": "The company that runs the Eiffel Tower said the removal of female staff during the visit earlier this month was \"unacceptable\".",
-      "pub_date": "Tue, 29 Sep 2026 16:56:50 GMT"
+      "title": "Last UK and US troops leave Iraq as anti-Islamic State mission ends",
+      "url": "https://www.bbc.co.uk/news/articles/c65ym1dyn92mo?at_medium=RSS&at_campaign=rss",
+      "summary": "The withdrawal of coalition forces, under a deal agreed two years ago, was a key demand of the Iraqi government.",
+      "pub_date": "Wed, 30 Sep 2026 11:36:23 GMT"
     }
   ],
   "segments": [
@@ -374,7 +379,7 @@
           {
             "cat": "Wire Input",
             "name": "Copper (LME)",
-            "val": "$6.61 /lb",
+            "val": "$6.62 /lb",
             "unit": "LME spot",
             "note": "Primary cost driver",
             "chg": "0.00% day",
@@ -384,7 +389,7 @@
           {
             "cat": "Wire Input",
             "name": "Aluminum (LME)",
-            "val": "$3,340.75 /lb",
+            "val": "$3,298.25 /lb",
             "unit": "LME spot",
             "note": "Al wire and insulation",
             "chg": "0.00% day",
@@ -394,7 +399,7 @@
           {
             "cat": "Energy",
             "name": "WTI Crude",
-            "val": "$90.11 /bbl",
+            "val": "$90.96 /bbl",
             "unit": "NYMEX front month",
             "note": "Logistics and resin proxy",
             "chg": "0.00% day",
@@ -404,7 +409,7 @@
           {
             "cat": "Energy",
             "name": "Natural Gas",
-            "val": "$3.044 /MMBtu",
+            "val": "$3.014 /MMBtu",
             "unit": "Henry Hub",
             "note": "Manufacturing energy cost",
             "chg": "0.00% day",
@@ -623,7 +628,7 @@
           }
         ],
         "highRisk": [],
-        "updatedAt": "Sep 29, 2026",
+        "updatedAt": "Sep 30, 2026",
         "source": "U.S. State Dept.",
         "sourceUrl": "https://travel.state.gov"
       }
