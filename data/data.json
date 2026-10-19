@@ -1,8 +1,8 @@
 {
   "meta": {
-    "date": "Friday, October 16, 2026 · 12:48 PM EDT",
-    "dateShort": "Oct 16, 2026",
-    "runTime": "12:48 PM EDT",
+    "date": "Monday, October 19, 2026 · 02:45 PM EDT",
+    "dateShort": "Oct 19, 2026",
+    "runTime": "02:45 PM EDT",
     "posture": "ELEVATED",
     "postureSev": "high",
     "counts": {
@@ -16,7 +16,7 @@
     {
       "category": "US Equities",
       "name": "S&P 500",
-      "value": "7,688.00",
+      "value": "7,705.08",
       "unit": "Index · daily close",
       "note": "Broad equity risk-on/risk-off signal. High VIX or S&P drawdown signals demand risk for Southwire construction end markets.",
       "change": "▼ 0.00% day-over-day",
@@ -26,8 +26,8 @@
     {
       "category": "Energy",
       "name": "Brent Crude",
-      "value": "$109.30 /bbl",
-      "unit": "WTI $98.50 /bbl",
+      "value": "$109.44 /bbl",
+      "unit": "WTI $98.49 /bbl",
       "note": "Energy costs affect Southwire manufacturing and logistics. Sustained Brent >$90 pressures freight and resin input costs.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -36,8 +36,8 @@
     {
       "category": "Critical Input",
       "name": "Copper (LME)",
-      "value": "$6.58 /lb",
-      "unit": "($14,498 /MT) · LME spot",
+      "value": "$6.59 /lb",
+      "unit": "($14,523 /MT) · LME spot",
       "note": "Primary raw material. Copper content of wire drives COGS. Sustained elevation compresses margin unless hedged or repriced.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "good",
@@ -46,7 +46,7 @@
     {
       "category": "Critical Input",
       "name": "Aluminum (LME)",
-      "value": "$3,093.50 /lb",
+      "value": "$3,115.25 /lb",
       "unit": "LME spot · Midwest premium add",
       "note": "Key input for aluminum wire and cable. Price signals secondary cost pressure and hedge calendar triggers.",
       "change": "▼ 0.00% day-over-day",
@@ -66,17 +66,17 @@
     {
       "category": "Volatility",
       "name": "VIX",
-      "value": "17.31",
+      "value": "18.41",
       "unit": "CBOE Volatility Index",
       "note": "Equity market fear gauge. VIX >25 indicates risk-off environment; monitor customer demand signals and receivables.",
       "change": "▼ 0.00% day-over-day",
       "changeSev": "warn",
-      "sev": "low"
+      "sev": "moderate"
     },
     {
       "category": "Macro",
       "name": "Natural Gas",
-      "value": "$3.145 /MMBtu",
+      "value": "$3.061 /MMBtu",
       "unit": "Henry Hub futures",
       "note": "Energy input for manufacturing and logistics. Sustained elevation pressures margin. Drives residential heating demand indirectly.",
       "change": "▼ 0.00% day-over-day",
@@ -86,7 +86,7 @@
     {
       "category": "Safe Haven",
       "name": "Gold",
-      "value": "$4,181 /oz",
+      "value": "$4,163 /oz",
       "unit": "COMEX spot",
       "note": "Risk sentiment indicator. Gold >$3,000 with VIX elevation signals macro uncertainty that may dampen CapEx spending by customers.",
       "change": "▼ 0.00% day-over-day",
@@ -97,14 +97,11 @@
   "charts": [
     {
       "name": "S&P 500 · 30d",
-      "value": "7,688.00",
+      "value": "7,705.08",
       "chg": "0.0%",
       "bad": false,
-      "range": "30d range: 7,551.81 – 7,818.93",
+      "range": "30d range: 7,651.54 – 7,818.93",
       "pts": [
-        7551.8101,
-        7637.7598,
-        7650.5,
         7764.7002,
         7764.6401,
         7706.0298,
@@ -124,19 +121,17 @@
         7805.4502,
         7718.9399,
         7744.0601,
-        7688.04
+        7659.4399,
+        7705.0
       ]
     },
     {
       "name": "Brent Crude · 30d",
-      "value": "109.30",
+      "value": "109.44",
       "chg": "0.0%",
       "bad": true,
-      "range": "30d range: 99.25 – 109.30",
+      "range": "30d range: 99.25 – 109.86",
       "pts": [
-        105.83,
-        104.82,
-        103.87,
         100.34,
         99.25,
         103.08,
@@ -156,19 +151,17 @@
         105.69,
         106.06,
         105.92,
-        109.3
+        109.86,
+        109.44
       ]
     },
     {
       "name": "Gold · 30d",
-      "value": "4,181.00",
+      "value": "4,163.40",
       "chg": "0.0%",
       "bad": false,
-      "range": "30d range: 4,107.90 – 4,424.90",
+      "range": "30d range: 4,107.90 – 4,383.90",
       "pts": [
-        4387.5,
-        4399.7002,
-        4424.8999,
         4383.8999,
         4376.3999,
         4318.3999,
@@ -188,19 +181,17 @@
         4177.2998,
         4107.8999,
         4170.1001,
-        4181.1001
+        4181.1001,
+        4163.3999
       ]
     },
     {
       "name": "VIX · 30d",
-      "value": "17.31",
+      "value": "18.41",
       "chg": "0.0%",
       "bad": true,
-      "range": "30d range: 14.21 – 17.71",
+      "range": "30d range: 14.21 – 19.99",
       "pts": [
-        17.71,
-        15.44,
-        14.81,
         14.87,
         14.21,
         15.18,
@@ -220,19 +211,17 @@
         15.27,
         16.87,
         16.46,
-        17.31
+        19.99,
+        18.41
       ]
     },
     {
       "name": "Copper (LME) · 30d",
-      "value": "6.58",
+      "value": "6.59",
       "chg": "0.0%",
       "bad": true,
-      "range": "30d range: 6.43 – 6.76",
+      "range": "30d range: 6.48 – 6.76",
       "pts": [
-        6.4315,
-        6.5865,
-        6.615,
         6.6865,
         6.7595,
         6.678,
@@ -252,122 +241,123 @@
         6.678,
         6.6115,
         6.5115,
-        6.5755
+        6.531,
+        6.5875
       ]
     }
   ],
   "wire": [
     {
       "outlet": "NPR",
-      "title": "Amid talk of public execution, public opinion on death penalty is split",
-      "url": "https://www.npr.org/2026/10/16/g-s1-148404/public-opinion-execution-death-penalty",
-      "summary": "A majority of Americans support the death penalty for people convicted of murder, but support becomes more divided when questions vary.",
-      "pub_date": "Fri, 16 Oct 2026 12:28:00 -0400"
+      "title": "Australian prime minister says lawmaker critically injured by car is 'no accident'",
+      "url": "https://www.npr.org/2026/10/19/g-s1-148737/australia-lawmaker-critically-injured",
+      "summary": "A car hit an Australian federal independent lawmaker on Monday, critically injuring her in an apparent deliberate attack, Prime Minister Anthony Albanese said. The driver was arrested.",
+      "pub_date": "Mon, 19 Oct 2026 07:38:43 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Israeli settlers beat Palestinians and a U.S. photojournalist in West Bank attacks",
-      "url": "https://www.npr.org/2026/10/16/nx-s1-6004904/israeli-settlers-beat-us-photojournalist-washington-post-west-bank",
-      "summary": "Masked Israeli settlers attacked Palestinians as they were harvesting olives in the occupied West Bank on Friday, injuring several people including a photojournalist working for The Washington Post .",
-      "pub_date": "Fri, 16 Oct 2026 11:57:27 -0400"
+      "title": "2026 midterms could be the most expensive on record. And, Macron condemns protests",
+      "url": "https://www.npr.org/2026/10/19/g-s1-148733/up-first-newsletter-ukraine-russia-campaign-finances-france-protests",
+      "summary": "More than $15 billion has been raised in this year's midterm elections. And, France's president is condemning the violent protests erupting across the country.",
+      "pub_date": "Mon, 19 Oct 2026 07:15:43 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Crowds throng New Delhi and wave Indian flags amid escalating protests",
-      "url": "https://www.npr.org/2026/10/16/g-s1-148383/crowds-throng-new-delhi-and-wave-indian-flags-amid-escalating-protests",
-      "summary": "Protests have intensified over a review of voter lists that critics say is politically motivated and threatens to disenfranchise voters. The Election Commission and Modi's administration deny these allegations.",
-      "pub_date": "Fri, 16 Oct 2026 09:26:43 -0400"
+      "title": "A Kelvin wave raised sea levels on the West Coast. More are coming",
+      "url": "https://www.npr.org/2026/10/19/nx-s1-6001744/el-nino-kelvin-wave-west-coast",
+      "summary": "A large underwater wave moved up the West Coast, raising sea levels. Scientists say it's driven by El Niño and it's going to happen again.",
+      "pub_date": "Mon, 19 Oct 2026 05:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Sally Rooney's books will no longer be sold in U.K. after Palestinian Action support",
-      "url": "https://www.npr.org/2026/10/16/nx-s1-6004838/sally-rooney-books-uk-palestinian-action-support",
-      "summary": "The Irish author said her books can no longer be sold in the UK after she pledged the royalties to a banned pro-Palestinian group.",
-      "pub_date": "Fri, 16 Oct 2026 07:30:31 -0400"
+      "title": "The real reason it's going to take a while to know who won in some midterm races",
+      "url": "https://www.npr.org/2026/10/19/nx-s1-5982027/california-vote-counting-margins",
+      "summary": "Hint: It's not only because California counts slowly.",
+      "pub_date": "Mon, 19 Oct 2026 05:00:00 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Teen kills 4 at Oregon school. And, DOJ sues California over alleged noncitizens",
-      "url": "https://www.npr.org/2026/10/16/g-s1-148373/up-first-newsletter-bend-oregon-school-shooting-california-doj-voters-presidential-papers",
-      "summary": "A teen opened fire at an Oregon elementary school, leaving three kids and one teacher dead. And, the Justice Department is suing California over alleged noncitizen voters.",
-      "pub_date": "Fri, 16 Oct 2026 07:03:57 -0400"
+      "title": "Morning news brief",
+      "url": "https://www.npr.org/2026/10/19/nx-s1-6003499/morning-news-brief",
+      "summary": "Ukraine and Russia exchange strikes as relations between U.S. and Ukraine deteriorate, the midterms are on track to be the most expensive on record, French president denounces violent protests.",
+      "pub_date": "Mon, 19 Oct 2026 04:46:44 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "What this bankruptcy says about AI startups",
-      "url": "https://www.npr.org/sections/planet-money/2026/10/16/nx-s1-6001828/what-this-bankruptcy-says-about-ai-startups",
-      "summary": "Character.AI collected millions of users, making it a very appealing acquisition. Google took a unique route to \"acquiring\" it, hiring away its founders and licensing its technology. Now Character.AI is filing for bankruptcy. Here's what to know.",
-      "pub_date": "Fri, 16 Oct 2026 07:00:00 -0400"
+      "title": "Michigan's Democratic Senate candidate Abdul El-Sayed campaigns in GOP stronghold",
+      "url": "https://www.npr.org/2026/10/19/nx-s1-6005195/michigans-democratic-senate-candidate-abdul-el-sayed-campaigns-in-gop-stronghold",
+      "summary": "Michigan's Democratic U.S. Senate candidate Abdul El-Sayed is campaigning in the GOP stronghold of Michigan's Upper Peninsula, an area that hasn't voted for a Democrat in Congress in over a decade.",
+      "pub_date": "Mon, 19 Oct 2026 04:46:18 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "How much money has Musk given to Republican groups since July? The quiz knows",
-      "url": "https://www.npr.org/2026/10/16/g-s1-148041/pope-leo-musk-mamdani-trump-guilfoyle-news-quiz",
-      "summary": "Plus, this week saw comings and goings at the White House, the revenge of a child (reality) star, and Elon Musk doing Elon Musk things.",
-      "pub_date": "Fri, 16 Oct 2026 05:00:00 -0400"
+      "title": "Solar power is changing agriculture in Pakistan, but some fear it could cause issues",
+      "url": "https://www.npr.org/2026/10/19/nx-s1-5993523/solar-power-is-changing-agriculture-in-pakistan-but-some-fear-it-could-cause-issues",
+      "summary": "Solar power is transforming agriculture in Pakistan. But in a country already facing water scarcity and extreme weather, some fear their widespread use could cause problems.",
+      "pub_date": "Mon, 19 Oct 2026 04:45:58 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Do Americans own the president's papers? Appeals court to weigh in",
-      "url": "https://www.npr.org/2026/10/16/nx-s1-5996836/trump-who-owns-presidential-records-act-appeals-court",
-      "summary": "The administration says papers created in the White House belong to Donald Trump, not to the American people. The case could ultimately end up at the conservative-leaning Supreme Court.",
-      "pub_date": "Fri, 16 Oct 2026 05:00:00 -0400"
+      "title": "Alberta voters weigh future in Canada",
+      "url": "https://www.npr.org/2026/10/18/nx-s1-6004877/alberta-referendum-canada-vote",
+      "summary": "On Monday voters in the oil-rich Canadian province of Alberta are deciding whether to take the first step toward a future referendum on independence.",
+      "pub_date": "Mon, 19 Oct 2026 04:45:01 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "Remembering Oscar-winning actor Eva Marie Saint",
-      "url": "https://www.npr.org/2026/10/16/nx-s1-6003516/remembering-oscar-winning-actor-eva-marie-saint",
-      "summary": "Saint, who died Oct. 6, studied at the Actors Studio and was best known for her roles in On the Waterfront and the Hitchcock film North by Northwest. Originally broadcast in 2000.",
-      "pub_date": "Fri, 16 Oct 2026 05:00:00 -0400"
+      "title": "Trump endorses embattled Israeli Prime Minister Benjamin Netanyahu for reelection",
+      "url": "https://www.npr.org/2026/10/19/g-s1-148731/trump-endorses-netanyahu",
+      "summary": "Trump said in a post on social media that Netanyahu \"has been a Great Warrior Prime Minister, and an even greater Partner for Peace in combatting the Islamic Republic of Iran.\"",
+      "pub_date": "Mon, 19 Oct 2026 01:35:39 -0400"
     },
     {
       "outlet": "NPR",
-      "title": "'Everything got worse': Gen Z express frustration, regret after Trump vote",
-      "url": "https://www.npr.org/2026/10/16/nx-s1-5993835/gen-z-trump-voting-support",
-      "summary": "A focus group of eight Gen Z Trump voters reported feeling unhappy or disappointed with the state of politics, with some going as far as to say they regret supporting him in 2024.",
-      "pub_date": "Fri, 16 Oct 2026 05:00:00 -0400"
+      "title": "Trump to close and renovate D.C. golf course, despite legal battle",
+      "url": "https://www.npr.org/2026/10/18/nx-s1-6007384/trump-to-close-and-renovate-d-c-golf-course-despite-legal-battle",
+      "summary": "President Trump continues his efforts to remake Washington, D.C. He wants to turn an area used by the public into a world-class golf course.",
+      "pub_date": "Sun, 18 Oct 2026 22:09:43 -0400"
     },
     {
       "outlet": "BBC",
-      "title": "Inside Ukrainian offensive pushing Russia back on front line where Starlink plays a key role",
-      "url": "https://www.bbc.co.uk/news/articles/cvx284w16z1po?at_medium=RSS&at_campaign=rss",
-      "summary": "The BBC joins Ukraine's Operation Vivaldi as it regains crucial territory in the Donbas, but optimism has been dampened by souring relations with President Trump.",
-      "pub_date": "Fri, 16 Oct 2026 16:00:30 GMT"
+      "title": "Australian MP critically injured after being hit by car in apparent attack",
+      "url": "https://www.bbc.co.uk/news/articles/cwp9g43g2p07o?at_medium=RSS&at_campaign=rss",
+      "summary": "The independent politician is in hospital after what the prime minister says may have been a deliberate attack.",
+      "pub_date": "Mon, 19 Oct 2026 14:09:54 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Palestinians and US journalist injured by Israeli settlers in West Bank harvest attack",
-      "url": "https://www.bbc.co.uk/news/articles/c65ynk7212vqo?at_medium=RSS&at_campaign=rss",
-      "summary": "The BBC sees masked settlers attack Palestinians trying to harvest olives, amid a surge in similar incidents.",
-      "pub_date": "Fri, 16 Oct 2026 14:31:04 GMT"
+      "title": "Ukrainians dying because US restricting intelligence sharing, Zelensky adviser tells BBC",
+      "url": "https://www.bbc.co.uk/news/articles/cmj47yx572z5o?at_medium=RSS&at_campaign=rss",
+      "summary": "Serhii Beskrestnov says there has not been enough time to warn people about incoming missile attacks.",
+      "pub_date": "Mon, 19 Oct 2026 18:23:50 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Zelensky says Ukraine has right to defend itself after Trump calls latest strikes a 'disgrace'",
-      "url": "https://www.bbc.co.uk/news/articles/c58jz174w89ro?at_medium=RSS&at_campaign=rss",
-      "summary": "EU leaders rally around Ukraine's president after new criticism from Donald Trump, who says Zelensky is \"more difficult to work with than Putin\".",
-      "pub_date": "Fri, 16 Oct 2026 15:59:30 GMT"
+      "title": "Kenya cult leader who told parents to starve children guilty of 191 murders",
+      "url": "https://www.bbc.co.uk/news/articles/ckd6d2l3dz4xo?at_medium=RSS&at_campaign=rss",
+      "summary": "Self-proclaimed pastor Paul Mackenzie was found guilty of 191 murder charges - all but one of them children.",
+      "pub_date": "Mon, 19 Oct 2026 17:18:04 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "Pope pictured for first time since surgery and cancer diagnosis",
-      "url": "https://www.bbc.co.uk/news/articles/cw146ej00yn7o?at_medium=RSS&at_campaign=rss",
-      "summary": "The pontiff was diagnosed with lung cancer after having surgery at Rome's Gemelli Hospital on Tuesday.",
-      "pub_date": "Fri, 16 Oct 2026 14:36:39 GMT"
+      "title": "Ex-OpenAI worker accused of planting device had Saudi support says court filing",
+      "url": "https://www.bbc.co.uk/news/articles/c6gel2dlyxvyo?at_medium=RSS&at_campaign=rss",
+      "summary": "The Saudi government did not immediately respond to BBC requests for comment.",
+      "pub_date": "Mon, 19 Oct 2026 16:22:12 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "India's 'cockroach' party founder detained ahead of protest",
-      "url": "https://www.bbc.co.uk/news/articles/cmx237n1y9lzo?at_medium=RSS&at_campaign=rss",
-      "summary": "The youth-led movement had called for a Delhi protest after mass detentions last week and the jailing of two leaders.",
-      "pub_date": "Fri, 16 Oct 2026 11:44:31 GMT"
+      "title": "Alberta heads to polls to decide whether to hold vote on separation from Canada",
+      "url": "https://www.bbc.co.uk/news/articles/cxvgd0ymgzgyo?at_medium=RSS&at_campaign=rss",
+      "summary": "Polling suggests most Albertans favour remaining part of the country, although the debate alone has proven divisive.",
+      "pub_date": "Mon, 19 Oct 2026 13:44:57 GMT"
     },
     {
       "outlet": "BBC",
-      "title": "US senators call for investigation into Ukraine's Starlink restrictions",
-      "url": "https://www.bbc.co.uk/news/articles/cq398zl8jmvdo?at_medium=RSS&at_campaign=rss",
-      "summary": "Ukraine says temporary speed limits to the Starlink internet network disrupted its battlefield missions.",
-      "pub_date": "Fri, 16 Oct 2026 14:19:50 GMT"
+      "title": "Exiled critic of Rwandan president found beheaded",
+      "url": "https://www.bbc.co.uk/news/articles/c3lylj78777do?at_medium=RSS&at_campaign=rss",
+      "summary": "Former army sergeant major Robert Kabera was a popular YouTuber and singer, who had sought asylum in Uganda.",
+      "pub_date": "Mon, 19 Oct 2026 13:42:41 GMT"
     }
   ],
   "segments": [
@@ -383,7 +373,7 @@
           {
             "cat": "Wire Input",
             "name": "Copper (LME)",
-            "val": "$6.58 /lb",
+            "val": "$6.59 /lb",
             "unit": "LME spot",
             "note": "Primary cost driver",
             "chg": "0.00% day",
@@ -393,7 +383,7 @@
           {
             "cat": "Wire Input",
             "name": "Aluminum (LME)",
-            "val": "$3,093.50 /lb",
+            "val": "$3,115.25 /lb",
             "unit": "LME spot",
             "note": "Al wire and insulation",
             "chg": "0.00% day",
@@ -403,7 +393,7 @@
           {
             "cat": "Energy",
             "name": "WTI Crude",
-            "val": "$98.50 /bbl",
+            "val": "$98.49 /bbl",
             "unit": "NYMEX front month",
             "note": "Logistics and resin proxy",
             "chg": "0.00% day",
@@ -413,7 +403,7 @@
           {
             "cat": "Energy",
             "name": "Natural Gas",
-            "val": "$3.145 /MMBtu",
+            "val": "$3.061 /MMBtu",
             "unit": "Henry Hub",
             "note": "Manufacturing energy cost",
             "chg": "0.00% day",
@@ -632,7 +622,7 @@
           }
         ],
         "highRisk": [],
-        "updatedAt": "Oct 16, 2026",
+        "updatedAt": "Oct 19, 2026",
         "source": "U.S. State Dept.",
         "sourceUrl": "https://travel.state.gov"
       }
